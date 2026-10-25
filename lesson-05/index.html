@@ -312,6 +312,83 @@
 
     [contenteditable="true"] { outline: 1.5px dashed #ef4444 !important; cursor: text; }
     .hidden-by-edit { display: none !important; }
+    /* 3대 근로자의 권리 인터랙티브 카드 그리드 */
+    .right-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      max-width: 1540px;
+    }
+    .right-card {
+      border-radius: 22px;
+      padding: 40px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 440px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    .right-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7);
+    }
+    .right-card.card-blue {
+      background: #f0f9ff;
+      border: 6px solid #0284c7;
+    }
+    .right-card.card-green {
+      background: #f0fdf4;
+      border: 6px solid #16a34a;
+    }
+    .right-card.card-yellow {
+      background: #fefce8;
+      border: 6px solid #ca8a04;
+    }
+    .right-card .card-main-title {
+      font-size: 46px;
+      font-weight: 900;
+      color: #0f172a;
+      line-height: 1.35;
+      letter-spacing: -1px;
+      word-break: keep-all;
+    }
+    .right-card .click-hint {
+      margin-top: 24px;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.08);
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .right-card.revealed .click-hint {
+      display: none;
+    }
+    .right-card .card-detail-content {
+      display: none;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 2.5px dashed rgba(15, 23, 42, 0.2);
+      text-align: left;
+      width: 100%;
+      font-size: 25px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .right-card.revealed .card-detail-content {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
   </style>
 </head>
 <body>
@@ -433,25 +510,49 @@
       </div>
     </section>
 
-    <!-- 슬라이드 6: 근로자의 4대 기본 권리 정리 -->
+    <!-- 슬라이드 6: 보호받아야 할 근로자의 권리 (3대 권리 인터랙티브 카드) -->
     <section class="slide">
-      <h2 class="slide-heading">헌법과 법률이 보장하는 <span class="cyan">근로자의 4대 권리</span></h2>
-      <div class="grid-2col">
-        <div class="card-box" style="border-top:6px solid #38bdf8;">
-          <div class="card-title" style="color:#38bdf8;">1. 안전하고 쾌적할 권리</div>
-          <div class="card-desc">안전장비 지급, 위험 작업장 개선으로 다치지 않고 일할 권리</div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; width:100%; max-width:1540px; margin-bottom:18px;">
+        <h2 class="slide-heading" style="margin-bottom:0; font-size:52px;">
+          보호받아야 할 <span class="yellow">근로자의 권리</span>에는 무엇이 있을까요?
+        </h2>
+        <span style="font-size:22px; color:#f87171; font-weight:800; white-space:nowrap;">
+          * 그림 카드를 클릭하세요.
+        </span>
+      </div>
+
+      <div class="right-card-grid">
+        <!-- 1. 안전하게 일할 권리 -->
+        <div class="right-card card-blue" onclick="this.classList.toggle('revealed')">
+          <div class="card-main-title">안전하게<br>일할 권리</div>
+          <div class="click-hint">👆 터치하여 내용 열기</div>
+          <div class="card-detail-content">
+            • 위험하지 않은 안전한 작업 환경<br>
+            • 안전모·보호구 등 필수 장비 지급<br>
+            • 다치거나 병들지 않고 일할 권리
+          </div>
         </div>
-        <div class="card-box" style="border-top:6px solid #4ade80;">
-          <div class="card-title" style="color:#4ade80;">2. 정당한 임금을 받을 권리</div>
-          <div class="card-desc">최저임금 이상의 급여를 정해진 날짜에 통장으로 전액 받을 권리</div>
+
+        <!-- 2. 정당한 대우를 받으며 일할 권리 -->
+        <div class="right-card card-green" onclick="this.classList.toggle('revealed')">
+          <div class="card-main-title">정당한 대우를<br>받으며<br>일할 권리</div>
+          <div class="click-hint">👆 터치하여 내용 열기</div>
+          <div class="card-detail-content">
+            • 일한 만큼 정당한 임금(최저임금 이상) 수령<br>
+            • 약속된 날짜에 통장으로 전액 지급<br>
+            • 성별·나이에 따른 부당한 차별·해고 금지
+          </div>
         </div>
-        <div class="card-box" style="border-top:6px solid #fde047;">
-          <div class="card-title" style="color:#fde047;">3. 충분한 휴식과 휴가의 권리</div>
-          <div class="card-desc">건강을 지키기 위해 하루 근로시간을 지키고 주말과 휴가를 누릴 권리</div>
-        </div>
-        <div class="card-box" style="border-top:6px solid #f87171;">
-          <div class="card-title" style="color:#f87171;">4. 부당한 대우를 받지 않을 권리</div>
-          <div class="card-desc">이유 없이 해고당하지 않고 인격적으로 존중받으며 일할 권리</div>
+
+        <!-- 3. 사람답게 일할 권리 -->
+        <div class="right-card card-yellow" onclick="this.classList.toggle('revealed')">
+          <div class="card-main-title">사람답게<br>일할 권리</div>
+          <div class="click-hint">👆 터치하여 내용 열기</div>
+          <div class="card-detail-content">
+            • 무리한 장시간 노동 금지 (근로시간 준수)<br>
+            • 피로를 풀 수 있는 충분한 휴식과 휴가<br>
+            • 인격적으로 존중받으며 일할 권리
+          </div>
         </div>
       </div>
     </section>
@@ -792,7 +893,7 @@
       { slide: 3, title: "배움 문제 확인", time: "1분", answers: "• 함께 읽으며 오늘 평가 목표 인식", confusing: "권리 보호의 까닭과 캠페인 문구 작성이 핵심 평가 요소", words: "배움문제, 과정중심평가" },
       { slide: 4, title: "고용노동부 교육 영상", time: "3분", answers: "• 노동 존중 영상 시청 소감", confusing: "인간의 존엄성과 근로자의 권리 연계", words: "노동 인권" },
       { slide: 5, title: "문제 상황 4가지", time: "2분", answers: "• \"다치거나 월급을 못 받으면 안 돼요!\"", confusing: "권리 침해 사례를 통해 법적 보호의 필요성 도출", words: "권리 침해" },
-      { slide: 6, title: "근로자의 4대 기본 권리", time: "3분", answers: "• 안전, 임금, 휴식, 차별 금지 확인", confusing: "초등 눈높이에 맞춘 4대 핵심 권리 이해", words: "근로기준법, 헌법" },
+      { slide: 6, title: "보호받아야 할 근로자의 권리 (3대 권리)", time: "3분", answers: "• 안전하게 일할 권리, 정당한 대우를 받으며 일할 권리, 사람답게 일할 권리", confusing: "카드를 하나씩 클릭하며 초등 눈높이에서 3대 핵심 권리 구체화", words: "안전, 정당한 대우, 사람답게, 노동 존중" },
       { slide: 7, title: "권리를 지켜야 하는 까닭", time: "2분", answers: "• 가계 안정 ➔ 기업 발전 선순환", confusing: "근로자 권리가 기업 발전과 대립되지 않고 상생함을 강조", words: "상생, 경제 선순환" },
       { slide: 8, title: "[활동 2] 피켓전 & 투표 안내", time: "2분", answers: "• 모둠별 미니 피켓 제작 룰 확인", confusing: "창의적 슬로건과 설득력 있는 문구 작성 유도", words: "신체 활동, 피켓전" },
       { slide: 9, title: "캠페인 슬로건 예시", time: "2분", answers: "• 마음에 드는 구호 읽어보기", confusing: "자신의 언어로 참신하게 바꾸어 쓰도록 지도", words: "슬로건, 캠페인" },
