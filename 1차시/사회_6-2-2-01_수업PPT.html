@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[전자칠판용 PPT] 6-2 사회 2단원 1차시: 우리 생활 속 시장과 경제활동</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-glow: rgba(59, 130, 246, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-yellow: #fde047;
+      --accent-green: #4ade80;
+      --accent-red: #f87171;
+      --bg-dark: #090d16;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(148, 163, 184, 0.25);
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 상단 교사용 컨트롤 바 */
+    .topbar {
+      height: 60px;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.95);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+    .topbar-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-badge {
+      background: #1e40af;
+      color: white;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      letter-spacing: -0.3px;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .slide-page-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      font-variant-numeric: tabular-nums;
+    }
+    .btn-fullscreen {
+      background: #2563eb;
+      border: 1px solid #3b82f6;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-fullscreen:hover {
+      background: #1d4ed8;
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    /* 메인 슬라이드 뷰포트 */
+    .viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 40px;
+      transition: padding 0.25s ease;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      max-width: 1720px;
+      max-height: 960px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 24px;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* 큰 글씨 타이포그래피 (글자 수 최소화, 가독성 극대화) */
+    .tag-category {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.15);
+      border: 2.5px solid var(--accent-cyan);
+      padding: 6px 24px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .slide-heading {
+      margin-top: 10px;
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
+      color: var(--text-white);
+    }
+    .slide-heading span.yellow { color: var(--accent-yellow); }
+    .slide-heading span.cyan { color: var(--accent-cyan); }
+
+    .sub-lead-text {
+      font-size: 28px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+
+    /* 1장 단일 포커스 대형 카드 (사진 1장 + 큰 글자 2줄) */
+    .single-focus-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+      align-items: center;
+      background: var(--card-bg);
+      border: 3px solid var(--card-border);
+      border-radius: 24px;
+      padding: 30px 40px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+    .single-photo-box {
+      width: 100%;
+      height: 380px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .single-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .single-info-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .single-title {
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+    }
+    .single-desc {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+    .single-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .single-badge-item {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      color: #93c5fd;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    /* 대형 핵심 배너 (교실 뒤편 시인성 극대화) */
+    .giant-banner {
+      width: 100%;
+      max-width: 1360px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #064e3b 100%);
+      border: 3.5px solid #60a5fa;
+      border-radius: 24px;
+      padding: 44px 54px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+    .giant-banner-sub {
+      font-size: 28px;
+      font-weight: 800;
+      color: #93c5fd;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .giant-banner-main {
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      line-height: 1.35;
+      letter-spacing: -1px;
+    }
+    .giant-banner-foot {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 20px;
+      line-height: 1.45;
+    }
+
+    /* 2열 비교 카드 그리드 */
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    /* 3열 자원/시장 카드 그리드 */
+    .grid-3-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      width: 100%;
+      max-width: 1500px;
+    }
+
+    .photo-card-simple {
+      background: var(--card-bg);
+      border: 2.5px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    .card-img-wrap-simple {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #1e293b;
+    }
+    .card-img-wrap-simple img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body-simple {
+      padding: 24px 20px;
+    }
+    .card-title-simple {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+    .card-desc-simple {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    /* 단일 퀘스트 카드 */
+    .quest-card-single {
+      width: 100%;
+      max-width: 1200px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 3.5px solid;
+      border-radius: 24px;
+      padding: 44px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    }
+    .quest-card-single.q1 { border-color: #0d9488; }
+    .quest-card-single.q2 { border-color: #d97706; }
+    .quest-card-single.q3 { border-color: #6366f1; }
+    .quest-badge-lg {
+      font-size: 22px;
+      font-weight: 900;
+      padding: 6px 20px;
+      border-radius: 8px;
+      width: fit-content;
+      color: white;
+    }
+    .q1 .quest-badge-lg { background: #0d9488; }
+    .q2 .quest-badge-lg { background: #d97706; }
+    .q3 .quest-badge-lg { background: #6366f1; }
+    .quest-title-lg {
+      font-size: 42px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+    .quest-core-q {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      background: rgba(253, 224, 71, 0.12);
+      padding: 18px 24px;
+      border-radius: 12px;
+      border-left: 6px solid var(--accent-yellow);
+      line-height: 1.35;
+    }
+    .quest-points {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 하단 조작 바 */
+    .bottom-bar {
+      height: 76px;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.95);
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+      z-index: 90;
+    }
+    .nav-btn-lg {
+      padding: 14px 36px;
+      border-radius: 10px;
+      font-size: 20px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #3b82f6;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-btn-lg:disabled {
+      background: #1e293b;
+      color: #64748b;
+      border-color: #334155;
+      cursor: not-allowed;
+    }
+    .nav-btn-lg:hover:not(:disabled) {
+      background: #1d4ed8;
+      transform: scale(1.03);
+    }
+    .indicator-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .indicator-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .indicator-dot.active {
+      background: var(--accent-cyan);
+      width: 32px;
+      border-radius: 6px;
+    }
+
+    /* [1] 고치기 편집 모드 전용 스타일 */
+    .is-editing [contenteditable="true"] {
+      outline: 2px dashed rgba(56, 189, 248, 0.5) !important;
+      outline-offset: 4px;
+      min-height: 1.2em;
+      cursor: text;
+      transition: outline-color 0.15s, background 0.15s;
+      border-radius: 4px;
+    }
+    .is-editing [contenteditable="true"]:hover {
+      outline-color: var(--accent-cyan) !important;
+      background: rgba(56, 189, 248, 0.12) !important;
+    }
+    .is-editing [contenteditable="true"]:focus {
+      outline: 2.5px solid var(--accent-yellow) !important;
+      background: rgba(253, 224, 71, 0.15) !important;
+    }
+    .hidden-by-edit { display: none !important; }
+
+    /* 상단 중앙 얇은 편집 도구 막대 */
+    #editToolbar {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1.5px solid #38bdf8;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 6px 16px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      z-index: 9999;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    #editToolbar.show { display: flex; }
+    .tb-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .tb-btn:hover { background: rgba(255, 255, 255, 0.25); color: white; }
+    .tb-sep { width: 1px; height: 18px; background: rgba(255, 255, 255, 0.2); margin: 0 4px; }
+    .color-swatch { width: 18px; height: 18px; border-radius: 50%; border: 2px solid white; cursor: pointer; display: inline-block; transition: transform 0.15s; }
+    .color-swatch:hover { transform: scale(1.25); }
+
+    /* [2] 전체 화면 시 여백 0 및 대형화 */
+    :fullscreen body, body.is-fullscreen { height: 100vh !important; width: 100vw !important; }
+    :fullscreen .viewport, body.is-fullscreen .viewport { padding: 0 !important; margin: 0 !important; }
+    :fullscreen .slide, body.is-fullscreen .slide { max-width: 100vw !important; max-height: calc(100vh - 120px) !important; padding: 10px 24px !important; }
+
+    /* [3] 교사용 슬라이드업 드로어 */
+    #teacherDrawer {
+      position: fixed;
+      bottom: -450px;
+      left: 0;
+      width: 100%;
+      height: 380px;
+      background: rgba(10, 15, 30, 0.96);
+      backdrop-filter: blur(16px);
+      border-top: 3px solid #3b82f6;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 20px 36px;
+    }
+    #teacherDrawer.open { bottom: 0; }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .drawer-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent-yellow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .drawer-badge { background: #1e40af; color: white; font-size: 13px; padding: 3px 10px; border-radius: 4px; }
+    .btn-drawer-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-drawer-close:hover { background: rgba(239, 68, 68, 0.4); border-color: #ef4444; }
+    .drawer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1.8fr 1.2fr;
+      gap: 18px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .drawer-col {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .col-label { font-size: 15px; font-weight: 800; color: var(--accent-cyan); border-bottom: 1px dashed rgba(255, 255, 255, 0.15); padding-bottom: 4px; }
+    .col-body { font-size: 15.5px; line-height: 1.5; color: #e2e8f0; flex: 1; white-space: pre-line; }
+
+    /* 우측 하단 플로팅 롤오버 툴바 */
+    .floating-tools-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 88px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 4px 6px;
+      gap: 6px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+      opacity: 0.72;
+      transition: all 0.25s ease;
+    }
+    .floating-tools-widget:hover {
+      opacity: 1;
+      background: rgba(15, 23, 42, 0.95);
+      border-color: #38bdf8;
+      box-shadow: 0 6px 24px rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+    }
+    .f-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .f-btn:hover { background: #2563eb; border-color: #60a5fa; color: white; }
+    .f-btn.active { background: #059669; border-color: #34d399; color: #ffffff; }
+    .f-key-hint { font-size: 10.5px; background: rgba(0, 0, 0, 0.3); padding: 1px 5px; border-radius: 4px; color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    @media print {
+      .topbar, .bottom-bar, .floating-tools-widget, #editToolbar, #teacherDrawer { display: none !important; }
+      body { background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- [1] 상단 중앙 고치기 도구 막대 -->
+  <div id="editToolbar">
+    <button class="tb-btn" onclick="execUndo()" title="한 걸음 되돌리기">↶ 되돌리기</button>
+    <button class="tb-btn" onclick="execRedo()" title="다시 실행">↷ 다시</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="changeFontSize(1)" title="글자 크게">🗚 크게</button>
+    <button class="tb-btn" onclick="changeFontSize(-1)" title="글자 작게">🗛 작게</button>
+    <button class="tb-btn" onclick="document.execCommand('bold')" title="굵게"><strong>B</strong></button>
+    <button class="tb-btn" onclick="document.execCommand('hiliteColor', false, '#fde047')" title="형광펜"><span style="background:#fde047; color:black; padding:0 3px; border-radius:2px;">형광펜</span></button>
+    <div class="tb-sep"></div>
+    <span class="color-swatch" style="background:#000000;" onclick="document.execCommand('foreColor', false, '#000000')" title="검정"></span>
+    <span class="color-swatch" style="background:#ef4444;" onclick="document.execCommand('foreColor', false, '#ef4444')" title="빨강"></span>
+    <span class="color-swatch" style="background:#3b82f6;" onclick="document.execCommand('foreColor', false, '#3b82f6')" title="파랑"></span>
+    <span class="color-swatch" style="background:#10b981;" onclick="document.execCommand('foreColor', false, '#10b981')" title="초록"></span>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="document.execCommand('justifyCenter')" title="가운데 정렬">≡ 정렬</button>
+    <button class="tb-btn" onclick="insertUserImage()" title="사진 넣기">🖼 사진</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" style="color:#fca5a5;" onclick="hideCurrentElement()" title="선택 부분 감추기">이 부분 지우기</button>
+    <button class="tb-btn" style="color:#f87171;" onclick="hideCurrentSlide()" title="이 슬라이드 감추기">이 장 지우기</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" style="color:#fdba74;" onclick="resetAllEdits()" title="초기화">↺ 전체 되돌리기</button>
+  </div>
+
+  <!-- 상단 상태 바 -->
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="topbar-badge">2022 개정 초등 사회 6-2</span>
+      <span>2. 시장경제와 국가 간 거래 (1차시)</span>
+    </div>
+    <div class="topbar-right">
+      <div class="slide-page-num">
+        <span id="curNum">1</span> / <span id="totNum">23</span>
+      </div>
+      <button class="btn-fullscreen" onclick="toggleFullScreenMode()">전체화면 (F11)</button>
+    </div>
+  </header>
+
+  <!-- 슬라이드 뷰포트 (23장 구성, 한 슬라이드당 글자 수 최소화) -->
+  <main class="viewport">
+
+    <!-- 슬라이드 1: 표지 -->
+    <section class="slide active" id="s1">
+      <h1 class="slide-heading" style="font-size:64px; margin-bottom:24px;">
+        우리 생활 속 <span class="cyan">시장</span>과<br>
+        <span class="yellow">경제활동</span> 알아보기
+      </h1>
+      <p class="sub-lead-text">
+        우리는 매일 어떤 경제활동을 하며 살아갈까요?
+      </p>
+      <div style="background:rgba(30, 58, 138, 0.4); border:2px solid #3b82f6; border-radius:12px; padding:16px 40px; font-size:24px; font-weight:800; color:#bfdbfe;">
+        사회 교과서 60 ~ 63쪽 &nbsp;|&nbsp; 모덕초등학교 6학년
+      </div>
+    </section>
+
+    <!-- 슬라이드 2: 도입 질문 -->
+    <section class="slide" id="s2">
+      <h2 class="slide-heading" style="font-size:60px; line-height:1.35;">
+        "오늘 아침,<br>
+        나는 어떤 <span class="yellow">경제활동</span>을 했을까요?"
+      </h2>
+      <p class="sub-lead-text" style="font-size:32px; color:#93c5fd;">
+        "선생님, 저는 오늘 돈 한 푼도 안 썼는데요?"
+      </p>
+    </section>
+
+    <!-- 슬라이드 3: 도입 1 - 아침 식사 -->
+    <section class="slide" id="s3">
+      <h2 class="slide-heading">아침 식탁의 <span class="yellow">음식들</span></h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&auto=format&fit=crop" alt="아침 식사 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            오늘 아침 먹은 밥, 국, 시리얼, 우유는<br>
+            <strong>어디서 사 왔고, 누가 만들었을까요?</strong>
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">쌀</span>
+            <span class="single-badge-item">우유</span>
+            <span class="single-badge-item">시리얼</span>
+            <span class="single-badge-item">반찬</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 4: 도입 2 - 옷과 가방 -->
+    <section class="slide" id="s4">
+      <h2 class="slide-heading">내가 입고 온 <span class="cyan">옷과 가방</span></h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&auto=format&fit=crop" alt="옷과 가방 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            누군가 공장에서 정성껏 만들었고,<br>
+            가게를 거쳐 <strong>내 옷장으로 오게 되었습니다.</strong>
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">티셔츠</span>
+            <span class="single-badge-item">바지</span>
+            <span class="single-badge-item">신발</span>
+            <span class="single-badge-item">책가방</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 5: 도입 3 - 등굣길 교통 -->
+    <section class="slide" id="s5">
+      <h2 class="slide-heading">등굣길의 <span class="yellow">교통 서비스</span></h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800&auto=format&fit=crop" alt="교통수단 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            교통카드를 찍고 버스를 타거나 횡단보도를 건너며<br>
+            우리는 <strong>편리한 사회 서비스를 이용합니다.</strong>
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">시내버스</span>
+            <span class="single-badge-item">교통카드</span>
+            <span class="single-badge-item">안전 도로</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 6: 도입 결론 -->
+    <section class="slide" id="s6">
+      <h2 class="slide-heading">우리는 이미 <span class="yellow">'경제활동'</span> 속에 살고 있습니다!</h2>
+      <div class="giant-banner">
+        <div class="giant-banner-sub">내가 직접 돈을 내지 않았더라도,</div>
+        <div class="giant-banner-main">
+          "생산하고, 소비하고, 교환하며 살아갑니다!"
+        </div>
+        <div class="giant-banner-foot">
+          물건을 만드는 <strong>생산</strong> &nbsp;•&nbsp; 
+          물건을 쓰고 누리는 <strong>소비</strong> &nbsp;•&nbsp; 
+          서로 바꾸는 <strong>교환</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 7: 배움 문제 -->
+    <section class="slide" id="s7">
+      <h2 class="slide-heading" style="color:#fde047;">무엇을 배울까요?</h2>
+      <div class="giant-banner" style="background: linear-gradient(135deg, #172554 0%, #1e3a8a 100%); border-color:#fde047;">
+        <div class="giant-banner-sub" style="color:#fde047; font-size:30px;">[ 배 움 문 제 ]</div>
+        <div class="giant-banner-main" style="color:white; font-size:48px; line-height:1.4;">
+          우리 생활 속 시장의 모습을 살펴보고,<br>
+          <span class="yellow">시장이 생겨난 까닭</span>을 알아봅시다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 8: 활동 순서 안내 -->
+    <section class="slide" id="s8">
+      <h2 class="slide-heading">오늘의 배움 활동 순서</h2>
+      <div class="grid-2-col" style="max-width:1200px;">
+        <div style="background:rgba(15,23,42,0.9); border:3px solid #0d9488; border-radius:20px; padding:40px; text-align:center;">
+          <div style="font-size:32px; font-weight:900; color:#2dd4bf; margin-bottom:14px;">활동 1</div>
+          <div style="font-size:34px; font-weight:800; color:white; line-height:1.4;">
+            시장이 없던 시절 체험<br>
+            <span style="color:#fde047; font-size:26px;">(5분 무인도 물물교환 게임)</span>
+          </div>
+        </div>
+        <div style="background:rgba(15,23,42,0.9); border:3px solid #3b82f6; border-radius:20px; padding:40px; text-align:center;">
+          <div style="font-size:32px; font-weight:900; color:#60a5fa; margin-bottom:14px;">활동 2</div>
+          <div style="font-size:34px; font-weight:800; color:white; line-height:1.4;">
+            시장의 탄생과<br>
+            <span style="color:#fde047; font-size:26px;">(2단원 3대 핵심 퀘스트)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 9: 활동 1 미션 -->
+    <section class="slide" id="s9">
+      <h2 class="slide-heading" style="margin-bottom:16px;">
+        무인도 점심 짓기 미션!
+      </h2>
+      <p class="sub-lead-text">
+        점심을 지으려면 <strong>반드시 3가지 자원</strong>을 모아야 합니다!
+      </p>
+      <div class="grid-3-col" style="max-width:1300px;">
+        <!-- 쌀 -->
+        <div class="photo-card-simple" style="border-color:#d97706;">
+          <div class="card-img-wrap-simple">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&auto=format&fit=crop" alt="황금빛 쌀">
+          </div>
+          <div class="card-body-simple">
+            <div class="card-title-simple" style="color:#f59e0b;">황금빛 쌀</div>
+            <div class="card-desc-simple">필수 식량</div>
+          </div>
+        </div>
+
+        <!-- 물 -->
+        <div class="photo-card-simple" style="border-color:#0284c7;">
+          <div class="card-img-wrap-simple">
+            <img src="https://images.unsplash.com/photo-1550505095-81378a674395?w=800&auto=format&fit=crop" alt="맑은 물">
+          </div>
+          <div class="card-body-simple">
+            <div class="card-title-simple" style="color:#38bdf8;">맑은 샘물</div>
+            <div class="card-desc-simple">필수 음료</div>
+          </div>
+        </div>
+
+        <!-- 고기 -->
+        <div class="photo-card-simple" style="border-color:#dc2626;">
+          <div class="card-img-wrap-simple">
+            <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&auto=format&fit=crop" alt="신선한 고기">
+          </div>
+          <div class="card-body-simple">
+            <div class="card-title-simple" style="color:#f87171;">신선한 고기</div>
+            <div class="card-desc-simple">필수 단백질</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 10: 활동 1 규칙 및 활동지 작성법 -->
+    <section class="slide" id="s10">
+      <h2 class="slide-heading">5분 물물교환 게임 & 활동지 작성 방법</h2>
+      <div class="giant-banner" style="background:rgba(15,23,42,0.9); border-color:#38bdf8; max-width:1200px; padding:32px;">
+        <div style="font-size:28px; font-weight:900; color:#fde047; margin-bottom:18px; line-height:1.4;">
+          📋 [활동 방법 3단계] 활동지 [미션 2]를 펴고 함께해요!
+        </div>
+        <div style="font-size:22px; color:#cbd5e1; line-height:1.6; text-align:left; max-width:900px; margin:0 auto;">
+          <strong>1단계 (자원 확인)</strong>: 모둠별 카드를 보고 부족한 자원을 활동지 1)번에 적습니다.<br>
+          <strong>2단계 (1:1 협상)</strong>: 교실을 이동하며 쌀 2장, 물 2장, 고기 2장을 완성하기 위해 대화로 바꿉니다. (돈X, 예의 바르게!)<br>
+          <strong>3단계 (일기 기록)</strong>: 자리에 돌아와 교환 성공 여부와 <strong>물물교환이 어려웠던 이유</strong>를 활동지에 솔직하게 적습니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 11: 생각 나누기 -->
+    <section class="slide" id="s11">
+      <h2 class="slide-heading" style="font-size:58px; line-height:1.35;">
+        "물물교환,<br>
+        <span class="yellow">왜 이렇게 어려웠을까요?</span>"
+      </h2>
+      <div class="grid-2-col" style="margin-top:20px; max-width:1200px;">
+        <div style="background:rgba(239, 68, 68, 0.15); border:3px solid #ef4444; border-radius:18px; padding:32px; text-align:center;">
+          <div style="font-size:28px; font-weight:900; color:#fca5a5; line-height:1.45;">
+            "내가 원하는 걸 가진 친구는<br>내 물건을 원하지 않아요!"
+          </div>
+        </div>
+        <div style="background:rgba(239, 68, 68, 0.15); border:3px solid #ef4444; border-radius:18px; padding:32px; text-align:center;">
+          <div style="font-size:28px; font-weight:900; color:#fca5a5; line-height:1.45;">
+            "바꿀 사람을 찾으러<br>온 교실을 찾아다녀야 해요!"
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 12: 시장의 탄생 -->
+    <section class="slide" id="s12">
+      <h2 class="slide-heading">
+        그래서 <span class="cyan">'시장'</span>이 생겨났습니다!
+      </h2>
+      <div class="giant-banner" style="background:linear-gradient(135deg, #065f46 0%, #0f766e 100%); border-color:#34d399; max-width:1200px;">
+        <div class="giant-banner-main" style="color:white; font-size:50px;">
+          "정해진 날, 정해진 장소에<br>우리 모두 모이자!"
+        </div>
+        <div class="giant-banner-foot" style="font-size:28px;">
+          물건을 파는 사람과 사는 사람이 약속된 장소에 모여<br>
+          누구나 쉽게 물건을 바꾸게 되었습니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 13: 돈의 탄생 -->
+    <section class="slide" id="s13">
+      <h2 class="slide-heading">
+        그리고 <span class="yellow">'돈(화폐)'</span>을 만들었습니다!
+      </h2>
+      <div class="giant-banner" style="background:linear-gradient(135deg, #854d0e 0%, #a16207 100%); border-color:#fde047; max-width:1200px;">
+        <div class="giant-banner-main" style="color:#fde047; font-size:50px;">
+          "누구나 믿고 쓸 수 있는<br>교환 기준을 정하자!"
+        </div>
+        <div class="giant-banner-foot" style="font-size:28px;">
+          물건마다 알맞은 <strong>'가격'</strong>이 붙고,<br>
+          무거운 물건 대신 가벼운 돈으로 편리하게 거래하게 되었습니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 14: 오늘날의 시장 1 - 전통시장 -->
+    <section class="slide" id="s14">
+      <h2 class="slide-heading">
+        정겨운 대화와 흥정이 있는 <span class="yellow">'전통시장'</span>
+      </h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1533900298318-6b8da08a523e?w=800&auto=format&fit=crop" alt="전통시장 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            상인과 손님이 직접 얼굴을 마주보고 대화하며<br>
+            <strong>따뜻한 정과 덤</strong>이 오가는 곳입니다.
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">직접 대면 거래</span>
+            <span class="single-badge-item">덤과 에누리</span>
+            <span class="single-badge-item">정겨운 장터</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 15: 오늘날의 시장 2 - 대형마트 -->
+    <section class="slide" id="s15">
+      <h2 class="slide-heading">
+        정해진 가격표로 편리한 <span class="cyan">'대형마트'</span>
+      </h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=800&auto=format&fit=crop" alt="대형마트 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            수많은 상품에 붙은 <strong>가격표</strong>를 보고,<br>
+            카트에 담아 한 번에 편리하게 계산합니다.
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">정찰제(가격표)</span>
+            <span class="single-badge-item">원스톱 쇼핑</span>
+            <span class="single-badge-item">카드 간편결제</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 16: 오늘날의 시장 3 - 온라인 쇼핑 -->
+    <section class="slide" id="s16">
+      <h2 class="slide-heading">
+        손끝 터치로 문 앞까지 오는 <span class="yellow">'인터넷 쇼핑'</span>
+      </h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&auto=format&fit=crop" alt="온라인 쇼핑 택배 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            직접 가게에 가지 않아도<br>
+            <strong>스마트폰 터치 한 번</strong>으로 집 앞까지 배송받습니다.
+          </p>
+          <div class="single-badge-list">
+            <span class="single-badge-item">24시간 언제 어디서나</span>
+            <span class="single-badge-item">문 앞 택배 배송</span>
+            <span class="single-badge-item">온라인 간편결제</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 17: 시장의 진짜 의미 -->
+    <section class="slide" id="s17">
+      <h2 class="slide-heading" style="font-size: 58px;">
+        시장의 <span class="cyan">넓은 의미</span>
+      </h2>
+      <div class="giant-banner">
+        <div class="giant-banner-sub">시장은 건물만을 뜻하지 않습니다!</div>
+        <div class="giant-banner-main">
+          "물건과 서비스를 거래하는<br><span class="yellow">모든 곳</span>이 바로 시장입니다!"
+        </div>
+        <div class="giant-banner-foot">
+          전통시장도, 대형마트도, 스마트폰 앱도 모두 소중한 우리 시장입니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 18: 2단원 1주제 퀘스트 -->
+    <section class="slide" id="s18">
+      <h2 class="slide-heading">
+        1주제 • <span class="yellow">우리나라 시장경제의 특징</span>
+      </h2>
+      <div class="quest-card-single q1" style="padding: 36px 48px; gap: 18px;">
+        <span class="quest-badge-lg">교과서 64~81쪽 (1~7차시)</span>
+        <div class="quest-core-q">
+          "인기 있는 빵이나 간식 가격은<br>왜 사장님 마음대로 끝없이 못 올릴까?"
+        </div>
+        <div class="quest-points">
+          • 소비자(가계)와 생산자(기업)의 팽팽한 줄다리기!<br>
+          • 시장 가격이 오르내리는 신기한 원리를 배웁니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 19: 2단원 2주제 퀘스트 -->
+    <section class="slide" id="s19">
+      <h2 class="slide-heading">
+        2주제 • <span class="cyan">경제성장과 우리 생활</span>
+      </h2>
+      <div class="quest-card-single q2" style="padding: 36px 48px; gap: 18px;">
+        <span class="quest-badge-lg">교과서 82~97쪽 (8~12차시)</span>
+        <div class="quest-core-q">
+          "할머니 세대보다 왜 이렇게 풍족해졌을까?<br>새로 생긴 문제는 없을까?"
+        </div>
+        <div class="quest-points">
+          • 우리나라의 놀라운 경제성장 이야기!<br>
+          • 성장 뒤에 찾아온 환경오염과 빈부격차 해결 방안을 찾습니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 20: 2단원 3주제 퀘스트 -->
+    <section class="slide" id="s20">
+      <h2 class="slide-heading">
+        3주제 • <span class="yellow">세계 속의 무역</span>
+      </h2>
+      <div class="quest-card-single q3" style="padding: 36px 48px; gap: 18px;">
+        <span class="quest-badge-lg">교과서 98~111쪽 (13~18차시)</span>
+        <div class="quest-core-q">
+          "내 필통 속 학용품은<br>왜 전 세계 각국에서 건너왔을까?"
+        </div>
+        <div class="quest-points">
+          • 나라마다 잘 만드는 물건이 다른 까닭!<br>
+          • 전 세계와 주고받는 수출과 수입(무역)을 탐구합니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 21: 미니 탐구 - Made in 찾기 -->
+    <section class="slide" id="s21">
+      <h2 class="slide-heading">
+        내 소지품 속 <span class="yellow">"Made in"</span>을 찾아라!
+      </h2>
+      <div class="single-focus-layout">
+        <div class="single-photo-box">
+          <img class="single-photo" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop" alt="무역 항구 사진">
+        </div>
+        <div class="single-info-box">
+          <p class="single-desc">
+            지금 입은 옷의 라벨이나 필통 속 학용품의<br>
+            <strong>'Made in ...'</strong> 제조국을 눈으로 확인해 보세요!
+          </p>
+          <div style="background:rgba(56, 189, 248, 0.15); border:2px solid #38bdf8; border-radius:12px; padding:16px 20px; font-size:24px; font-weight:800; color:#fde047;">
+            "우리는 이미 세계 무역 한가운데에 살고 있습니다!"
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 22: 오늘의 배움 정리 -->
+    <section class="slide" id="s22">
+      <h2 class="slide-heading">
+        오늘의 <span class="cyan">배움 정리</span>
+      </h2>
+      <div style="display:flex; flex-direction:column; gap:20px; width:100%; max-width:1300px;">
+        <div style="background:rgba(30, 58, 138, 0.45); border:3px solid #3b82f6; border-radius:20px; padding:28px 36px; display:flex; align-items:center; gap:28px;">
+          <div style="font-size:36px; font-weight:900; color:#60a5fa; min-width:80px; text-align:center; background:rgba(59,130,246,0.2); padding:10px; border-radius:14px;">1</div>
+          <div style="font-size:30px; font-weight:800; color:#ffffff; line-height:1.45;">
+            우리는 매 순간 <span class="yellow">'경제활동(생산·소비·교환)'</span> 속에 살아가고 있습니다.
+          </div>
+        </div>
+
+        <div style="background:rgba(15, 23, 42, 0.85); border:3px solid #0d9488; border-radius:20px; padding:28px 36px; display:flex; align-items:center; gap:28px;">
+          <div style="font-size:36px; font-weight:900; color:#2dd4bf; min-width:80px; text-align:center; background:rgba(13,148,136,0.2); padding:10px; border-radius:14px;">2</div>
+          <div style="font-size:30px; font-weight:800; color:#ffffff; line-height:1.45;">
+            물물교환의 불편함을 해결하기 위해 약속된 장소인 <span class="cyan">'시장'</span>과 <span class="cyan">'돈(화폐)'</span>이 생겨났습니다.
+          </div>
+        </div>
+
+        <div style="background:rgba(15, 23, 42, 0.85); border:3px solid #f59e0b; border-radius:20px; padding:28px 36px; display:flex; align-items:center; gap:28px;">
+          <div style="font-size:36px; font-weight:900; color:#fbbf24; min-width:80px; text-align:center; background:rgba(245,158,11,0.2); padding:10px; border-radius:14px;">3</div>
+          <div style="font-size:30px; font-weight:800; color:#ffffff; line-height:1.45;">
+            건물뿐만 아니라 인터넷 쇼핑몰, 앱 등 <span class="yellow">'거래가 이루어지는 모든 곳'</span>이 바로 시장입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 23: 다음 시간(2차시) 예고 -->
+    <section class="slide" id="s23">
+      <h2 class="slide-heading">
+        다음 시간(2차시)에는 <span class="yellow">무엇을 배울까요?</span>
+      </h2>
+      <div style="width:100%; max-width:1350px; background:rgba(15, 23, 42, 0.95); border:3.5px solid #fde047; border-radius:24px; padding:44px 54px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; border-bottom:2px dashed rgba(253,224,71,0.4); padding-bottom:16px;">
+          <div style="font-size:34px; font-weight:900; color:#fde047;">
+            2차시: 시장의 의미와 종류, 가계와 기업의 만남
+          </div>
+          <div style="font-size:22px; font-weight:900; background:#fde047; color:#0f172a; padding:6px 18px; border-radius:20px;">
+            교과서 64~67쪽
+          </div>
+        </div>
+
+        <div class="grid-2-col" style="gap:30px; margin-bottom:24px;">
+          <div style="background:rgba(30,58,138,0.3); border:2px solid #3b82f6; border-radius:16px; padding:24px;">
+            <div style="font-size:26px; font-weight:900; color:#93c5fd; margin-bottom:10px;">
+              탐구 1. 다양한 시장의 모습
+            </div>
+            <div style="font-size:24px; color:#ffffff; line-height:1.6;">
+              • 눈에 보이는 시장 (전통시장, 마트, 편의점)<br>
+              • 눈에 보이지 않는 시장 (인터넷 쇼핑몰, 전자상거래)
+            </div>
+          </div>
+
+          <div style="background:rgba(13,148,136,0.3); border:2px solid #2dd4bf; border-radius:16px; padding:24px;">
+            <div style="font-size:26px; font-weight:900; color:#5eead4; margin-bottom:10px;">
+              탐구 2. 가계와 기업의 상호작용
+            </div>
+            <div style="font-size:24px; color:#ffffff; line-height:1.6;">
+              • 물건을 사고 쓰는 <strong>가계(소비자)</strong><br>
+              • 물건을 만들어 파는 <strong>기업(생산자)</strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(253, 224, 71, 0.12); border:2px solid rgba(253, 224, 71, 0.4); border-radius:14px; padding:16px 24px; font-size:24px; font-weight:800; color:#fef08a; text-align:center;">
+          📌 오늘 칠판에 붙인 여러분의 <strong>'경제 호기심 질문'</strong>으로 다음 시간 수업을 시작합니다!
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 하단 조작 바 -->
+  <footer class="bottom-bar">
+    <button class="nav-btn-lg" id="btnPrev" onclick="moveSlide(-1)">◀ 이전 슬라이드 (Left)</button>
+    <div class="indicator-dots" id="dotBox"></div>
+    <button class="nav-btn-lg" id="btnNext" onclick="moveSlide(1)">다음 슬라이드 (Right) ▶</button>
+  </footer>
+
+  <!-- [우측 하단 플로팅 롤오버 도구 바: 고치기 / 전체화면 / 교사용] -->
+  <aside class="floating-tools-widget" id="floatingToolsWidget">
+    <button class="f-btn" id="btnEditToggle" onclick="toggleEditMode()" title="글자 수정 모드 켜기/끄기">
+      <span id="editBtnIcon">✎</span> <span id="editBtnLabel">고치기</span>
+    </button>
+    <button class="f-btn" id="btnFullscreenToggle" onclick="toggleFullScreenMode()" title="전체 화면 (단축키: F / ㄹ)">
+      <span>⛶</span> <span id="fsBtnLabel">전체</span> <span class="f-key-hint">F</span>
+    </button>
+    <button class="f-btn" id="btnTeacherNotes" onclick="toggleTeacherDrawer()" title="교사용 메모 (단축키: T / ㅅ)">
+      <span>📖</span> <span>교사용</span> <span class="f-key-hint">T</span>
+    </button>
+  </aside>
+
+  <!-- [3] 교사용 슬라이드업 드로어 패널 -->
+  <div id="teacherDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>📖 교사용 수업 지도 메모</span>
+        <span class="drawer-badge" id="drawerSlideNumBadge">1 / 23 슬라이드</span>
+        <span style="font-size:16px; font-weight:700; color:#cbd5e1;" id="drawerSlideTitle">단원 표지</span>
+      </div>
+      <button class="btn-drawer-close" onclick="closeTeacherDrawer()">닫기 (Esc) ✕</button>
+    </div>
+    <div class="drawer-grid">
+      <div class="drawer-col">
+        <div class="col-label">⏱️ 시간 배분</div>
+        <div class="col-body" id="noteTime">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">💬 학생 예상 답변</div>
+        <div class="col-body" id="noteAnswers">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">⚠️ 헷갈릴 지점 & 되받아 줄 말</div>
+        <div class="col-body" id="noteConfusing">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">📌 짚어 줄 낱말</div>
+        <div class="col-body" id="noteWords">-</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // 0. 기본 슬라이드 내비게이션
+    // ==========================================
+    let slides = document.querySelectorAll('.slide');
+    const totNum = slides.length;
+    let curIndex = 0;
+
+    const curNumEl = document.getElementById('curNum');
+    const totNumEl = document.getElementById('totNum');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const dotBox = document.getElementById('dotBox');
+
+    totNumEl.textContent = totNum;
+
+    // 인디케이터 도트 생성
+    for (let i = 0; i < totNum; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'indicator-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => setSlide(i));
+      dotBox.appendChild(dot);
+    }
+    let dots = document.querySelectorAll('.indicator-dot');
+
+    function update() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === curIndex));
+      dots.forEach((d, i) => d.classList.toggle('active', i === curIndex));
+      curNumEl.textContent = curIndex + 1;
+      btnPrev.disabled = curIndex === 0;
+      btnNext.disabled = curIndex === totNum - 1;
+      updateTeacherNoteView();
+    }
+
+    function moveSlide(delta) {
+      const next = curIndex + delta;
+      if (next >= 0 && next < totNum) {
+        curIndex = next;
+        update();
+      }
+    }
+
+    function setSlide(i) {
+      curIndex = i;
+      update();
+    }
+
+    // ==========================================
+    // [1] 고치기 (Edit Mode) & 로컬 스토리지
+    // ==========================================
+    let isEditing = false;
+    
+    function getStorageKey() {
+      const rawName = window.location.pathname.split('/').pop().split('\\').pop() || 'society_6_2_1';
+      return 'slide_edit_store_v3_' + decodeURIComponent(rawName);
+    }
+
+    const editToolbar = document.getElementById('editToolbar');
+    const btnEditToggle = document.getElementById('btnEditToggle');
+    const editBtnIcon = document.getElementById('editBtnIcon');
+    const editBtnLabel = document.getElementById('editBtnLabel');
+
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.body.classList.toggle('is-editing', isEditing);
+      editToolbar.classList.toggle('show', isEditing);
+      btnEditToggle.classList.toggle('active', isEditing);
+
+      if (isEditing) {
+        editBtnIcon.textContent = '✓';
+        editBtnLabel.textContent = '완료';
+        makeElementsEditable(true);
+      } else {
+        editBtnIcon.textContent = '✎';
+        editBtnLabel.textContent = '고치기';
+        makeElementsEditable(false);
+        saveAllEdits();
+      }
+    }
+
+    function makeElementsEditable(enable) {
+      const editableSelectors = 'h1, h2, h3, p, span, li, .single-title, .single-desc, .card-title-simple, .card-desc-simple, .giant-banner-main, .giant-banner-sub, .giant-banner-foot, .quest-title-lg, .quest-core-q, .quest-points';
+      const elements = document.querySelectorAll(editableSelectors);
+      
+      elements.forEach(el => {
+        if (el.closest('#editToolbar') || el.closest('#teacherDrawer') || el.closest('.floating-tools-widget') || el.closest('.topbar') || el.closest('.bottom-bar')) {
+          return;
+        }
+        if (enable) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('input', debounceAutoSave);
+        } else {
+          el.removeAttribute('contenteditable');
+        }
+      });
+    }
+
+    function execUndo() { document.execCommand('undo'); }
+    function execRedo() { document.execCommand('redo'); }
+
+    function changeFontSize(direction) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      let targetNode = sel.anchorNode;
+      if (targetNode.nodeType === 3) targetNode = targetNode.parentNode;
+      
+      const currentSize = parseFloat(window.getComputedStyle(targetNode).fontSize) || 28;
+      const newSize = Math.max(14, currentSize + (direction * 4));
+      targetNode.style.fontSize = newSize + 'px';
+      debounceAutoSave();
+    }
+
+    function insertUserImage() {
+      const url = prompt('삽입할 이미지 URL을 입력하세요:');
+      if (url) {
+        document.execCommand('insertImage', false, url);
+        debounceAutoSave();
+      }
+    }
+
+    function hideCurrentElement() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        if (node && !node.classList.contains('slide')) {
+          node.classList.add('hidden-by-edit');
+          debounceAutoSave();
+        }
+      }
+    }
+
+    function hideCurrentSlide() {
+      if (confirm(`현재 [${curIndex + 1}번] 슬라이드를 화면에서 감추시겠습니까?`)) {
+        slides[curIndex].classList.add('hidden-by-edit');
+        debounceAutoSave();
+        moveSlide(1);
+      }
+    }
+
+    let saveTimer = null;
+    function debounceAutoSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveAllEdits, 300);
+    }
+
+    function saveAllEdits() {
+      const key = getStorageKey();
+      const viewport = document.querySelector('.viewport');
+      if (viewport) {
+        localStorage.setItem(key, viewport.innerHTML);
+      }
+    }
+
+    function restoreSavedEdits() {
+      const key = getStorageKey();
+      const savedHTML = localStorage.getItem(key);
+      if (savedHTML) {
+        const viewport = document.querySelector('.viewport');
+        if (viewport) {
+          viewport.innerHTML = savedHTML;
+          slides = document.querySelectorAll('.slide');
+        }
+      }
+    }
+
+    function resetAllEdits() {
+      if (confirm('모든 고친 내용을 초기화하고 원본 슬라이드로 되돌리시겠습니까?')) {
+        const key = getStorageKey();
+        localStorage.removeItem(key);
+        location.reload();
+      }
+    }
+
+    // ==========================================
+    // [2] 전체 화면 기능
+    // ==========================================
+    const fsBtnLabel = document.getElementById('fsBtnLabel');
+
+    function toggleFullScreenMode() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert('전체화면 모드를 실행할 수 없습니다: ' + err.message);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!document.fullscreenElement;
+      document.body.classList.toggle('is-fullscreen', isFs);
+      if (fsBtnLabel) fsBtnLabel.textContent = isFs ? '해제' : '전체';
+    });
+
+    // ==========================================
+    // [3] 교사용 슬라이드업 드로어 기능
+    // ==========================================
+    const teacherDrawer = document.getElementById('teacherDrawer');
+    const drawerSlideNumBadge = document.getElementById('drawerSlideNumBadge');
+    const drawerSlideTitle = document.getElementById('drawerSlideTitle');
+    const noteTime = document.getElementById('noteTime');
+    const noteAnswers = document.getElementById('noteAnswers');
+    const noteConfusing = document.getElementById('noteConfusing');
+    const noteWords = document.getElementById('noteWords');
+
+    function toggleTeacherDrawer() {
+      const isOpen = teacherDrawer.classList.contains('open');
+      if (isOpen) closeTeacherDrawer();
+      else openTeacherDrawer();
+    }
+
+    function openTeacherDrawer() {
+      teacherDrawer.classList.add('open');
+      updateTeacherNoteView();
+    }
+
+    function closeTeacherDrawer() {
+      teacherDrawer.classList.remove('open');
+    }
+
+    function updateTeacherNoteView() {
+      if (typeof TEACHER_NOTES === 'undefined') return;
+      const note = TEACHER_NOTES[curIndex];
+      if (note) {
+        drawerSlideNumBadge.textContent = `${curIndex + 1} / ${totNum} 슬라이드`;
+        drawerSlideTitle.textContent = note.title || `슬라이드 ${curIndex + 1}`;
+        noteTime.textContent = note.time || '배분 시간 미정';
+        noteAnswers.textContent = note.answers || '(자유로운 의견 수렴)';
+        noteConfusing.textContent = note.confusing || '(특이사항 없음)';
+        noteWords.textContent = note.words || '-';
+      }
+    }
+
+    // 키보드 조작
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement && document.activeElement.isContentEditable) {
+        if (e.key === 'Escape') document.activeElement.blur();
+        return;
+      }
+      if (e.key === 'Escape') { closeTeacherDrawer(); return; }
+      if (e.key === 'f' || e.key === 'F' || e.key === 'ㄹ' || e.code === 'KeyF') {
+        e.preventDefault(); toggleFullScreenMode(); return;
+      }
+      if (e.key === 't' || e.key === 'T' || e.key === 'ㅅ' || e.code === 'KeyT') {
+        e.preventDefault(); toggleTeacherDrawer(); return;
+      }
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+        moveSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        moveSlide(-1);
+      }
+    });
+
+    restoreSavedEdits();
+    update();
+
+    // ========================================================
+    // 교사용 수업 지도 메모 (23장 맞춤 슬라이드별 배열)
+    // ========================================================
+    const TEACHER_NOTES = [
+      { slide: 1, title: "단원 열기 및 표지", time: "1분", answers: "• \"경제는 어려워요\", \"돈 계산인가요?\"", confusing: "어려운 용어 대신 우리 일상 이야기임을 강조", words: "시장, 경제활동" },
+      { slide: 2, title: "도입 질문: 아침의 발견", time: "2분", answers: "• \"저는 오늘 돈 안 썼어요!\"\n• \"숨만 쉬고 학교 왔어요!\"", confusing: "돈을 직접 내야만 경제활동이라고 생각함 ➔ 일상 속 소비/생산 혜택 설명", words: "경제활동" },
+      { slide: 3, title: "도입 1: 아침 식사", time: "2분", answers: "• \"부모님이 마트에서 사 오셨어요.\"\n• \"농부 아저씨가 벼를 길렀어요.\"", confusing: "음식 하나에도 농부-유통-가게의 경제 과정이 있음을 발견", words: "생산, 소비" },
+      { slide: 4, title: "도입 2: 옷과 가방", time: "2분", answers: "• \"옷 가게에서 샀어요.\"\n• \"디자이너와 공장에서 만들었어요.\"", confusing: "물건을 만드는 사람들의 노동 가치 환기", words: "생산자" },
+      { slide: 5, title: "도입 3: 등굣길 교통", time: "2분", answers: "• \"교통카드를 찍었어요.\"\n• \"버스를 탔어요.\"", confusing: "물건뿐 아니라 '서비스'도 경제활동임을 안내", words: "서비스, 이용" },
+      { slide: 6, title: "도입 결론: 경제활동의 3축", time: "2분", answers: "• 다 함께 소리 내어 핵심 문장을 읽음", confusing: "생산, 소비, 교환이 멈추지 않고 돌아감을 확인", words: "생산, 소비, 교환" },
+      { slide: 7, title: "배움 문제 확인", time: "1분", answers: "• 큰 소리로 함께 읽기", confusing: "오늘 수업의 명확한 목표 인식", words: "배움문제, 시장" },
+      { slide: 8, title: "활동 순서 안내", time: "1분", answers: "• \"체험 게임 재미있겠어요!\"", confusing: "활동 1(체험)과 활동 2(탐색) 흐름 안내", words: "물물교환, 퀘스트" },
+      { slide: 9, title: "활동 1: 무인도 점심 미션", time: "2분", answers: "• \"쌀, 샘물, 고기가 골고루 있어야 생존할 수 있네요!\"", confusing: "한 가지만 많으면 생존 불가 ➔ 3종 세트의 필요성 강조", words: "생존 미션" },
+      { slide: 10, title: "활동 1: 게임 규칙", time: "4분", answers: "• \"돈이 없으니 말로만 바꿔야 해요!\"", confusing: "뛰어다니거나 억지로 뺏지 않도록 예의 바른 협상 강조", words: "1:1 교환, 협상" },
+      { slide: 11, title: "활동 1 나눔: 교환의 어려움", time: "3분", answers: "• \"친구가 내 카드를 안 원해요!\"\n• \"찾아다니느라 다리가 아파요!\"", confusing: "원하는 것이 서로 맞아야만 거래되는 불편함(욕구의 불일치) 체감", words: "물물교환의 한계" },
+      { slide: 12, title: "시장의 탄생", time: "2분", answers: "• \"다 같이 모이면 찾으러 안 다녀도 돼요!\"", confusing: "시장이 생긴 진짜 까닭(모여서 쉽게 바꾸기) 정리", words: "시장, 약속된 장소" },
+      { slide: 13, title: "돈과 가격의 탄생", time: "2분", answers: "• \"돈이 있으면 누구랑도 바꿀 수 있어요!\"", confusing: "화폐와 가격의 편리함 이해", words: "화폐, 가격" },
+      { slide: 14, title: "오늘날 시장 1: 전통시장", time: "2분", answers: "• \"엄마랑 시장 가서 떡볶이 먹었어요.\"", confusing: "흥정과 정이 오가는 대면 시장의 특징", words: "전통시장, 정" },
+      { slide: 15, title: "오늘날 시장 2: 대형마트", time: "2분", answers: "• \"가격표가 다 붙어 있어요.\"", confusing: "정찰제와 원스톱 쇼핑의 편리함", words: "대형마트, 정찰제" },
+      { slide: 16, title: "오늘날 시장 3: 인터넷 쇼핑", time: "2분", answers: "• \"쿠팡으로 시키면 문 앞에 와요.\"", confusing: "가게에 가지 않아도 앱으로 거래하는 전자상거래 이해", words: "전자상거래, 온라인 배송" },
+      { slide: 17, title: "시장의 진짜 의미", time: "1분", answers: "• \"거래가 이루어지는 곳은 다 시장이네요!\"", confusing: "시장의 개념을 공간 건물에서 '거래 장'으로 확장", words: "시장의 넓은 의미" },
+      { slide: 18, title: "2단원 1주제 퀘스트", time: "2분", answers: "• \"인기 빵값은 왜 오를까요?\"", confusing: "앞으로 배울 가계와 기업의 가격 결정 호기심 유발", words: "시장경제, 가격" },
+      { slide: 19, title: "2단원 2주제 퀘스트", time: "2분", answers: "• \"옛날엔 밥도 못 먹었대요.\"", confusing: "경제성장의 성과와 환경 문제에 대한 예고", words: "경제성장" },
+      { slide: 20, title: "2단원 3주제 퀘스트", time: "2분", answers: "• \"비행기나 배로 다른 나라랑 바꾸는 거요!\"", confusing: "무역의 의미와 호기심 유발", words: "무역, 수출, 수입" },
+      { slide: 21, title: "미니 탐구: Made in 찾기", time: "3분", answers: "• \"제 샤프는 일본산이에요!\"\n• \"옷은 베트남이에요!\"", confusing: "이미 우리가 세계 무역 속에 살고 있음을 체감", words: "원산지(Made in)" },
+      { slide: 22, title: "오늘의 배움 정리", time: "2분", answers: "• 학생들이 오늘 배운 세 가지 핵심(경제활동, 시장/돈, 시장의 넓은 의미)을 다 함께 소리 내어 확인", confusing: "물건뿐 아니라 서비스 거래도 시장임을 상기", words: "경제활동, 시장, 화폐" },
+      { slide: 23, title: "다음 2차시 예고", time: "2분", answers: "• 포스트잇에 적은 경제 질문들을 칠판에 붙이며 2차시 기대감 형성", confusing: "단원지도계획 기준: 2차시(시장의 의미와 종류, 가계와 기업의 만남, 교과서 64~67쪽) 안내", words: "가계, 기업, 보이는 시장, 보이지 않는 시장" }
+    ];
+  </script>
+</body>
+</html>

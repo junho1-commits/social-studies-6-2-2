@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[수업 교구·정리] 6-2 사회 2단원 6~7차시: 팝업스토어 간판 & 1주제 총괄 마인드맵 브로마이드</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #e2e8f0;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .print-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .btn-print {
+      padding: 8px 20px;
+      background: #d97706;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .page-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 15mm 15mm;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .page-header {
+      border-bottom: 2px solid #d97706;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .store-card {
+      border: 2.5px solid #d97706;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fffbeb;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .poster-box {
+      border: 3px solid #1e3a8a;
+      border-radius: 12px;
+      padding: 16px;
+      background: #f8fafc;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .poster-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      color: #1e3a8a;
+      border-bottom: 2px solid #1e3a8a;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .poster-branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .branch-card {
+      background: white;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 11.5px;
+      line-height: 1.5;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .print-bar { display: none; }
+      .page-sheet { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar">
+    <div style="font-size:14px; font-weight:700; color:#1e293b;">
+      📌 [6~7차시 교구] 모의 창업 팝업스토어 간판 & 1주제 마스터 마인드맵 브로마이드 (A4 2장)
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ 전체 인쇄 (A4 2장)</button>
+  </div>
+
+  <!-- Sheet 1: 팝업스토어 6모둠 간판 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#d97706;">[6차시 교구] 모의 창업 팝업스토어 책상 간판 (6모둠 세트)</div>
+      <div style="font-size:12px; color:#64748b;">가위로 오려 책상 위에 삼각으로 접어 세움 (1/2)</div>
+    </div>
+
+    <div class="store-grid">
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">1호점 [꿈나무 문구점]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>품질 혁신</strong> (고장 안 나는 샤프)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "우리 가게에 오시면 1주일 무료 체험!"
+        </div>
+      </div>
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">2호점 [햇살 베이커리]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>가격 파괴</strong> (1+1 모닝빵 세일)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "하나 사면 하나 더! 최저가 보장!"
+        </div>
+      </div>
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">3호점 [싱싱 과일가게]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>특급 서비스</strong> (무료 껍질 손질)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "먹기 좋게 깎아서 집 앞까지 배송!"
+        </div>
+      </div>
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">4호점 [알뜰 전자마트]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>품질 & AS</strong> (3년 무상 수리)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "고장 나면 즉시 새 제품으로 교환!"
+        </div>
+      </div>
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">5호점 [초록 에코 마켓]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>친환경 CSR</strong> (100% 생분해 포장)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "수익금의 20%를 결식아동에게 기부!"
+        </div>
+      </div>
+      <div class="store-card">
+        <div style="font-size:16px; font-weight:900; color:#b45309; text-align:center;">6호점 [동네 뚝딱 분식점]</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">무기: <strong>스피드 & 친절</strong> (3분 조리 보장)</div>
+        <div style="background:#fff; border:1px dashed #d97706; padding:6px; font-size:11px; text-align:center; border-radius:4px;">
+          "따끈한 떡볶이와 튀김 덤 서비스!"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 2: 1주제 대단원 총괄 마인드맵 브로마이드 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#1e3a8a;">[1주제 총결산] 1주제 시장경제 마스터 종합 마인드맵 브로마이드</div>
+      <div style="font-size:12px; color:#64748b;">교실 게시용 또는 학생 복습용 브로마이드 (2/2)</div>
+    </div>
+
+    <div class="poster-box">
+      <div class="poster-title">
+        대한민국 초등 6학년 시장경제의 모든 것 (1주제 완전정복)
+      </div>
+
+      <div class="poster-branches">
+        <!-- 1분과 -->
+        <div class="branch-card" style="border-top:4px solid #38bdf8;">
+          <div style="font-size:15px; font-weight:900; color:#0369a1; margin-bottom:6px;">➊ 시장의 진짜 의미와 종류</div>
+          <div>• <strong>시장의 넓은 의미</strong>: 물건과 서비스의 거래가 이루어지는 모든 곳</div>
+          <div>• <strong>보이는 시장</strong>: 전통시장, 대형마트, 백화점 (장소 있음)</div>
+          <div>• <strong>보이지 않는 시장</strong>: 온라인몰, 중고앱, 앱마켓 (통신망 거래)</div>
+        </div>
+
+        <!-- 2분과 -->
+        <div class="branch-card" style="border-top:4px solid #16a34a;">
+          <div style="font-size:15px; font-weight:900; color:#15803d; margin-bottom:6px;">➋ 경제 주체: 가계와 기업의 순환</div>
+          <div>• <strong>가계</strong>: 기업에 노동 제공 ➔ 소득 획득 ➔ 소비 주체</div>
+          <div>• <strong>기업</strong>: 일자리 마련 ➔ 상품·서비스 생산 ➔ 이윤 추구</div>
+          <div>• <strong>상호 의존</strong>: 서로 없어서는 안 될 경제의 톱니바퀴</div>
+        </div>
+
+        <!-- 3분과 -->
+        <div class="branch-card" style="border-top:4px solid #f59e0b;">
+          <div style="font-size:15px; font-weight:900; color:#b45309; margin-bottom:6px;">➌ 시장 가격의 결정과 변동</div>
+          <div>• <strong>가격의 결정</strong>: 소비자(수요)와 판매자(공급)의 희망이 만나는 지점(균형 가격)</div>
+          <div>• <strong>가격 상승</strong>: 사려는 사람 > 물건의 양 (품절, 인기)</div>
+          <div>• <strong>가격 하락</strong>: 사려는 사람 < 물건의 양 (과잉 공급, 세일)</div>
+        </div>
+
+        <!-- 4분과 -->
+        <div class="branch-card" style="border-top:4px solid #dc2626;">
+          <div style="font-size:15px; font-weight:900; color:#b91c1c; margin-bottom:6px;">➍ 근로자의 권리와 착한 기업</div>
+          <div>• <strong>근로자 권리</strong>: 안전, 적정 임금, 휴식권, 차별 금지</div>
+          <div>• <strong>기업의 경쟁</strong>: 가격·품질·서비스 경쟁 ➔ 소비자 혜택</div>
+          <div>• <strong>사회적 책임(CSR)</strong>: 친환경, 공정무역, 나눔 ➔ 착한 소비</div>
+        </div>
+      </div>
+
+      <div style="background:#1e293b; color:white; border-radius:6px; padding:10px; text-align:center; font-size:12.5px; margin-top:10px;">
+        🌟 <strong>핵심 요약</strong>: 시장은 자유와 경쟁 속에서 성장하며, 근로자 권리와 윤리적 책임이 더해질 때 모두가 행복한 시장경제가 됩니다!
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

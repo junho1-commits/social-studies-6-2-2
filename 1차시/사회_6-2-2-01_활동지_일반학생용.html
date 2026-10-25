@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[활동지] 6-2 사회 2단원 1차시: 우리 생활 속 시장과 경제활동</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-500: #64748b;
+      --gray-200: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #cbd5e1;
+      color: var(--gray-900);
+      line-height: 1.45;
+      font-size: 12.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .no-print-bar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    .btn-print {
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      transition: all 0.15s;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+    }
+
+    /* A4 세로 1장 시트 (상하 여백 균형 배치) */
+    .sheet-a4 {
+      width: 100%;
+      max-width: 820px;
+      min-height: 1140px;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border-radius: 8px;
+      padding: 24px 28px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+
+    /* 헤더 */
+    .ws-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 8px;
+    }
+    .ws-title-group h1 {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .ws-subtitle {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .student-info-box {
+      display: flex;
+      gap: 8px;
+      font-size: 12.5px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 5px 12px;
+      background: #f8fafc;
+    }
+    .student-info-box span {
+      display: inline-block;
+    }
+
+    /* 배움 문제 바 */
+    .target-bar {
+      background: #eff6ff;
+      border-left: 4.5px solid #2563eb;
+      padding: 8px 14px;
+      border-radius: 0 4px 4px 0;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1e40af;
+    }
+
+    /* 각 섹션 */
+    .section-block {
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .sec-head {
+      background: #f1f5f9;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .sec-body {
+      padding: 10px 14px;
+      font-size: 12px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    /* 테이블 스타일 */
+    table.ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.8px;
+      margin-top: 4px;
+    }
+    table.ws-table th, table.ws-table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: center;
+    }
+    table.ws-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .write-line {
+      display: inline-block;
+      border-bottom: 1px solid #64748b;
+      min-width: 110px;
+      height: 18px;
+    }
+    .text-box-line {
+      border: 1px dashed #cbd5e1;
+      border-radius: 4px;
+      background: #fafafa;
+      padding: 9px 12px;
+      min-height: 48px;
+      line-height: 1.55;
+    }
+
+    .checklist {
+      display: flex;
+      gap: 15px;
+      margin-top: 4px;
+    }
+    .checklist label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    /* A4 1장 인쇄 최적화 (210mm x 297mm 여백 없이 꽉 채우기) */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .sheet-a4 {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 275mm !important; /* A4 출력 시 하단 여백 없이 1장에 꽉 차게 조절 */
+        padding: 10mm 12mm 8mm 12mm !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      .ws-header {
+        padding-bottom: 6px !important;
+      }
+      .ws-header h1 {
+        font-size: 19px !important;
+      }
+      .sec-head {
+        padding: 5px 10px !important;
+        font-size: 12px !important;
+      }
+      .sec-body {
+        padding: 8px 12px !important;
+        font-size: 11.5px !important;
+      }
+      table.ws-table th, table.ws-table td {
+        padding: 5px 6px !important;
+      }
+      .text-box-line {
+        padding: 8px 10px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ A4 1장 활동지 인쇄</button>
+  </div>
+
+  <main class="sheet-a4">
+    <!-- 헤더 -->
+    <header class="ws-header">
+      <div class="ws-title-group">
+        <span style="font-size:10px; font-weight:800; background:#dbeafe; color:#1e40af; padding:1px 6px; border-radius:3px;">2022 개정 사회 6-2</span>
+        <h1>2. 시장경제와 국가 간 거래 (1차시 활동지)</h1>
+        <div class="ws-subtitle">주제: 우리 생활 속 시장의 모습과 경제활동 알아보기 (교과서 60~63쪽)</div>
+      </div>
+      <div class="student-info-box">
+        <span>6학년 &nbsp;&nbsp;&nbsp;반</span>
+        <span>번호: &nbsp;&nbsp;&nbsp;</span>
+        <span>이름: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </header>
+
+    <!-- 배움 문제 -->
+    <div class="target-bar">
+      🎯 [배움문제] 우리 생활 속 시장의 모습을 살펴보고, 시장이 생겨난 까닭을 알아봅시다.
+    </div>
+
+    <!-- 활동 1: 아침 숨은 경제 영수증 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[미션 1] 오늘 아침 나의 '숨은 경제 영수증' 찾기</span>
+        <span style="font-size:10.5px; font-weight:normal; color:#64748b;">(개인 탐구 3분)</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #0284c7; padding:4px 8px; font-size:10.5px; color:#334155; margin-bottom:6px; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 아침에 일어난 순간부터 교실에 도착하기까지 내가 이용한 음식, 옷, 교통/학용품을 떠올려 표에 적고, 누구를 통해 내게 왔는지 경로를 적습니다.
+        </div>
+        <table class="ws-table">
+          <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 45%;">
+            <col style="width: 30%;">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>오늘 아침 내가 이용한 물건이나 서비스</th>
+              <th>어디서, 어떻게 내게 왔을까?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>아침 식사</strong></td>
+              <td>예) 밥, 국, 김, 시리얼, 우유</td>
+              <td>부모님이 마트나 시장에서 사 오심</td>
+            </tr>
+            <tr>
+              <td><strong>입고 온 옷/가방</strong></td>
+              <td>예) 티셔츠, 바지, 운동화, 책가방</td>
+              <td>공장에서 만들고 가게에서 구매함</td>
+            </tr>
+            <tr>
+              <td><strong>등굣길 / 학용품</strong></td>
+              <td>예) 시내버스·교통카드, 연필, 지우개</td>
+              <td>운전 서비스 이용, 문구점에서 구매</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:6px; font-size:11.5px; color:#475569;">
+          💡 <strong>생각해보기</strong>: 내가 직접 돈을 쓰지 않아도 매 순간 경제활동(생산·소비·교환) 속에 살고 있을까요? &nbsp; 
+          <label><input type="radio" name="q1"> 그렇다</label> &nbsp; 
+          <label><input type="radio" name="q1"> 아니다</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 활동 2: 물물교환 게임 일기 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[미션 2] 시장이 없던 시절 체험: 5분 무인도 물물교환 게임 일기</span>
+        <span style="font-size:10.5px; font-weight:normal; color:#64748b;">(모둠 신체 협상 10분)</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #16a34a; padding:4px 8px; font-size:10.5px; color:#334155; margin-bottom:6px; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong><br>
+          ① <strong>자원 확인</strong>: 모둠별 자원 카드를 확인하고, 우리 모둠의 부족한 자원을 파악합니다.<br>
+          ② <strong>직접 협상</strong>: 교실을 자유롭게 이동하며 다른 모둠과 쌀 2장, 샘물 2장, 고기 2장을 완성하기 위한 1:1 물물교환을 진행합니다.<br>
+          ③ <strong>일기 작성</strong>: 교환 성공 여부와 물물교환이 어려웠던 이유를 아래 상자에 솔직하게 기록합니다.
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:8px;">
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; padding:6px 10px; line-height:1.5;">
+            1) 우리 모둠에 부족했던 자원: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )<br>
+            2) 균형 생존을 위해 모아야 했던 카드: ( 쌀 2장, 샘물 2장, 고기 2장 )
+          </div>
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; padding:6px 10px; line-height:1.5;">
+            3) 교환에 성공했나요? &nbsp; <label><input type="radio" name="trade"> 성공</label> &nbsp; <label><input type="radio" name="trade"> 실패</label><br>
+            4) 바꾼 이웃 모둠: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+          </div>
+        </div>
+        <div>
+          <strong style="color:#1e3a8a;">Q. 물물교환을 직접 해보니 왜 어려웠나요? (느낀 점 쓰기)</strong><br>
+          <div class="text-box-line" style="min-height:42px; margin-top:3px;">
+            (예: 내가 원하는 자원을 가진 모둠이 우리 모둠 자원을 원하지 않아서 거래가 성사되기 힘들었다. / 물건끼리의 가치를 일대일로 맞추기 어려웠다 등)
+          </div>
+        </div>
+        <div style="margin-top:5px; font-weight:700; color:#1e3a8a; font-size:11.5px;">
+          👉 그래서 인류는 편리하게 거래하는 <span style="background:#fef08a; padding:1px 5px; border-radius:3px;">'시장'</span>과 공통의 교환 기준인 <span style="background:#fef08a; padding:1px 5px; border-radius:3px;">'돈(화폐)'</span>을 만들었습니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 활동 3: 내 소지품 원산지 탐구 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[미션 3] 내 소지품 속 지구촌 무역 탐정 놀이</span>
+        <span style="font-size:10.5px; font-weight:normal; color:#64748b;">(짝 협력 3분)</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #ea580c; padding:4px 8px; font-size:10.5px; color:#334155; margin-bottom:6px; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 내 필통 속 학용품(지우개, 샤프)이나 겉옷 상표 라벨을 확인하여 'Made in OOO' 원산지 국가 2곳을 찾아 적습니다.
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+          <div style="flex:1; line-height:1.75;">
+            • 확인한 소지품 ①: ( <span class="write-line" style="min-width:110px;"></span> ) ➔ 라벨 속 원산지: ( <span class="write-line" style="min-width:110px;">Made in </span> )<br>
+            • 확인한 소지품 ②: ( <span class="write-line" style="min-width:110px;"></span> ) ➔ 라벨 속 원산지: ( <span class="write-line" style="min-width:110px;">Made in </span> )
+          </div>
+          <div style="font-size:11.5px; background:#eff6ff; border:1px solid #bfdbfe; padding:8px 12px; border-radius:6px; max-width:320px; line-height:1.45;">
+            💬 <strong>탐정의 발견</strong><br>"우리 집과 필통 속 물건들은 이미 전 세계에서 무역을 통해 건너온 것입니다!"
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 활동 4: 2단원 나의 질문 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[미션 4] 2단원을 열며, 내가 가장 알고 싶은 '나만의 경제 호기심 질문'</span>
+        <span style="font-size:10.5px; font-weight:normal; color:#64748b;">(포스트잇에 적어 칠판에 붙인 질문 쓰기)</span>
+      </div>
+      <div class="sec-body">
+        <div class="text-box-line" style="min-height:50px; border:2px dashed #3b82f6; background:#f0f9ff;">
+          <strong>나의 경제 질문</strong>: __________________________________________________________________________________________<br>
+          <span style="color:#64748b; font-size:11px;">(예: 인기 있는 빵값은 왜 오를까? / 돈을 많이 찍어내면 왜 안 될까? / 회사는 어떻게 돈을 벌까? / 무역을 하면 왜 부자가 될까?)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 자기 평가 -->
+    <footer style="display:flex; justify-content:space-between; align-items:center; background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; padding:7px 14px; font-size:11.5px;">
+      <div><strong>[자기평가]</strong> 오늘 수업에 즐겁게 참여하고 시장의 필요성과 경제활동을 이해했나요?</div>
+      <div>
+        <label><input type="radio" name="self"> 매우 그렇다 (★★★)</label> &nbsp;
+        <label><input type="radio" name="self"> 그렇다 (★★)</label> &nbsp;
+        <label><input type="radio" name="self"> 노력할 것이다 (★)</label>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

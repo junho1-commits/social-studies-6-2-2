@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[모둠별 교구] 6-2 사회 2단원 1차시: 물물교환 자원 카드 (6모둠 세트)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #475569;
+      color: var(--gray-900);
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    /* 상단 인쇄 조작 바 */
+    .top-toolbar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      color: white;
+    }
+    .top-info {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .btn-print {
+      padding: 8px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: all 0.15s;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* A4 1장 모둠별 시트 (210mm x 297mm) */
+    .group-sheet {
+      width: 100%;
+      max-width: 900px;
+      height: 1240px; /* A4 비율 고정 */
+      background: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      border-radius: 6px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      box-sizing: border-box;
+    }
+
+    /* 모둠 시트 헤더 */
+    .sheet-head {
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .sheet-title-main {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .group-badge {
+      font-size: 22px;
+      font-weight: 900;
+      background: #1e40af;
+      color: white;
+      padding: 4px 18px;
+      border-radius: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    /* 모둠 미션 안내 배너 */
+    .mission-box {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-left: 6px solid var(--primary);
+      border-radius: 8px;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mission-text {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--gray-800);
+    }
+    .mission-target {
+      color: #b91c1c;
+      font-size: 16px;
+      font-weight: 900;
+      background: #fee2e2;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .cut-guide-text {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    /* 6개 카드 배치: 2열 x 3행 */
+    .cards-grid-6 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 14px;
+      flex-grow: 1;
+      margin: 12px 0;
+    }
+
+    /* 개별 카드 (그림 없음, 불필요한 스탯 없음, 큰 글씨 중심) */
+    .pure-card {
+      border: 2.5px dashed #475569;
+      border-radius: 12px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 16px;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    }
+
+    .card-top-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #64748b;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+    }
+    .card-top-tag {
+      background: #f1f5f9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* 자원 명칭 대형 폰트 (46px~50px) */
+    .card-center-name {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin: auto 0;
+    }
+
+    .card-bottom-row {
+      width: 100%;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* 자원별 고대비 테마 스타일 (그림 없이 색상 테두리와 글씨로만 구분) */
+    /* 1. 쌀 */
+    .card-rice { border-color: #d97706; background: #fffdf5; }
+    .card-rice .card-center-name { color: #b45309; }
+    .card-rice .card-top-tag { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+
+    /* 2. 샘물 */
+    .card-water { border-color: #0284c7; background: #f8fcff; }
+    .card-water .card-center-name { color: #0369a1; }
+    .card-water .card-top-tag { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
+
+    /* 3. 고기 */
+    .card-meat { border-color: #dc2626; background: #fffafa; }
+    .card-meat .card-center-name { color: #b91c1c; }
+    .card-meat .card-top-tag { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+
+    /* 하단 인쇄 안내 풋터 */
+    .sheet-foot {
+      font-size: 11.5px;
+      color: #64748b;
+      text-align: center;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 6px;
+    }
+
+    /* 🖨️ A4 1페이지씩 6모둠 출력 최적화 */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .group-sheet {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        padding: 10mm 12mm 8mm 12mm !important;
+        margin-bottom: 0 !important;
+        page-break-after: always !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      .card-center-name {
+        font-size: 46px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 컨트롤 툴바 -->
+  <div class="top-toolbar">
+    <div class="top-info">
+      📌 <strong>6모둠용 물물교환 자원 카드</strong> (총 6장 인쇄 / 모둠당 A4 1장 배부)
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ 6모둠 카드 일괄 인쇄 (총 6페이지)</button>
+  </div>
+
+  <!-- ========================================================
+       [1페이지: 1모둠용] 쌀 특화 (쌀 4, 샘물 1, 고기 1)
+       부족: 샘물 1개 부족, 고기 1개 부족 / 잉여: 쌀 2개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">1 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>1모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       [2페이지: 2모둠용] 샘물 특화 (쌀 1, 샘물 4, 고기 1)
+       부족: 쌀 1개 부족, 고기 1개 부족 / 잉여: 샘물 2개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">2 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>2모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       [3페이지: 3모둠용] 고기 특화 (쌀 1, 샘물 1, 고기 4)
+       부족: 쌀 1개 부족, 샘물 1개 부족 / 잉여: 고기 2개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">3 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>3모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       [4페이지: 4모둠용] 쌀 & 샘물 (쌀 3, 샘물 3, 고기 0)
+       부족: 고기 2개 전무! / 잉여: 쌀 1개, 샘물 1개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">4 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>4모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       [5페이지: 5모둠용] 샘물 & 고기 (쌀 0, 샘물 3, 고기 3)
+       부족: 쌀 2개 전무! / 잉여: 샘물 1개, 고기 1개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">5 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-water">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">샘물</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>5모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================
+       [6페이지: 6모둠용] 쌀 & 고기 (쌀 3, 샘물 0, 고기 3)
+       부족: 샘물 2개 전무! / 잉여: 쌀 1개, 고기 1개 남음
+       ======================================================== -->
+  <main class="group-sheet">
+    <header class="sheet-head">
+      <div class="sheet-title-main">6-2 사회 2단원 1차시: 물물교환 체험 카드</div>
+      <div class="group-badge">6 모 둠</div>
+    </header>
+
+    <div class="mission-box">
+      <div class="mission-text">
+        모둠 최종 목표: 다른 모둠과 대화하여 <span class="mission-target">쌀 2장, 샘물 2장, 고기 2장</span>을 완성하세요!
+      </div>
+      <div class="cut-guide-text">점선대로 6장을 잘라 모둠원과 나누세요</div>
+    </div>
+
+    <div class="cards-grid-6">
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-rice">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">쌀</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+      <div class="pure-card card-meat">
+        <div class="card-top-row"><span class="card-top-tag">자원 카드</span><span>6모둠 배부</span></div>
+        <div class="card-center-name">고기</div>
+        <div class="card-bottom-row"><span>교환 가능</span><span>1:1 물물교환</span></div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

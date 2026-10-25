@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>초등 6학년 2학기 사회 2단원: 시장경제와 국가 간 거래 | 수업자료 포털</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-dark: #0f172a;
+      --primary-light: #eff6ff;
+      --accent: #dc2626;
+      --accent-yellow: #f59e0b;
+      --accent-green: #10b981;
+      --accent-cyan: #0284c7;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+      background-color: #f1f5f9;
+      color: var(--gray-900);
+      line-height: 1.5;
+      padding: 32px 20px 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 40px 36px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 30px rgba(30, 58, 138, 0.25);
+    }
+    .badge {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .header-desc {
+      font-size: 17px;
+      color: #cbd5e1;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .header-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+    }
+    .header-btn:hover {
+      background: white;
+      color: #1e3a8a;
+      transform: translateY(-2px);
+    }
+    .header-btn.highlight {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: #000;
+      font-weight: 800;
+    }
+    .header-btn.highlight:hover {
+      background: #d97706;
+      color: white;
+    }
+
+    .topic-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 32px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .topic-title::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    .lesson-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s;
+    }
+    .lesson-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      border-color: #93c5fd;
+    }
+    .lesson-card.featured {
+      border: 2px solid #ef4444;
+      background: linear-gradient(180deg, #fff5f5 0%, #ffffff 15%);
+    }
+
+    .lesson-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .lesson-num {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+    .lesson-card.featured .lesson-num {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    .lesson-scope {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .lesson-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .lesson-desc {
+      font-size: 14.5px;
+      color: var(--gray-700);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-main {
+      background: #1e3a8a;
+      color: white;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+      transition: background 0.2s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-main:hover {
+      background: #1d4ed8;
+    }
+    .lesson-card.featured .btn-main {
+      background: #dc2626;
+    }
+    .lesson-card.featured .btn-main:hover {
+      background: #b91c1c;
+    }
+
+    .sub-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .btn-sub {
+      background: var(--gray-100);
+      color: var(--gray-800);
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s;
+    }
+    .btn-sub:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 14px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge">2022 개정 교육과정 | 2026학년도</span>
+      <h1>초등 6학년 사회 2단원: 시장경제와 국가 간 거래</h1>
+      <p class="header-desc">
+        교실 대형 전자칠판 8m 가독성 최적화 웹 PPT, A4 1장 빈틈없는 지도안, 일반 활동지 및 특수·느린학습자용 쉬운 배움 활동지 원스톱 포털
+      </p>
+      <div class="header-links">
+        <a href="사회_6-2-2-00_교사용_단원지도계획_성취기준및내용요소.html" class="header-btn highlight">
+          📋 단원지도계획 및 성취기준 분석표 보기
+        </a>
+        <a href="5차시/사회_6-2-2-05_수업PPT.html" class="header-btn">
+          ★ 5차시 전자칠판 PPT 바로가기
+        </a>
+      </div>
+    </header>
+
+    <div class="topic-title">1주제: 우리나라 시장경제의 특징 (교과서 60~77쪽 | 성취기준 [6사11-01])</div>
+
+    <div class="lesson-grid">
+      <!-- 1차시 -->
+      <div class="lesson-card">
+        <div>
+          <div class="lesson-header">
+            <span class="lesson-num">1차시</span>
+            <span class="lesson-scope">교과서 60~63쪽</span>
+          </div>
+          <h2 class="lesson-title">일상생활 속 시장 모습 살펴보기</h2>
+          <p class="lesson-desc">시장의 탄생과 일상 속 다양한 시장의 형태를 탐색하고 교실 물물교환 체험을 진행합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a href="1차시/사회_6-2-2-01_수업PPT.html" class="btn-main">🖥️ 1차시 전자칠판 PPT</a>
+          <div class="sub-links">
+            <a href="1차시/사회_6-2-2-01_교사용_1차시_수업지도안.html" class="btn-sub">교사용 지도안</a>
+            <a href="1차시/사회_6-2-2-01_활동지_일반학생용.html" class="btn-sub">일반 활동지</a>
+            <a href="1차시/사회_6-2-2-01_활동지_통합학급용_쉬운배움터.html" class="btn-sub">쉬운 배움터</a>
+            <a href="1차시/사회_6-2-2-01_교구_물물교환미션카드.html" class="btn-sub">모둠 교구</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2차시 -->
+      <div class="lesson-card">
+        <div>
+          <div class="lesson-header">
+            <span class="lesson-num">2차시</span>
+            <span class="lesson-scope">교과서 64~65쪽</span>
+          </div>
+          <h2 class="lesson-title">시장의 의미와 다양한 시장의 종류</h2>
+          <p class="lesson-desc">장소로서의 시장뿐 아니라 온라인 시장, 인력 시장 등 보이지 않는 시장의 개념을 파악합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a href="2차시/사회_6-2-2-02_수업PPT.html" class="btn-main">🖥️ 2차시 전자칠판 PPT</a>
+          <div class="sub-links">
+            <a href="2차시/사회_6-2-2-02_교사용_2차시_수업지도안.html" class="btn-sub">교사용 지도안</a>
+            <a href="2차시/사회_6-2-2-02_활동지_일반학생용.html" class="btn-sub">일반 활동지</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3~4차시 -->
+      <div class="lesson-card">
+        <div>
+          <div class="lesson-header">
+            <span class="lesson-num">3~4차시</span>
+            <span class="lesson-scope">교과서 66~68쪽</span>
+          </div>
+          <h2 class="lesson-title">가계와 기업의 상호작용 및 가격 결정</h2>
+          <p class="lesson-desc">가계와 기업의 경제 순환 흐름을 이해하고, 수요와 공급의 원리에 따른 시장 가격 결정을 체험합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a href="3~4차시/사회_6-2-2-03~04_수업PPT.html" class="btn-main">🖥️ 3~4차시 전자칠판 PPT</a>
+          <div class="sub-links">
+            <a href="3~4차시/사회_6-2-2-03~04_교사용_3~4차시_수업지도안.html" class="btn-sub">교사용 지도안</a>
+            <a href="3~4차시/사회_6-2-2-03~04_활동지_일반학생용.html" class="btn-sub">일반 활동지</a>
+            <a href="3~4차시/사회_6-2-2-03~04_활동지_통합학급용_쉬운배움터.html" class="btn-sub">쉬운 배움터</a>
+            <a href="3~4차시/사회_6-2-2-03~04_교구_모의경제순환및가격협상세트.html" class="btn-sub">모둠 교구</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5차시 (Featured) -->
+      <div class="lesson-card featured">
+        <div>
+          <div class="lesson-header">
+            <span class="lesson-num">★ 5차시 [과정중심평가]</span>
+            <span class="lesson-scope">교과서 69~71쪽</span>
+          </div>
+          <h2 class="lesson-title">근로자의 권리와 노동의 가치</h2>
+          <p class="lesson-desc">
+            급식 조리사·택배기사 실사 생각 열기, 서울시교육청 노동인권 영상 탐구, 4대 권리 분석 및 갤러리 피켓 캠페인을 진행합니다.
+          </p>
+        </div>
+        <div class="btn-group">
+          <a href="5차시/사회_6-2-2-05_수업PPT.html" class="btn-main">🖥️ 5차시 전자칠판 PPT (업데이트 완료)</a>
+          <div class="sub-links">
+            <a href="5차시/사회_6-2-2-05_교사용_5차시_수업지도안.html" class="btn-sub">교사용 지도안</a>
+            <a href="5차시/사회_6-2-2-05_활동지_일반학생용.html" class="btn-sub">일반 활동지</a>
+            <a href="5차시/사회_6-2-2-05_활동지_통합학급용_쉬운배움터.html" class="btn-sub">쉬운 배움터</a>
+            <a href="5차시/사회_6-2-2-05_교구_근로자권리캠페인피켓및평가루브릭.html" class="btn-sub">캠페인 교구</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6~7차시 -->
+      <div class="lesson-card">
+        <div>
+          <div class="lesson-header">
+            <span class="lesson-num">6~7차시</span>
+            <span class="lesson-scope">교과서 72~77쪽</span>
+          </div>
+          <h2 class="lesson-title">기업의 자유로운 경쟁과 사회적 책임</h2>
+          <p class="lesson-desc">기업 간의 공정한 경쟁이 주는 혜택과 윤리적·친환경적 기업의 사회적 책임(CSR)을 탐색합니다.</p>
+        </div>
+        <div class="btn-group">
+          <a href="6~7차시/사회_6-2-2-06~07_수업PPT.html" class="btn-main">🖥️ 6~7차시 전자칠판 PPT</a>
+          <div class="sub-links">
+            <a href="6~7차시/사회_6-2-2-06~07_교사용_6~7차시_수업지도안.html" class="btn-sub">교사용 지도안</a>
+            <a href="6~7차시/사회_6-2-2-06~07_활동지_일반학생용.html" class="btn-sub">일반 활동지</a>
+            <a href="6~7차시/사회_6-2-2-06~07_활동지_통합학급용_쉬운배움터.html" class="btn-sub">쉬운 배움터</a>
+            <a href="6~7차시/사회_6-2-2-06~07_교구_팝업스토어배틀및1주제총괄마인드맵.html" class="btn-sub">모둠 교구</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 초등 사회과 수업 연구 | 모덕초등학교 | 2022 개정 교육과정 기준 준수</p>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사용 지도안] 6-2 사회 2단원 1차시 수업과정안 (A4 가로 1장 꽉 찬 지도안)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --accent-light: #f0fdfa;
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      color: var(--gray-900);
+      background-color: #94a3b8;
+      line-height: 1.38;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    /* 화면 상단 툴바 */
+    .top-toolbar {
+      width: 100%;
+      max-width: 1360px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .top-info {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .btn-print {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.15s ease;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    /* A4 가로 단면 시트 컨테이너 (297mm x 210mm) */
+    .sheet-landscape {
+      width: 100%;
+      max-width: 1360px;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 9px;
+    }
+
+    /* 1. 타이틀 헤더 */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 6px;
+    }
+    .doc-title-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-tag {
+      background: #1e40af;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .doc-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .doc-meta-right {
+      font-size: 11px;
+      color: var(--gray-600);
+      text-align: right;
+      line-height: 1.35;
+    }
+    .doc-meta-right strong {
+      color: var(--gray-900);
+    }
+
+    /* 2. 수업 개요 메타 테이블 */
+    table.meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      table-layout: fixed;
+    }
+    table.meta-table th, table.meta-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4px 7px;
+      vertical-align: middle;
+    }
+    table.meta-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      text-align: center;
+      width: 85px;
+    }
+    .highlight-target {
+      color: #1e40af;
+      font-weight: 700;
+    }
+
+    /* 3. 본시 교수·학습 과정안 메인 테이블 */
+    table.lesson-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.8px;
+      line-height: 1.38;
+      table-layout: fixed;
+    }
+    table.lesson-table th, table.lesson-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4.5px 7px;
+      vertical-align: top;
+    }
+    table.lesson-table th {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 800;
+      text-align: center;
+      padding: 5px 6px;
+    }
+    .step-col {
+      text-align: center;
+      font-weight: 800;
+      vertical-align: middle !important;
+    }
+    .step-intro { background: #eff6ff; color: #1e40af; }
+    .step-dev { background: #f0fdfa; color: #0f766e; }
+    .step-conc { background: #fefce8; color: #a16207; }
+
+    .act-title {
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .t-speech {
+      color: #0369a1;
+      font-weight: 600;
+    }
+    .s-speech {
+      color: #15803d;
+    }
+    .note-text {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.35;
+    }
+    .note-tag {
+      font-weight: 700;
+      color: #dc2626;
+    }
+    .data-tag {
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    /* 4. 하단 3분할: 판서 계획 / 평가 계획 / 차시 예고 */
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr 0.8fr;
+      gap: 9px;
+    }
+    .box-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .box-header {
+      padding: 3.5px 8px;
+      background: #f1f5f9;
+      font-size: 11px;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 1px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .box-body {
+      padding: 6px 9px;
+      font-size: 10.4px;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    /* 칠판 판서 스타일 */
+    .blackboard {
+      background: #1e293b;
+      color: #f8fafc;
+      border-radius: 3px;
+      padding: 6px 8px;
+      font-family: inherit;
+      font-size: 10.2px;
+      line-height: 1.42;
+    }
+    .board-title {
+      color: #fde047;
+      font-weight: 800;
+      border-bottom: 1px dashed #64748b;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+    }
+
+    /* 평가 기준 표 */
+    table.eval-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.2px;
+    }
+    table.eval-table th, table.eval-table td {
+      border: 1px solid #cbd5e1;
+      padding: 3px 5px;
+    }
+    table.eval-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: center;
+    }
+    .eval-level {
+      font-weight: 800;
+      text-align: center;
+    }
+    .lvl-hi { color: #16a34a; }
+    .lvl-mid { color: #d97706; }
+    .lvl-low { color: #dc2626; }
+
+    /* 🖨️ A4 가로 인쇄 시 단면 1장에 위아래 꽉 채우는 CSS */
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .sheet-landscape {
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 6mm 8.5mm 5mm 8.5mm !important;
+        gap: 5.5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      .doc-header {
+        padding-bottom: 4px !important;
+      }
+      .doc-title {
+        font-size: 17px !important;
+      }
+      table.meta-table th, table.meta-table td {
+        padding: 2.8px 6px !important;
+        font-size: 10.2px !important;
+      }
+      table.lesson-table th {
+        padding: 3.5px 5px !important;
+        font-size: 10.5px !important;
+      }
+      table.lesson-table td {
+        padding: 3.5px 6px !important;
+        font-size: 10.2px !important;
+        line-height: 1.34 !important;
+      }
+      .act-title {
+        font-size: 10.5px !important;
+      }
+      .box-header {
+        padding: 3px 6px !important;
+        font-size: 10.4px !important;
+      }
+      .box-body {
+        padding: 4.5px 7px !important;
+        font-size: 10px !important;
+      }
+      .blackboard {
+        padding: 4.5px 6px !important;
+        font-size: 9.8px !important;
+        line-height: 1.38 !important;
+      }
+      table.eval-table th, table.eval-table td {
+        padding: 2px 4px !important;
+        font-size: 9.8px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 컨트롤 툴바 -->
+  <div class="top-toolbar">
+    <div class="top-info">
+      📌 <strong>[2022 개정] 6-2 사회 2단원 1차시 약안형 수업지도안</strong> (A4 가로 1장 꽉 채움)
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ A4 가로 1장 인쇄 / PDF 저장
+    </button>
+  </div>
+
+  <!-- A4 가로 1장 시트 -->
+  <main class="sheet-landscape">
+
+    <!-- 1. 문서 헤더 -->
+    <header class="doc-header">
+      <div class="doc-title-left">
+        <span class="badge-tag">2022 개정 교육과정</span>
+        <h1 class="doc-title">사회과 교수·학습 과정안 (약안)</h1>
+      </div>
+      <div class="doc-meta-right">
+        <div><strong>일시</strong>: 2026학년도 2학기 &nbsp;|&nbsp; <strong>대상</strong>: 6학년 &nbsp;|&nbsp; <strong>장소</strong>: 6학년 교실</div>
+        <div><strong>단원</strong>: 2. 시장경제와 국가 간 거래 (1 / 18차시) &nbsp;|&nbsp; <strong>모덕초등학교</strong></div>
+      </div>
+    </header>
+
+    <!-- 2. 수업 개요 메타 테이블 -->
+    <table class="meta-table">
+      <colgroup>
+        <col style="width: 10%;">
+        <col style="width: 40%;">
+        <col style="width: 10%;">
+        <col style="width: 40%;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>학습 주제</th>
+          <td class="highlight-target">우리 생활 속 시장의 모습과 경제활동 알아보기 (단원 열기)</td>
+          <th>교과서 범위</th>
+          <td>사회 60~63쪽 (단원 도입)</td>
+        </tr>
+        <tr>
+          <th>학습 목표</th>
+          <td colspan="3">
+            1. 일상생활에서 이루어지는 다양한 <strong>경제활동(소비·생산·교환)</strong>의 모습을 찾을 수 있다.<br>
+            2. 물물교환 체험을 통해 <strong>시장이 생겨난 까닭</strong>을 알고, 2단원에서 배울 3가지 주제(시장경제·경제성장·무역)에 호기심을 갖는다.
+          </td>
+        </tr>
+        <tr>
+          <th>수업 모형</th>
+          <td>경험 학습 및 발견 학습 모형</td>
+          <th>교과 역량</th>
+          <td>창의적 사고력, 문제 해결력 및 의사 결정력, 의사소통 및 협업 능력</td>
+        </tr>
+        <tr>
+          <th>수업 자료</th>
+          <td colspan="3">
+            <strong>[교사]</strong> 교과서 60~63쪽, 물물교환 미션 카드(쌀·물·땔감·고기), 단원 3대 퀘스트 PPT, 세계 지도 원산지 판<br>
+            <strong>[학생]</strong> 필기도구, 소지품(학용품·의류), 개인별 배움 포스트잇 1장
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. 본시 교수·학습 과정 메인 테이블 -->
+    <table class="lesson-table">
+      <colgroup>
+        <col style="width: 9%;">
+        <col style="width: 53%;">
+        <col style="width: 6%;">
+        <col style="width: 32%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>학습 단계</th>
+          <th>교수 · 학습 활동 (교사 활동 💬 / 학생 활동 🙋)</th>
+          <th>시간</th>
+          <th>자료(★) 및 유의점(※) / 역량(🎯)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 도입 -->
+        <tr>
+          <td class="step-col step-intro">
+            도 입<br><span style="font-size:10px; font-weight:normal;">동기유발<br>& 학습문제</span>
+          </td>
+          <td>
+            <div class="act-title">◎ 동기유발: 오늘 아침 나의 '숨은 경제 영수증' 찾기</div>
+            • 💬 "오늘 아침 눈떠서 교실에 오기까지 돈을 쓴 적이 있나요?"<br>
+            • 🙋 "돈을 쓰지 않았어요!", "숨만 쉬고 학교에 왔어요!"<br>
+            • 💬 "아침에 먹은 우유/밥, 입은 옷, 버스 카드, 샤프심은 어디서 왔을까요?"<br>
+            • 🙋 "가족이 사주셨어요!", "가게와 공장에서 만들어졌어요!"<br>
+            • 💬 내가 직접 돈을 내지 않아도 우리는 항상 경제활동 속에 있음을 확인하기
+            <div class="act-title" style="margin-top:4px;">◎ 학습 문제 확인하기</div>
+            <div style="background:#eff6ff; padding:2px 6px; border-radius:3px; font-weight:700; color:#1e40af;">
+              우리 생활 속 시장의 모습을 살펴보고, 시장이 생겨난 까닭을 알아봅시다.
+            </div>
+          </td>
+          <td class="text-center font-bold" style="vertical-align:middle;">10′</td>
+          <td>
+            <div class="note-text">
+              <span class="data-tag">★ PPT</span> (아침 일상 속 물건들)<br>
+              <span class="note-tag">※ 유의점</span>: 경제활동이 '돈 쓰기'에만 국한되지 않고 물건을 만들고 나누는 전 과정임을 직관적으로 이해하도록 유도함.<br>
+              <span class="data-tag">🎯 창의적 사고력</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 전개 -->
+        <tr>
+          <td class="step-col step-dev">
+            전 개<br><span style="font-size:10px; font-weight:normal;">체험 및<br>단원 탐색</span>
+          </td>
+          <td>
+            <div class="act-title">【활동 1】 시장이 없던 시절 체험: 5분 물물교환 게임</div>
+            • 💬 모둠별로 서로 다른 자원 카드(물·쌀·땔감·고기) 배부 및 생존 미션 부여<br>
+            • 🙋 "점심을 지으려면 '물+쌀+땔감' 3종이 필요한데, 친구와 1:1로 직접 교환하기"<br>
+            • 💬 "바꾸기 쉬웠나요? 왜 어려웠을까요?"<br>
+            • 🙋 "내가 원하는 걸 가진 친구가 내 카드를 원하지 않아서 바꾸기 힘들었어요!"<br>
+            • 💬 물물교환의 한계 → <strong>'시장(모이는 곳)'</strong>과 <strong>'화폐(돈·가격)'</strong>의 필요성 도출
+
+            <div class="act-title" style="margin-top:5px;">【활동 2】 교과서 60~63쪽 탐정 놀이 & 2단원 3대 퀘스트 열기</div>
+            • 💬 교과서 삽화 속 다양한 시장의 모습(전통시장, 마트, 온라인몰) 찾아보기<br>
+            • 💬 2단원에서 해결할 <strong>3가지 핵심 질문(3대 주제)</strong> 탐색하기<br>
+            &nbsp; ① <strong>[시장경제]</strong> "인기 있는 빵이나 간식의 가격은 왜 오르내릴까?" (가계·기업·가격)<br>
+            &nbsp; ② <strong>[경제성장]</strong> "할머니 세대보다 왜 풍족해졌을까? 문제는 없을까?" (GNI·환경)<br>
+            &nbsp; ③ <strong>[세계무역]</strong> "내 필통·옷 속 'Made in ...'은 어디서 왔을까?" (무역·상호의존)<br>
+            • 🙋 [미니 탐구] 내 소지품 1개 원산지 확인하고 세계 지도 판에 스티커 붙이기
+          </td>
+          <td class="text-center font-bold" style="vertical-align:middle;">25′</td>
+          <td>
+            <div class="note-text">
+              <span class="data-tag">★ 자원 카드</span> (모둠별 4종)<br>
+              <span class="data-tag">★ 교과서 60~63쪽</span><br>
+              <span class="data-tag">★ 세계 지도 원산지 판</span><br>
+              <span class="note-tag">※ 유의점</span>: 물물교환 시 교실 이동 안전에 유의하며 규칙을 준수하도록 지도함.<br>
+              <span class="note-tag">※ 발문 팁</span>: 어려운 전문 용어 정의 대신 일상 속 호기심 질문으로 단원 전체의 흥미를 유발함.<br>
+              <span class="data-tag">🎯 문제 해결력, 의사소통</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- 정리 -->
+        <tr>
+          <td class="step-col step-conc">
+            정 리<br><span style="font-size:10px; font-weight:normal;">배움 다짐<br>& 차시 예고</span>
+          </td>
+          <td>
+            <div class="act-title">◎ 학습 내용 정리 및 '나만의 2단원 호기심 질문' 적기</div>
+            • 💬 오늘 배운 점: 시장은 사람들의 필요에 의해 생겨났으며, 우리는 매일 경제 속에 산다.<br>
+            • 🙋 포스트잇에 <strong>"이번 2단원에서 내가 가장 알고 싶은 질문 하나"</strong> 적어 칠판에 붙이기<br>
+            &nbsp; (예: "물건값은 사장님 마음대로 올릴 수 있나요?", "왜 바나나는 수입할까요?")<br>
+            • 💬 다음 차시 예고: 2차시 - 우리 생활 속 다양한 시장의 종류와 역할 알아보기
+          </td>
+          <td class="text-center font-bold" style="vertical-align:middle;">5′</td>
+          <td>
+            <div class="note-text">
+              <span class="data-tag">★ 포스트잇</span><br>
+              <span class="note-tag">※ 평가</span>: 학생 질문 포스트잇을 단원 게시판에 부착하여 전시 학습 피드백으로 활용.<br>
+              <span class="data-tag">🎯 정보 활용 능력</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 4. 하단 3분할: 판서 계획 / 평가 계획 / 차시 안내 -->
+    <footer class="bottom-layout">
+      <!-- 판서 계획 -->
+      <div class="box-card">
+        <div class="box-header">📋 판서 계획 (칠판 구성)</div>
+        <div class="box-body" style="padding:4px;">
+          <div class="blackboard">
+            <div class="board-title">단원 2. 시장경제와 국가 간 거래 (1/18)</div>
+            <strong>[배움문제]</strong> 시장의 모습과 시장이 생겨난 까닭을 알아보자.<br>
+            <strong>1. 아침 속 경제</strong>: 소비(물건사기), 생산(물건만들기)<br>
+            <strong>2. 물물교환의 한계</strong> ➔ <strong>'시장'</strong>과 <strong>'돈(화폐)'</strong>의 등장<br>
+            <strong>3. 2단원 3대 퀘스트</strong>: ①시장경제 ②경제성장 ③세계무역<br>
+            ➔ <em>[우리 반 단원 배움 질문 포스트잇 부착 공간]</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- 과정중심 평가 계획 -->
+      <div class="box-card">
+        <div class="box-header">📊 본시 과정중심평가 계획 (관찰·자기평가)</div>
+        <div class="box-body" style="padding:4px 6px;">
+          <table class="eval-table">
+            <colgroup>
+              <col style="width: 15%;">
+              <col style="width: 60%;">
+              <col style="width: 25%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>수준</th>
+                <th>평가 기준 (관찰 관점)</th>
+                <th>평가 방법</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="eval-level lvl-hi">우수</td>
+                <td>시장의 필요성을 물물교환 경험과 연결하여 설명하고, 단원 핵심 질문에 적극적으로 참여함.</td>
+                <td rowspan="3" style="text-align:center; vertical-align:middle;">
+                  수업 관찰 평가<br>질문 포스트잇<br>(수행 확인)
+                </td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-mid">보통</td>
+                <td>물물교환의 불편함을 알고 시장이 필요한 까닭을 대략 파악함.</td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-low">노력</td>
+                <td>교사의 안내를 받아 일상생활 속 시장의 역할을 확인함.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 다음 차시 연계 팁 -->
+      <div class="box-card">
+        <div class="box-header">💡 다음 차시(2차시) 지도 연계 팁</div>
+        <div class="box-body">
+          • <strong>2차시 연계</strong>: 1차시의 흥미를 바탕으로 2차시 활동지(`2차시_활동지.hwp`)를 활용해 전통시장, 대형마트, 온라인 전자상거래 등 <strong>구체적인 시장의 종류와 특징</strong>으로 심화 학습 진행.<br>
+          • <strong>학생 질문 활용</strong>: 1차시 정리 때 모은 포스트잇 질문을 2~7차시 수업 시작 시 '오늘의 해결 질문'으로 활용.
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

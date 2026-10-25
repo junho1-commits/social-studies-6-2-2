@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[수업 교구·평가] 6-2 사회 2단원 5차시: 캠페인 피켓 서식 & 과정중심평가 루브릭</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #e2e8f0;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .print-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .btn-print {
+      padding: 8px 20px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .page-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 15mm 15mm;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .page-header {
+      border-bottom: 2px solid #dc2626;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .picket-frame {
+      border: 3.5px solid #dc2626;
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .picket-title-box {
+      background: #fef2f2;
+      border: 1.5px dashed #dc2626;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #b91c1c;
+    }
+    .picket-content-area {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      flex-grow: 1;
+      margin: 14px 0;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #94a3b8;
+    }
+
+    table.rubric-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    table.rubric-table th, table.rubric-table td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      vertical-align: middle;
+    }
+    table.rubric-table th {
+      background: #f8fafc;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .print-bar { display: none; }
+      .page-sheet { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar">
+    <div style="font-size:14px; font-weight:700; color:#1e293b;">
+      📌 [5차시 교구·평가] 캠페인 피켓 서식 & 과정중심평가 교사용 루브릭 (A4 2장)
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ 전체 인쇄 (A4 2장)</button>
+  </div>
+
+  <!-- Sheet 1: 모둠 미니 피켓 서식 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#dc2626;">[5차시 활동 교구] 근로자 권리 존중 미니 캠페인 피켓 서식</div>
+      <div style="font-size:12px; color:#64748b;">모둠별 작성 후 교실 벽면 부착 (1/2)</div>
+    </div>
+
+    <div class="picket-frame">
+      <div class="picket-title-box">
+        [ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ] 모둠 캠페인 피켓
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-top:10px; font-size:12px; color:#475569;">
+        <span>선택한 권리 분야: _______________________</span>
+        <span>모둠원: ________________________________</span>
+      </div>
+      <div class="picket-content-area">
+        <div style="font-size:24px; font-weight:900; color:#b91c1c; margin-bottom:12px; text-align:center;">
+          "여기에 우리 모둠의 핵심 슬로건을 쓰세요!"
+        </div>
+        <div style="font-size:14px; color:#64748b; text-align:center; line-height:1.6;">
+          (그림이나 상징 기호, 실천 수칙을 자유롭고 눈에 띄게 꾸며보세요)<br>
+          스탠딩 갤러리 전시 시 친구들이 읽고 지지 스티커를 부착합니다.
+        </div>
+      </div>
+      <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px; font-size:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span>지지 스티커 부착란 (여기에 스티커를 붙여주세요) ➔</span>
+        <span style="font-weight:800; color:#dc2626;">총 [ &nbsp; &nbsp; &nbsp; &nbsp; ] 표</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 2: 교사용 과정중심평가 1 종합 루브릭 & 기록부 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#1e3a8a;">[교사용 평가 기록부] 1주제 과정중심평가 1 채점 기준 및 기록표</div>
+      <div style="font-size:12px; color:#64748b;">성취기준 [6사11-01] 근로자의 권리 보호 (2/2)</div>
+    </div>
+
+    <div>
+      <div style="font-size:14px; font-weight:800; color:#1e293b; margin-bottom:4px;">1. 성취기준별 평가 루브릭 (Rubric)</div>
+      <table class="rubric-table">
+        <colgroup>
+          <col style="width: 15%;">
+          <col style="width: 25%;">
+          <col style="width: 60%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>수준</th>
+            <th>성취 수준</th>
+            <th>구체적 평가 기준 (서술 평가지 및 피켓 관찰)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="color:#16a34a; background:#f0fdf4;">매우 우수<br>(A)</th>
+            <td>권리 보호와 상생 가치 완벽 서술</td>
+            <td>근로자의 4대 기본 권리와 보호 필요성을 인간 존엄성 및 가계-기업 경제 순환 관점에서 타당하게 서술하고, 창의적이고 호소력 있는 캠페인 피켓을 제작함.</td>
+          </tr>
+          <tr>
+            <th style="color:#d97706; background:#fffbeb;">우수<br>(B)</th>
+            <td>권리 보호 까닭과 사례 제시</td>
+            <td>근로자의 기본 권리를 알고 보호해야 하는 까닭을 일상생활의 구체적 사례를 들어 설명하며, 적절한 캠페인 문구를 제시함.</td>
+          </tr>
+          <tr>
+            <th style="color:#dc2626; background:#fef2f2;">보통<br>(C)</th>
+            <td>기본 권리 명칭 열거</td>
+            <td>교사의 안내와 시각 단서를 받아 근로자의 대표적인 권리(안전, 임금 등)를 열거하고 기초적인 캠페인 활동에 참여함.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:16px; flex-grow:1; display:flex; flex-direction:column;">
+      <div style="font-size:14px; font-weight:800; color:#1e293b; margin-bottom:4px;">2. 학급 학생별 과정중심평가 관찰 기록표 (예시 서식)</div>
+      <table class="rubric-table" style="flex-grow:1;">
+        <colgroup>
+          <col style="width: 10%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 20%;">
+          <col style="width: 40%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>평가 등급</th>
+            <th>캠페인 참여도</th>
+            <th>서술형 평가지 정성 피드백</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center"></td>
+            <td class="text-center">[ A / B / C ]</td>
+            <td class="text-center">상 / 중 / 하</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td class="text-center"></td>
+            <td class="text-center">[ A / B / C ]</td>
+            <td class="text-center">상 / 중 / 하</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-center">3</td>
+            <td class="text-center"></td>
+            <td class="text-center">[ A / B / C ]</td>
+            <td class="text-center">상 / 중 / 하</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-center">4</td>
+            <td class="text-center"></td>
+            <td class="text-center">[ A / B / C ]</td>
+            <td class="text-center">상 / 중 / 하</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-center">5</td>
+            <td class="text-center"></td>
+            <td class="text-center">[ A / B / C ]</td>
+            <td class="text-center">상 / 중 / 하</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

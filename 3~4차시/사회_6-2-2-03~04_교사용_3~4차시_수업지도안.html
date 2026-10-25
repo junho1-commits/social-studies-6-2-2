@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사용 지도안] 6-2 사회 2단원 3~4차시 블록 수업과정안 (A4 가로 1장 꽉 찬 지도안)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --accent-light: #f0fdfa;
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      color: var(--gray-900);
+      background-color: #94a3b8;
+      line-height: 1.34;
+      font-size: 10.6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .top-toolbar {
+      width: 100%;
+      max-width: 1360px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .top-info {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .btn-print {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.15s ease;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .sheet-landscape {
+      width: 100%;
+      max-width: 1360px;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 16px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 5px;
+    }
+    .doc-title-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-tag {
+      background: #1e40af;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-block {
+      background: #0f766e;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .doc-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .doc-meta-right {
+      font-size: 11px;
+      color: var(--gray-600);
+      text-align: right;
+      line-height: 1.35;
+    }
+    .doc-meta-right strong {
+      color: var(--gray-900);
+    }
+
+    table.meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      table-layout: fixed;
+    }
+    table.meta-table th, table.meta-table td {
+      border: 1px solid var(--gray-300);
+      padding: 3.5px 6.5px;
+      vertical-align: middle;
+    }
+    table.meta-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      text-align: center;
+      width: 82px;
+    }
+    .highlight-target {
+      color: #1e40af;
+      font-weight: 700;
+    }
+
+    table.lesson-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.3px;
+      line-height: 1.35;
+      table-layout: fixed;
+    }
+    table.lesson-table th, table.lesson-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4px 6.5px;
+      vertical-align: top;
+    }
+    table.lesson-table th {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 800;
+      text-align: center;
+      padding: 4px 6px;
+    }
+    .step-col {
+      text-align: center;
+      font-weight: 800;
+      vertical-align: middle !important;
+    }
+    .step-intro { background: #eff6ff; color: #1e40af; }
+    .step-dev { background: #f0fdfa; color: #0f766e; }
+    .step-conc { background: #fefce8; color: #a16207; }
+
+    .act-title {
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .t-speech {
+      color: #0369a1;
+      font-weight: 600;
+    }
+    .s-speech {
+      color: #15803d;
+    }
+    .note-text {
+      font-size: 9.6px;
+      color: #475569;
+      line-height: 1.3;
+    }
+    .note-tag {
+      font-weight: 700;
+      color: #dc2626;
+    }
+    .data-tag {
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr 0.8fr;
+      gap: 8px;
+    }
+    .box-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .box-header {
+      padding: 3px 8px;
+      background: #f1f5f9;
+      font-size: 10.6px;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 1px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .box-body {
+      padding: 4.5px 7.5px;
+      font-size: 10px;
+      line-height: 1.36;
+      flex-grow: 1;
+    }
+
+    .blackboard {
+      background: #1e293b;
+      color: #f8fafc;
+      border-radius: 3px;
+      padding: 5px 7px;
+      font-family: inherit;
+      font-size: 9.8px;
+      line-height: 1.38;
+    }
+    .board-title {
+      color: #fde047;
+      font-weight: 800;
+      border-bottom: 1px dashed #64748b;
+      padding-bottom: 2px;
+      margin-bottom: 3px;
+    }
+
+    table.eval-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.8px;
+    }
+    table.eval-table th, table.eval-table td {
+      border: 1px solid #cbd5e1;
+      padding: 2.5px 4px;
+    }
+    table.eval-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: center;
+    }
+    .eval-level {
+      font-weight: 800;
+      text-align: center;
+    }
+    .lvl-hi { color: #16a34a; }
+    .lvl-mid { color: #d97706; }
+    .lvl-low { color: #dc2626; }
+
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .sheet-landscape {
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 5.5mm 7.5mm 4.5mm 7.5mm !important;
+        gap: 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 컨트롤 툴바 -->
+  <div class="top-toolbar">
+    <div class="top-info">
+      📌 <strong>A4 가로형(Landscape) 단면 1장</strong> 최적화 레이아웃 (모덕초 6-2 사회 2단원 3~4차시 연속 블록)
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ A4 가로 1장 인쇄 / PDF 저장
+    </button>
+  </div>
+
+  <main class="sheet-landscape">
+    
+    <!-- 1. 문서 헤더 -->
+    <header class="doc-header">
+      <div class="doc-title-left">
+        <span class="badge-tag">2022 개정 교육과정</span>
+        <span class="badge-block">80분 연속 블록 타임</span>
+        <h1 class="doc-title">사회과 교수·학습 과정안 (3~4차시 블록)</h1>
+      </div>
+      <div class="doc-meta-right">
+        <div><strong>일시</strong>: 2026. 10. | <strong>대상</strong>: 6학년 (통합학급 포함) | <strong>장소</strong>: 6학년 교실</div>
+        <div><strong>단원</strong>: 2. 시장경제와 국가 간 거래 | <strong>차시</strong>: 3~4 / 18차시 (교과서 63~68쪽)</div>
+      </div>
+    </header>
+
+    <!-- 2. 수업 개요 메타 테이블 -->
+    <table class="meta-table">
+      <colgroup>
+        <col style="width: 78px;">
+        <col style="width: 190px;">
+        <col style="width: 78px;">
+        <col style="width: auto;">
+        <col style="width: 78px;">
+        <col style="width: 140px;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>대주제</th>
+          <td>1. 우리나라 시장경제의 특징</td>
+          <th>성취기준</th>
+          <td><strong>[6사11-01]</strong> 시장경제에서 가계와 기업의 역할을 이해하고, 근로자의 권리와 기업의 자유 및 사회적 책임을 탐색한다.</td>
+          <th>수업 모형</th>
+          <td>체험 시뮬레이션 및 모의 협상 모형</td>
+        </tr>
+        <tr>
+          <th>배움 주제</th>
+          <td colspan="3"><span class="highlight-target">가계와 기업의 상호작용 이해 및 시장 가격 결정·변동 원리 체험하기</span></td>
+          <th>핵심 역량</th>
+          <td>의사소통 및 협업 능력, 문제 해결력</td>
+        </tr>
+        <tr>
+          <th>배움 목표</th>
+          <td colspan="5">
+            <strong>[지식]</strong> 가계(소비/노동 제공)와 기업(생산/일자리 제공)의 상호 순환 관계와, 사려는 사람과 팔려는 사람에 의해 가격이 결정되는 원리를 설명할 수 있다.<br>
+            <strong>[기능]</strong> 가계-기업 순환 롤플레잉 및 사과 장터 모의 협상에 능동적으로 참여하여 균형 가격을 도출할 수 있다.<br>
+            <strong>[태도]</strong> 시장경제에서 나와 타인의 선택이 연결되어 있음을 인식하고 건전한 경제 활동에 긍정적으로 참여한다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. 본시 교수·학습 과정안 메인 테이블 (80분 블록) -->
+    <table class="lesson-table">
+      <colgroup>
+        <col style="width: 48px;">
+        <col style="width: 76px;">
+        <col style="width: auto;">
+        <col style="width: 38px;">
+        <col style="width: 195px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>단계</th>
+          <th>배움 과정</th>
+          <th>교수·학습 활동 (교사 발문 및 학생 활동)</th>
+          <th>시간</th>
+          <th>자료(★) 및 지도상 유의점(※)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 도입 (3차시 시작) -->
+        <tr>
+          <td class="step-col step-intro">도입<br>(3차시)</td>
+          <td>
+            <strong>동기 유발<br>&<br>배움 문제 확인</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ 생활 속 경제 순환 질문 & 80분 블록 배움 문제 열기</div>
+            <div class="t-speech">T. "오늘 아침 먹은 사과와 입고 있는 옷은 어디서 왔을까요? 또 우리 집은 그것을 살 돈을 어떻게 벌었을까요?"</div>
+            <div class="s-speech">S. 부모님이 회사나 일터에 나가 일하시고 월급을 받아 사셨습니다! / 기업 공장에서 만들어 마트에 보냈습니다!</div>
+            <div class="t-speech">T. 바로 '가계'와 '기업'이 끊임없이 주고받기 때문입니다. 그리고 그 둘이 만나 '가격'을 정합니다!</div>
+            <div style="margin-top:2px; font-weight:700; color:#1e40af;">[배움 문제] 가계와 기업의 역할을 알고, 시장에서 가격이 어떻게 정해지는지 직접 체험해 봅시다.</div>
+          </td>
+          <td class="step-col">8′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 수업 PPT (가계 ↔ 기업 연결 영상)<br>
+            <span class="note-tag">※</span> 80분 연속 수업의 전체 로드맵(1부: 가계·기업 롤플레잉, 2부: 사과장터 가격 협상)을 사전 안내한다.
+          </td>
+        </tr>
+
+        <!-- 전개 1 (3차시 본활동) -->
+        <tr>
+          <td rowspan="2" class="step-col step-dev">전개<br>(3~4차시)</td>
+          <td>
+            <strong>[활동 1: 3차시]<br>움직이는<br>가계 ↔ 기업<br>경제 순환 런</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [신체 활동 1] 가계 구역 ↔ 기업 공장 왕복 경제 순환 롤플레잉 (30분)</div>
+            <div class="t-speech">T. 교실 앞쪽은 [가계 마을], 뒤쪽은 [기업 공장 및 마트]입니다. 절반은 가계 팀, 절반은 기업 팀입니다!</div>
+            <div class="s-speech">S. (가계 학생들은 '노동 쿠폰'을 들고 기업으로 이동하여 일자리를 얻고 '급여(모의 화폐)'를 수령함)</div>
+            <div class="s-speech">S. (기업 학생들은 노동을 투입해 '상품(학용품/과자 카드)'을 생산하여 마트에 진열하고, 가계 학생들이 와서 구입함)</div>
+            <div class="t-speech">T. 역할을 바꿔보며 체험해 봅시다. 가계가 없으면 기업은 어떻게 되고, 기업이 없으면 가계는 어떻게 되나요?</div>
+            <div class="s-speech">S. 기업은 일할 사람과 물건을 사줄 소비자가 없어 망하고, 가계는 일자리와 물건을 얻지 못해 살 수 없습니다!</div>
+          </td>
+          <td class="step-col">30′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 노동 쿠폰, 모의 화폐, 생산품 카드, 가계/기업 명찰<br>
+            <span class="note-tag">※</span> <strong>활동적 교실 이동</strong>: 전원이 역할을 가지고 교실 앞뒤를 왕복하며 경제적 상호 의존성을 몸으로 체득한다.
+          </td>
+        </tr>
+
+        <!-- 전개 2 (4차시 본활동) -->
+        <tr>
+          <td>
+            <strong>[활동 2: 4차시]<br>교실 사과 장터<br>스탠딩 가격<br>협상 배틀</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [신체 활동 2] 교실 사과 장터 모의 가격 협상 배틀 (사려는 사람 vs 팔려는 사람) (30분)</div>
+            <div class="t-speech">T. 이제 모두 사과 장터로 모입니다! [사과 농부(판매자)] 팀은 1상자당 최소 3,000원은 받아야 하고, [소비자(구매자)] 팀은 최대 7,000원까지만 쓸 수 있습니다. 교실을 자유롭게 돌아다니며 1:1로 만나 흥정해 보세요!</div>
+            <div class="s-speech">S. (소비자: "4,000원에 주세요!" / 판매자: "안 돼요, 6,000원은 주셔야 해요!" 줄다리기 끝에 5,000원에 도장 쾅!)</div>
+            <div class="t-speech">T. 대부분 몇 원에 거래가 성사되었나요? 사려는 사람과 팔려는 사람의 생각이 만난 지점이 얼마인가요?</div>
+            <div class="s-speech">S. 5,000원 근처에서 가장 많이 거래되었습니다! 서로 조금씩 양보해서 타협한 가격입니다!</div>
+            <div class="t-speech">T. 맞습니다! 이것이 바로 시장에서 정해지는 <strong>'균형 가격'</strong>입니다. 만약 사과 흉년으로 사과가 3개뿐이라면?</div>
+            <div class="s-speech">S. 서로 사려고 경쟁해서 가격이 8,000원, 10,000원으로 껑충 뜁니다!</div>
+          </td>
+          <td class="step-col">30′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 사과 거래 협상판, 가격 스티커, 계약 체결 도장<br>
+            <span class="note-tag">※</span> <strong>모의 흥정 협상</strong>: 교실을 활발히 돌아다니며 여러 판매자/구매자와 흥정하도록 격려한다.
+          </td>
+        </tr>
+
+        <!-- 정리 (4차시 마무리) -->
+        <tr>
+          <td class="step-col step-conc">정리<br>(4차시)</td>
+          <td>
+            <strong>충실한 배움 정리<br>&<br>개별 성찰 및<br>차시 예고</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [충실한 12분 정리] 경제 순환도 & 가격 결정 원리 완전 도식화 및 성찰</div>
+            <div class="t-speech">T. [개념 구조화] 80분 동안 신나게 움직인 내용을 활동지 1장에 완벽히 정리합니다. 가계 ↔ 기업 순환 화살표를 채우고, 가격이 오르는 경우(수요>공급)와 내리는 경우(공급>수요)를 표로 완성해 봅시다.</div>
+            <div class="s-speech">S. (개별 활동지 '가계·기업 상호작용도' 및 '가격 변동 원리 2원칙'을 조용히 집중하여 완성함)</div>
+            <div class="t-speech">T. [성찰 나눔] 오늘 활동을 통해 느낀 점을 1줄로 나누어 봅시다.</div>
+            <div class="s-speech">S. "시장의 가격은 사장님이 마음대로 정하는 게 아니라 손님과 사장님이 함께 만드는 것이라는 걸 알았습니다."</div>
+            <div class="t-speech">T. [차시 예고] 다음 5차시에는 열심히 일하는 근로자의 권리와 노동의 가치를 배우고 캠페인을 벌입니다.</div>
+          </td>
+          <td class="step-col">12′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> [사회] 3~4차시 활동지, 정리 PPT<br>
+            <span class="note-tag">※</span> <strong>충실한 정리 시간(12분) 엄수</strong>: 동적 활동 후 차분하게 자기 생각을 적는 정적 시간을 충분히 확보한다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 4. 하단 3분할: 판서 계획 / 평가 계획 / 수업 팁 -->
+    <div class="bottom-layout">
+      <!-- 판서 계획 -->
+      <div class="box-card">
+        <div class="box-header">📋 판서 계획 (Blackboard Plan)</div>
+        <div class="box-body blackboard">
+          <div class="board-title">단원: 2. 시장경제와 국가 간 거래 (3~4차시 블록)</div>
+          <div>▣ <strong>1부(가계와 기업)</strong>: 가계(노동 제공, 소비) ↔ 기업(일자리, 생산, 이윤)</div>
+          <div>▣ <strong>2부(가격의 결정과 변동)</strong></div>
+          <div>&nbsp;• <strong>소비자</strong>: 조금이라도 싸게 vs <strong>판매자</strong>: 조금이라도 비싸게</div>
+          <div>&nbsp;• <strong>시장 가격</strong>: 사려는 양과 팔려는 양이 일치하는 지점에서 결정!</div>
+          <div>&nbsp;• <strong>가격 변동</strong>: 사려는 사람 > 물건(가격 상승) / 사려는 사람 < 물건(가격 하락)</div>
+        </div>
+      </div>
+
+      <!-- 과정중심평가 계획 -->
+      <div class="box-card">
+        <div class="box-header">🎯 과정중심평가 계획 (Rubric)</div>
+        <div class="box-body">
+          <table class="eval-table">
+            <thead>
+              <tr>
+                <th style="width:45px;">수준</th>
+                <th>평가 기준 (시뮬레이션 관찰 및 활동지 구조도 평가)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="eval-level lvl-hi">우수</td>
+                <td>가계와 기업의 상호작용 순환 구조도를 완벽히 그리고, 모의 협상 경험을 바탕으로 시장 가격 결정 및 변동의 규칙을 논리적으로 서술함.</td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-mid">보통</td>
+                <td>가계와 기업의 역할을 구분할 수 있으며, 사려는 사람과 팔려는 사람에 의해 가격이 오르고 내림을 설명할 수 있음.</td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-low">노력</td>
+                <td>교사의 도움을 받아 가계가 물건을 사고 기업이 물건을 만든다는 기본 사실을 연결할 수 있음.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 수업 팁 및 차시 예고 -->
+      <div class="box-card">
+        <div class="box-header">💡 수업 팁 & 다음 차시 예고</div>
+        <div class="box-body">
+          <div><strong>📌 80분 블록 시간 안배 팁</strong>:</div>
+          <div>신체 이동 활동(30분×2회) 사이 5분간 호흡을 가다듬고, 마지막 12분은 온전히 개인별 학습지 완성에 집중하도록 분위기를 정돈한다.</div>
+          <div style="margin-top:4px;"><strong>⏭️ 다음 5차시 예고</strong>:</div>
+          <div>[과정중심평가 1] 근로자의 권리와 노동의 가치 (권리 보호 캠페인 표어 제작)</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
