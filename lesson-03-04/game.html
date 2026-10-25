@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[수업 교구] 6-2 사회 2단원 3~4차시: 모의 경제 순환 & 사과장터 협상 세트</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #e2e8f0;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .print-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .btn-print {
+      padding: 8px 20px;
+      background: #0f766e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .page-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      background: white;
+      padding: 15mm 15mm;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .page-header {
+      border-bottom: 2px solid #0f766e;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .grid-coupons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 12px;
+      flex-grow: 1;
+    }
+    .coupon-card {
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #f8fafc;
+    }
+    .contract-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      flex-grow: 1;
+    }
+    .contract-box {
+      border: 2px solid #0f766e;
+      border-radius: 8px;
+      padding: 14px;
+      background: #f0fdfa;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .print-bar { display: none; }
+      .page-sheet { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar">
+    <div style="font-size:14px; font-weight:700; color:#1e293b;">
+      📌 [3~4차시 교구] 모의 경제 순환(노동쿠폰·모의화폐) & 사과장터 협상 계약서 세트 (A4 2장)
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ 교구 전체 인쇄 (A4 2장)</button>
+  </div>
+
+  <!-- Sheet 1: 3차시 노동 쿠폰 & 모의 급여 화폐 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#0f766e;">[3차시 교구] 가계 ↔ 기업 경제 순환 쿠폰 세트 (8장)</div>
+      <div style="font-size:12px; color:#64748b;">가위로 잘라 가계팀과 기업팀에 배부 (1/2)</div>
+    </div>
+    <div class="grid-coupons">
+      <!-- 노동 쿠폰 4개 -->
+      <div class="coupon-card" style="border-color:#3b82f6; background:#eff6ff;">
+        <div style="font-size:11px; font-weight:800; color:#1d4ed8;">가계 전용 [노동 쿠폰]</div>
+        <div style="font-size:18px; font-weight:900; color:#1e3a8a; text-align:center; margin:8px 0;">성실한 노동력 제공권</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">기업 공장에 제출하고 급여 10,000원을 수령하세요.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#3b82f6; background:#eff6ff;">
+        <div style="font-size:11px; font-weight:800; color:#1d4ed8;">가계 전용 [노동 쿠폰]</div>
+        <div style="font-size:18px; font-weight:900; color:#1e3a8a; text-align:center; margin:8px 0;">성실한 노동력 제공권</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">기업 공장에 제출하고 급여 10,000원을 수령하세요.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#3b82f6; background:#eff6ff;">
+        <div style="font-size:11px; font-weight:800; color:#1d4ed8;">가계 전용 [노동 쿠폰]</div>
+        <div style="font-size:18px; font-weight:900; color:#1e3a8a; text-align:center; margin:8px 0;">성실한 노동력 제공권</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">기업 공장에 제출하고 급여 10,000원을 수령하세요.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#3b82f6; background:#eff6ff;">
+        <div style="font-size:11px; font-weight:800; color:#1d4ed8;">가계 전용 [노동 쿠폰]</div>
+        <div style="font-size:18px; font-weight:900; color:#1e3a8a; text-align:center; margin:8px 0;">성실한 노동력 제공권</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">기업 공장에 제출하고 급여 10,000원을 수령하세요.</div>
+      </div>
+
+      <!-- 모의 급여 화폐 4개 -->
+      <div class="coupon-card" style="border-color:#16a34a; background:#f0fdf4;">
+        <div style="font-size:11px; font-weight:800; color:#15803d;">기업 지급 [모의 급여권]</div>
+        <div style="font-size:22px; font-weight:900; color:#15803d; text-align:center; margin:6px 0;">10,000 원</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">마트에서 원하는 상품 카드를 구매할 수 있습니다.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#16a34a; background:#f0fdf4;">
+        <div style="font-size:11px; font-weight:800; color:#15803d;">기업 지급 [모의 급여권]</div>
+        <div style="font-size:22px; font-weight:900; color:#15803d; text-align:center; margin:6px 0;">10,000 원</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">마트에서 원하는 상품 카드를 구매할 수 있습니다.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#16a34a; background:#f0fdf4;">
+        <div style="font-size:11px; font-weight:800; color:#15803d;">기업 지급 [모의 급여권]</div>
+        <div style="font-size:22px; font-weight:900; color:#15803d; text-align:center; margin:6px 0;">10,000 원</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">마트에서 원하는 상품 카드를 구매할 수 있습니다.</div>
+      </div>
+      <div class="coupon-card" style="border-color:#16a34a; background:#f0fdf4;">
+        <div style="font-size:11px; font-weight:800; color:#15803d;">기업 지급 [모의 급여권]</div>
+        <div style="font-size:22px; font-weight:900; color:#15803d; text-align:center; margin:6px 0;">10,000 원</div>
+        <div style="font-size:11px; color:#475569; text-align:center;">마트에서 원하는 상품 카드를 구매할 수 있습니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sheet 2: 4차시 사과 장터 모의 협상 계약서 -->
+  <div class="page-sheet">
+    <div class="page-header">
+      <div style="font-size:16px; font-weight:900; color:#b45309;">[4차시 교구] 교실 사과 장터 모의 협상 계약서 (4장)</div>
+      <div style="font-size:12px; color:#64748b;">A4 가위선 오려서 모둠/짝별 1장씩 배부 (2/2)</div>
+    </div>
+    <div class="contract-grid">
+      <div class="contract-box">
+        <div style="font-size:14px; font-weight:900; color:#0f766e; text-align:center; border-bottom:1.5px solid #0f766e; padding-bottom:4px;">
+          🍎 모의 사과 거래 계약서 (1호)
+        </div>
+        <div style="font-size:12px; line-height:1.6; margin:10px 0;">
+          • 사과 농부(판매자): ____________________ (인)<br>
+          • 손님(구매자): ________________________ (인)<br>
+          • 농부 희망가: (최소 3,000원 ~ 7,000원)<br>
+          • 손님 희망가: (최대 7,000원 ~ 3,000원)
+        </div>
+        <div style="background:#ffffff; border:1.5px dashed #0f766e; padding:8px; text-align:center; font-size:13px; font-weight:800; color:#b45309;">
+          최종 타협 시장가격: [ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ] 원
+        </div>
+      </div>
+
+      <div class="contract-box">
+        <div style="font-size:14px; font-weight:900; color:#0f766e; text-align:center; border-bottom:1.5px solid #0f766e; padding-bottom:4px;">
+          🍎 모의 사과 거래 계약서 (2호)
+        </div>
+        <div style="font-size:12px; line-height:1.6; margin:10px 0;">
+          • 사과 농부(판매자): ____________________ (인)<br>
+          • 손님(구매자): ________________________ (인)<br>
+          • 농부 희망가: (최소 3,000원 ~ 7,000원)<br>
+          • 손님 희망가: (최대 7,000원 ~ 3,000원)
+        </div>
+        <div style="background:#ffffff; border:1.5px dashed #0f766e; padding:8px; text-align:center; font-size:13px; font-weight:800; color:#b45309;">
+          최종 타협 시장가격: [ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ] 원
+        </div>
+      </div>
+
+      <div class="contract-box">
+        <div style="font-size:14px; font-weight:900; color:#0f766e; text-align:center; border-bottom:1.5px solid #0f766e; padding-bottom:4px;">
+          🍎 모의 사과 거래 계약서 (3호)
+        </div>
+        <div style="font-size:12px; line-height:1.6; margin:10px 0;">
+          • 사과 농부(판매자): ____________________ (인)<br>
+          • 손님(구매자): ________________________ (인)<br>
+          • 농부 희망가: (최소 3,000원 ~ 7,000원)<br>
+          • 손님 희망가: (최대 7,000원 ~ 3,000원)
+        </div>
+        <div style="background:#ffffff; border:1.5px dashed #0f766e; padding:8px; text-align:center; font-size:13px; font-weight:800; color:#b45309;">
+          최종 타협 시장가격: [ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ] 원
+        </div>
+      </div>
+
+      <div class="contract-box">
+        <div style="font-size:14px; font-weight:900; color:#0f766e; text-align:center; border-bottom:1.5px solid #0f766e; padding-bottom:4px;">
+          🍎 모의 사과 거래 계약서 (4호)
+        </div>
+        <div style="font-size:12px; line-height:1.6; margin:10px 0;">
+          • 사과 농부(판매자): ____________________ (인)<br>
+          • 손님(구매자): ________________________ (인)<br>
+          • 농부 희망가: (최소 3,000원 ~ 7,000원)<br>
+          • 손님 희망가: (최대 7,000원 ~ 3,000원)
+        </div>
+        <div style="background:#ffffff; border:1.5px dashed #0f766e; padding:8px; text-align:center; font-size:13px; font-weight:800; color:#b45309;">
+          최종 타협 시장가격: [ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ] 원
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

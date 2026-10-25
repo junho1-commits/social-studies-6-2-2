@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[활동지] 6-2 사회 2단원 2차시 시장경제의 의미와 특징 (일반학생용)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --accent-light: #f0fdfa;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: #64748b;
+      color: var(--gray-900);
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-toolbar {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .top-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .btn-print {
+      padding: 7px 18px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* A4 1장 꽉 찬 규격 */
+    .sheet-a4 {
+      width: 210mm;
+      height: 297mm;
+      background: white;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      padding: 9mm 13mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    /* 상단 헤더 */
+    .header-box {
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 5px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+    .unit-tag {
+      background: #1e3a8a;
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .header-right {
+      display: flex;
+      gap: 16px;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1.5px solid var(--gray-300);
+      padding: 3px 14px;
+      border-radius: 5px;
+      background: var(--gray-100);
+    }
+    .main-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      margin-top: 2px;
+    }
+    .sub-info {
+      font-size: 12.5px;
+      color: #475569;
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    /* 본문 섹션 */
+    .section-box {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 7px;
+      overflow: hidden;
+      background: white;
+    }
+    .section-title {
+      background: #f8fafc;
+      padding: 6px 12px;
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 1.5px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-content {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+
+    /* 나의 역할 배정 카드 박스 */
+    .role-my-box {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 10px;
+      background: #f0f9ff;
+      border: 1.5px solid #bae6fd;
+      border-radius: 7px;
+      padding: 8px 12px;
+      margin-bottom: 7px;
+    }
+    .role-group-badge {
+      font-weight: 900;
+      font-size: 13.5px;
+      color: #0369a1;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* 경쟁 표 */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin-top: 4px;
+    }
+    .comp-table th, .comp-table td {
+      border: 1.2px solid var(--gray-300);
+      padding: 5px 8px;
+    }
+    .comp-table th {
+      background: #f1f5f9;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* 나의 생각 서술 박스 */
+    .thought-area {
+      border: 1.5px dashed #94a3b8;
+      background: #f8fafc;
+      border-radius: 5px;
+      min-height: 48px;
+      padding: 7px 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #334155;
+    }
+
+    /* 꼭 기억해요 퀴즈 */
+    .quiz-box {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      border-radius: 7px;
+      padding: 8px 12px;
+    }
+    .quiz-title {
+      font-weight: 900;
+      color: #b45309;
+      font-size: 14px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .quiz-item {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 3px;
+    }
+
+    /* 3대 인터랙티브 기능 표준 (고치기 / 전체화면 / 교사용 드로어) */
+    .floating-tools-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 4px 6px;
+      gap: 6px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+      opacity: 0.85;
+      transition: all 0.25s ease;
+    }
+    .floating-tools-widget:hover {
+      opacity: 1;
+      background: rgba(15, 23, 42, 0.95);
+      border-color: #38bdf8;
+      box-shadow: 0 6px 24px rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+    }
+    .f-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .f-btn:hover {
+      background: #1e40af;
+      border-color: #38bdf8;
+      color: white;
+    }
+    .f-btn.active {
+      background: #059669;
+      border-color: #34d399;
+      color: #ffffff;
+    }
+    .f-key-hint {
+      font-size: 10.5px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #editToolbar {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid #38bdf8;
+      border-radius: 12px;
+      padding: 6px 14px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      z-index: 10001;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+    #editToolbar.show {
+      display: flex;
+    }
+    .tb-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .tb-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+    .tb-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 4px;
+    }
+    .color-swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .color-swatch:hover {
+      transform: scale(1.25);
+    }
+
+    #teacherDrawer {
+      position: fixed;
+      bottom: -450px;
+      left: 0;
+      width: 100%;
+      height: 380px;
+      background: rgba(10, 15, 30, 0.96);
+      backdrop-filter: blur(16px);
+      border-top: 3px solid #1e3a8a;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 18px 32px;
+      box-sizing: border-box;
+      color: white;
+    }
+    #teacherDrawer.open {
+      bottom: 0;
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .drawer-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .drawer-stage-nav {
+      display: flex;
+      gap: 6px;
+    }
+    .btn-stage-tab {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-stage-tab:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+    .btn-stage-tab.active {
+      background: #1e40af;
+      border-color: #60a5fa;
+      color: white;
+    }
+    .btn-drawer-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-drawer-close:hover {
+      background: rgba(239, 68, 68, 0.4);
+      border-color: #ef4444;
+    }
+    .drawer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1.8fr 1.2fr;
+      gap: 16px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .drawer-col {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .col-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #38bdf8;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+    .col-body {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      flex: 1;
+      white-space: pre-line;
+    }
+
+    [contenteditable="true"] {
+      outline: 1.5px dashed #1e40af !important;
+      cursor: text;
+    }
+    [contenteditable="true"]:focus {
+      outline: 2px solid #d97706 !important;
+      background: rgba(254, 240, 138, 0.3) !important;
+    }
+    .hidden-by-edit {
+      display: none !important;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .top-toolbar, .floating-tools-widget, #editToolbar, #teacherDrawer {
+        display: none !important;
+      }
+      .sheet-a4 {
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        padding: 9mm 12mm;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 중앙 고치기 도구 막대 -->
+  <div id="editToolbar">
+    <button class="tb-btn" onclick="execUndo()" title="한 걸음 되돌리기">↶ 되돌리기</button>
+    <button class="tb-btn" onclick="execRedo()" title="다시 실행">↷ 다시</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="changeFontSize(1)" title="글자 크게">🗚 크게</button>
+    <button class="tb-btn" onclick="changeFontSize(-1)" title="글자 작게">🗛 작게</button>
+    <button class="tb-btn" onclick="document.execCommand('bold')" title="굵게"><strong>B 굵게</strong></button>
+    <button class="tb-btn" onclick="applyHighlight()" title="형광펜"><span style="background:#fef08a; color:#854d0e; padding:0 3px; border-radius:2px;">🖍️ 형광펜</span></button>
+    <div class="tb-sep"></div>
+    <span style="font-size:11px; color:#cbd5e1; margin-right:2px;">글자색:</span>
+    <span class="color-swatch" style="background:#000000;" onclick="changeTextColor('#000000')" title="검정색"></span>
+    <span class="color-swatch" style="background:#ef4444;" onclick="changeTextColor('#ef4444')" title="빨강색"></span>
+    <span class="color-swatch" style="background:#1e40af;" onclick="changeTextColor('#1e40af')" title="파랑색"></span>
+    <span class="color-swatch" style="background:#16a34a;" onclick="changeTextColor('#16a34a')" title="초록색"></span>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="document.execCommand('justifyCenter')" title="가운데 정렬">≡ 정렬</button>
+    <button class="tb-btn" onclick="insertUserImage()" title="사진 넣기">🖼️ 사진</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="hideCurrentElement()" title="선택한 요소 감추기" style="color:#fca5a5;">👁️ 이 부분 지우기</button>
+    <button class="tb-btn" onclick="hideCurrentSection()" title="선택한 카드 구역 감추기" style="color:#f87171;">🗑️ 이 구역 지우기</button>
+    <button class="tb-btn" onclick="resetAllEdits()" title="모든 수정사항 초기화" style="color:#cbd5e1; margin-left:4px;">🔄 전체 되돌리기</button>
+  </div>
+
+  <div class="top-toolbar">
+    <div class="top-title">
+      📄 [일반 학생용] 6-2 사회 2단원 2차시 활동지: 시장경제 4대 그룹 롤플레잉 탐구 (A4 1장)
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ 인쇄 / PDF 저장
+    </button>
+  </div>
+
+  <main class="sheet-a4">
+    <!-- 1. 헤더 영역 -->
+    <header class="header-box">
+      <div class="header-top">
+        <span class="unit-tag">2022 개정 초등 사회 6-2</span>
+        <div class="header-right">
+          <span>6학년 &nbsp; 반 &nbsp; 번</span>
+          <span>이름 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+      <h1 class="main-title">[2차시] 시장경제가 무엇인지 알아볼까요</h1>
+      <div class="sub-info">
+        <strong>교과서 61~62쪽</strong> &nbsp;|&nbsp; <strong>성취기준</strong>: [6사11-01] 시장경제에서 가계와 기업의 역할을 이해하고 자유로운 경쟁의 모습을 알아보기
+      </div>
+    </header>
+
+    <!-- 2. 시장 속 핵심 개념 (교과서 61~62쪽) -->
+    <section class="section-box">
+      <div class="section-title">
+        <span>📖</span> 1. 시장과 시장경제의 핵심 정의 (교과서 61~62쪽)
+        <span style="font-size:12px; font-weight:normal; color:#475569; margin-left:auto;">[개념 확인 3분]</span>
+      </div>
+      <div class="section-content" style="padding:6px 12px;">
+        <div style="background:#f1f5f9; border-left:3.5px solid #0284c7; padding:3px 10px; font-size:12px; color:#334155; margin-bottom:5px; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 교과서 61~62쪽을 읽고 알맞은 핵심 낱말을 빈칸에 채워 넣습니다.
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div style="background:#f8fafc; border:1.2px solid #e2e8f0; padding:5px 8px; border-radius:5px; font-size:12.5px; line-height:1.45;">
+            ❶ <strong>시 장</strong>: 물건이나 서비스의 ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )가 이루어지는 모든 곳<br>
+            <span style="font-size:11px; color:#64748b;">(전통시장, 마트뿐 아니라 스마트폰 앱, 온라인 쇼핑몰도 모두 시장!)</span>
+          </div>
+          <div style="background:#f8fafc; border:1.2px solid #e2e8f0; padding:5px 8px; border-radius:5px; font-size:12.5px; line-height:1.45;">
+            ❷ <strong>시장경제</strong>: 시장에서 가계와 기업이 자유롭게<br>
+            ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )하며 경제활동을 하는 방식
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. [1라운드: 베이커리 배틀] 뚜레쥬르 vs 파리바게뜨 -->
+    <section class="section-box">
+      <div class="section-title">
+        <span>🥖</span> 2. [1라운드: 베이커리 마켓 배틀] 뚜레쥬르 vs 파리바게뜨
+        <span style="font-size:12px; font-weight:normal; color:#475569; margin-left:auto;">[기업 경쟁 & 가계 비교 10분]</span>
+      </div>
+      <div class="section-content" style="padding:6px 12px;">
+        <div style="background:#f1f5f9; border-left:3.5px solid #ea580c; padding:3px 10px; font-size:11.8px; color:#334155; margin-bottom:5px; border-radius:0 4px 4px 0; line-height:1.4;">
+          <strong>[진행]</strong> 기업(1팀 뚜레쥬르 5명 vs 2팀 파리바게뜨 5명)의 판매 전략을 듣고, 가계(3·4팀 12명)는 꼼꼼히 비교하여 최선의 빵집을 선택합니다.
+        </div>
+        <table class="comp-table" style="font-size:12px;">
+          <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 80%;">
+          </colgroup>
+          <tbody>
+            <tr>
+              <td style="text-align:center; font-weight:900; color:#d97706; background:#fffbeb;">
+                1팀 뚜레쥬르<br><span style="font-size:10.5px; color:#b45309;">(기업 전략)</span>
+              </td>
+              <td style="line-height:1.45;">
+                • <strong>할인/가격</strong>: 통신사 제휴 15% 할인 + 모닝세트 2,500원 할인 이벤트<br>
+                • <strong>품질/덤</strong>: 신선한 순우유 식빵 & 갓 구운 생크림 빵 3개 구매 시 아메리카노/우유 1잔 덤!
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900; color:#2563eb; background:#eff6ff;">
+                2팀 파리바게뜨<br><span style="font-size:10.5px; color:#1d4ed8;">(기업 전략)</span>
+              </td>
+              <td style="line-height:1.45;">
+                • <strong>할인/가격</strong>: 매달 1일 '파바데이' 3,000원 즉시 할인 쿠폰 제공<br>
+                • <strong>품질/덤</strong>: 인기 캐릭터 콜라보 케이크 & 10,000원 이상 구매 시 미니 단팥빵 1개 무료 증정!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:5px; background:#f0fdf4; border:1.2px solid #86efac; border-radius:5px; padding:5px 8px; font-size:12.2px; line-height:1.45;">
+          <strong>🧐 [가계의 합리적 선택]</strong> 내가 선택한 빵집은? ( &nbsp;<strong>뚜레쥬르</strong> &nbsp; / &nbsp; <strong>파리바게뜨</strong> &nbsp;) <span style="font-size:11px; color:#15803d;">[동그라미]</span><br>
+          • <strong>선택한 합리적 이유</strong>: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. [2라운드: 버거 배틀 - 전격 역할 교대!] 맥도날드 vs 버거킹 -->
+    <section class="section-box">
+      <div class="section-title">
+        <span>🍔</span> 3. [2라운드: 버거 마켓 배틀 - 전격 역할 교대!] 맥도날드 vs 버거킹
+        <span style="font-size:12px; font-weight:normal; color:#475569; margin-left:auto;">[역할 교대 10분]</span>
+      </div>
+      <div class="section-content" style="padding:6px 12px;">
+        <div style="background:#f1f5f9; border-left:3.5px solid #16a34a; padding:3px 10px; font-size:11.8px; color:#334155; margin-bottom:5px; border-radius:0 4px 4px 0; line-height:1.4;">
+          <strong>[진행]</strong> 3·4팀이 기업으로 교대하여 버거 마케팅을 펼치고, 1·2팀은 가계가 되어 혜택을 비교한 뒤 합리적으로 선택합니다.
+        </div>
+        <table class="comp-table" style="font-size:12px;">
+          <colgroup>
+            <col style="width: 20%;">
+            <col style="width: 80%;">
+          </colgroup>
+          <tbody>
+            <tr>
+              <td style="text-align:center; font-weight:900; color:#dc2626; background:#fef2f2;">
+                3팀 맥도날드<br><span style="font-size:10.5px; color:#991b1b;">(기업 전략)</span>
+              </td>
+              <td style="line-height:1.45;">
+                • <strong>할인/가격</strong>: '맥런치' 점심 파격 할인 세트(5,500원) + 앱 다운 시 1,000원 쿠폰<br>
+                • <strong>품질/덤</strong>: 100% 순쇠고기 빅맥 패티 & 해피밀 세트 구매 시 인기 캐릭터 피규어 장난감 덤!
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:center; font-weight:900; color:#b91c1c; background:#fff7ed;">
+                4팀 버거킹<br><span style="font-size:10.5px; color:#7c2d12;">(기업 전략)</span>
+              </td>
+              <td style="line-height:1.45;">
+                • <strong>할인/가격</strong>: 불맛 가득 직화구이 쇠고기 와퍼 1+1 특별 행사 (친구와 반값 혜택)<br>
+                • <strong>품질/덤</strong>: 내 맘대로 올엑스트라 무료 재료 추가 + 두툼한 감자튀김 & 탄산음료 리필 1회!
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:5px; background:#eff6ff; border:1.2px solid #93c5fd; border-radius:5px; padding:5px 8px; font-size:12.2px; line-height:1.45;">
+          <strong>💡 [가계의 합리적 선택]</strong> 내가 선택한 버거 브랜드는? ( &nbsp;<strong>맥도날드</strong> &nbsp; / &nbsp; <strong>버거킹</strong> &nbsp;) <span style="font-size:11px; color:#1d4ed8;">[동그라미]</span><br>
+          • <strong>선택한 합리적 이유</strong>: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 시장경제의 핵심 가치 (교과서 62쪽) -->
+    <section class="section-box">
+      <div class="section-title">
+        <span>💡</span> 4. 기업의 자유로운 경쟁과 가계의 합리적 선택이 주는 선물
+        <span style="font-size:12px; font-weight:normal; color:#475569; margin-left:auto;">[배움 다지기 3분]</span>
+      </div>
+      <div class="section-content" style="padding:6px 12px; font-size:12.3px; line-height:1.5;">
+        • <strong>기업의 경쟁이 소비자(가계)에게 주는 도움</strong>: 더 ( &nbsp;<strong>품질</strong>&nbsp; ) 좋은 상품을 ( &nbsp;<strong>착한 가격 / 할인</strong>&nbsp; )에 사고, 친절한 서비스를 누림.<br>
+        • <strong>가계의 합리적 선택이 시장에 주는 영향</strong>: 현명한 소비자의 선택이 훌륭한 기업을 성장시키고, 우리나라 ( &nbsp;<strong>시장경제</strong>&nbsp; )를 더욱 발전시킴!
+      </div>
+    </section>
+
+    <!-- 6. 꼭 기억해요 퀴즈 & 자기 성찰 (교과서 62쪽 하단) -->
+    <div class="quiz-box" style="padding:6px 12px;">
+      <div class="quiz-title" style="font-size:13.5px; margin-bottom:3px;">
+        <span>✏️</span> [교과서 62쪽] 꼭 기억해요!
+      </div>
+      <div class="quiz-item" style="font-size:12.5px; margin-bottom:2px;">
+        1. ( 가계 , <strong>시장</strong> )은/는 물건이나 서비스의 거래가 이루어지는 곳입니다.
+      </div>
+      <div class="quiz-item" style="font-size:12.5px; margin-bottom:2px;">
+        2. 시장에서 가계와 기업이 자유롭게 경쟁하며 경제활동을 하는 방식을 <strong>ㅅ &nbsp; ㅈ &nbsp; ㄱ &nbsp; ㅈ</strong> (이)라고 합니다.
+      </div>
+      <div style="border-top:1.2px dashed #fcd34d; margin-top:4px; padding-top:3px; display:flex; justify-content:space-between; align-items:center; font-size:11.8px;">
+        <span><strong>오늘의 배움 완성도:</strong> 참 잘했어요 ( 🌕 ) &nbsp; 보통이에요 ( 🌓 ) &nbsp; 더 노력해요 ( 🌑 )</span>
+        <span style="color:#b45309; font-weight:800;">모덕초 6학년 사회과 배움공책</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- [우측 하단 플로팅 롤오버 툴바: 고치기 / 전체화면 / 교사용] -->
+  <aside class="floating-tools-widget" id="floatingToolsWidget">
+    <button class="f-btn" id="btnEditToggle" onclick="toggleEditMode()" title="글자 수정 모드 켜기/끄기">
+      <span id="editBtnIcon">✎</span> <span id="editBtnLabel">고치기</span>
+    </button>
+    <button class="f-btn" id="btnFsToggle" onclick="toggleFullScreenMode()" title="전체화면 전환 (단축키: F)">
+      <span>⛶</span> <span id="fsBtnLabel">전체</span>
+      <span class="f-key-hint">F</span>
+    </button>
+    <button class="f-btn" id="btnDrawerToggle" onclick="toggleTeacherDrawer()" title="교사용 메모 서랍 열기 (단축키: T)">
+      <span>📖</span> <span>교사용</span>
+      <span class="f-key-hint">T</span>
+    </button>
+  </aside>
+
+  <!-- [3] 교사용 슬라이드업 드로어 (단계별 맞춤 지도 메모) -->
+  <aside id="teacherDrawer" role="region" aria-label="교사용 수업 메모 서랍">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>📖 [일반 학생용] 2차시 교사용 수업 지도 가이드</span>
+        <div class="drawer-stage-nav" id="drawerStageNav"></div>
+      </div>
+      <button class="btn-drawer-close" onclick="closeTeacherDrawer()" title="닫기 (단축키: Esc)">✕ 닫기 (Esc)</button>
+    </div>
+    <div class="drawer-grid">
+      <div class="drawer-col">
+        <div class="col-label">⏱️ 시간 배분</div>
+        <div class="col-body" id="noteTime">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">💬 예상 학생 답변 / 반응</div>
+        <div class="col-body" id="noteAnswers">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">💡 헷갈릴 지점 & 되받아 줄 말</div>
+        <div class="col-body" id="noteConfusing">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">🎯 핵심 짚어 줄 낱말</div>
+        <div class="col-body" id="noteWords">-</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 기능 스크립트 -->
+  <script>
+    // [공통] 키보드 단축키 (F/ㄹ: 전체화면, T/ㅅ: 교사용, Esc: 서랍 닫기)
+    document.addEventListener('keydown', (e) => {
+      if (e.target && (e.target.isContentEditable || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+      const k = e.key.toLowerCase();
+      if (k === 'f' || e.key === 'ㄹ') {
+        e.preventDefault();
+        toggleFullScreenMode();
+      } else if (k === 't' || e.key === 'ㅅ') {
+        e.preventDefault();
+        toggleTeacherDrawer();
+      } else if (e.key === 'Escape') {
+        closeTeacherDrawer();
+      }
+    });
+
+    // [1] 고치기 기능 (contenteditable & localStorage)
+    let isEditing = false;
+    let saveTimer = null;
+
+    function getStorageKey() {
+      let filename = '2chasi_general.html';
+      try {
+        const parts = window.location.pathname.split(/[\\/]/);
+        const raw = parts[parts.length - 1];
+        if (raw) filename = decodeURIComponent(raw);
+      } catch (err) {}
+      return 'worksheet_gen_store_v1_' + filename;
+    }
+
+    const editToolbar = document.getElementById('editToolbar');
+    const btnEditToggle = document.getElementById('btnEditToggle');
+    const editBtnIcon = document.getElementById('editBtnIcon');
+    const editBtnLabel = document.getElementById('editBtnLabel');
+
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.body.classList.toggle('is-editing', isEditing);
+      editToolbar.classList.toggle('show', isEditing);
+      btnEditToggle.classList.toggle('active', isEditing);
+      if (isEditing) {
+        editBtnIcon.textContent = '💾';
+        editBtnLabel.textContent = '편집완료';
+        makeElementsEditable(true);
+      } else {
+        editBtnIcon.textContent = '✎';
+        editBtnLabel.textContent = '고치기';
+        makeElementsEditable(false);
+        saveAllEdits();
+      }
+    }
+
+    function makeElementsEditable(enable) {
+      const targetSheet = document.querySelector('.sheet-a4');
+      if (!targetSheet) return;
+      const editableSelectors = 'h1, h2, h3, p, span, div, strong, label, tr, td, th';
+      const elements = targetSheet.querySelectorAll(editableSelectors);
+
+      elements.forEach(el => {
+        if (el.closest('#editToolbar') || el.closest('#teacherDrawer') || el.closest('.floating-tools-widget') || el.closest('.top-toolbar')) {
+          return;
+        }
+        if (enable) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('input', debounceAutoSave);
+        } else {
+          el.removeAttribute('contenteditable');
+        }
+      });
+    }
+
+    function execUndo() { document.execCommand('undo'); }
+    function execRedo() { document.execCommand('redo'); }
+
+    function changeFontSize(direction) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      let targetNode = sel.anchorNode;
+      if (targetNode.nodeType === 3) targetNode = targetNode.parentNode;
+      const currentSize = parseFloat(window.getComputedStyle(targetNode).fontSize) || 13;
+      const newSize = Math.max(9, currentSize + (direction * 2));
+      targetNode.style.fontSize = newSize + 'px';
+      debounceAutoSave();
+    }
+
+    function applyHighlight() {
+      if (!document.execCommand('hiliteColor', false, '#fef08a')) {
+        document.execCommand('backColor', false, '#fef08a');
+      }
+      debounceAutoSave();
+    }
+
+    function changeTextColor(color) {
+      document.execCommand('foreColor', false, color);
+      debounceAutoSave();
+    }
+
+    function insertUserImage() {
+      const url = prompt('삽입할 이미지 URL을 입력하세요:');
+      if (url) {
+        document.execCommand('insertImage', false, url);
+        debounceAutoSave();
+      }
+    }
+
+    function hideCurrentElement() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        if (node && !node.classList.contains('sheet-a4')) {
+          node.classList.add('hidden-by-edit');
+          debounceAutoSave();
+        }
+      }
+    }
+
+    function hideCurrentSection() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        const section = node.closest('.section-box') || node.closest('.quiz-box');
+        if (section) {
+          if (confirm('선택한 활동 구역을 화면에서 감추시겠습니까?')) {
+            section.classList.add('hidden-by-edit');
+            debounceAutoSave();
+          }
+        }
+      }
+    }
+
+    function debounceAutoSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveAllEdits, 300);
+    }
+
+    function saveAllEdits() {
+      const key = getStorageKey();
+      const sheet = document.querySelector('.sheet-a4');
+      if (sheet) {
+        localStorage.setItem(key, sheet.innerHTML);
+      }
+    }
+
+    function restoreSavedEdits() {
+      const key = getStorageKey();
+      const savedHTML = localStorage.getItem(key);
+      if (savedHTML) {
+        const sheet = document.querySelector('.sheet-a4');
+        if (sheet) {
+          sheet.innerHTML = savedHTML;
+        }
+      }
+    }
+
+    function resetAllEdits() {
+      if (confirm('모든 고친 내용을 초기화하고 원본 학습지로 되돌리시겠습니까?')) {
+        const key = getStorageKey();
+        localStorage.removeItem(key);
+        location.reload();
+      }
+    }
+
+    // [2] 전체 화면 기능
+    const fsBtnLabel = document.getElementById('fsBtnLabel');
+    function toggleFullScreenMode() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert('전체화면 모드를 실행할 수 없습니다: ' + err.message);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!document.fullscreenElement;
+      document.body.classList.toggle('is-fullscreen', isFs);
+      if (fsBtnLabel) fsBtnLabel.textContent = isFs ? '해제' : '전체';
+    });
+
+    // [3] 교사용 슬라이드업 드로어 기능
+    const teacherDrawer = document.getElementById('teacherDrawer');
+    const drawerStageNav = document.getElementById('drawerStageNav');
+    const noteTime = document.getElementById('noteTime');
+    const noteAnswers = document.getElementById('noteAnswers');
+    const noteConfusing = document.getElementById('noteConfusing');
+    const noteWords = document.getElementById('noteWords');
+
+    let currentStageIndex = 0;
+
+    function renderStageTabs() {
+      drawerStageNav.innerHTML = '';
+      TEACHER_NOTES.forEach((note, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-stage-tab' + (idx === currentStageIndex ? ' active' : '');
+        btn.textContent = note.stage;
+        btn.onclick = () => selectStage(idx);
+        drawerStageNav.appendChild(btn);
+      });
+    }
+
+    function selectStage(index) {
+      currentStageIndex = index;
+      const note = TEACHER_NOTES[index] || {};
+      noteTime.textContent = note.time || '-';
+      noteAnswers.textContent = note.answers || '-';
+      noteConfusing.textContent = note.confusing || '-';
+      noteWords.textContent = note.words || '-';
+
+      const tabs = drawerStageNav.querySelectorAll('.btn-stage-tab');
+      tabs.forEach((tab, idx) => {
+        tab.classList.toggle('active', idx === index);
+      });
+    }
+
+    function toggleTeacherDrawer() {
+      const isOpen = teacherDrawer.classList.contains('open');
+      if (isOpen) closeTeacherDrawer();
+      else openTeacherDrawer();
+    }
+
+    function openTeacherDrawer() {
+      renderStageTabs();
+      selectStage(currentStageIndex);
+      teacherDrawer.classList.add('open');
+    }
+
+    function closeTeacherDrawer() {
+      teacherDrawer.classList.remove('open');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      restoreSavedEdits();
+    });
+
+    const TEACHER_NOTES = [
+      {
+        stage: "1단계",
+        title: "시장과 시장경제의 핵심 정의",
+        time: "3분",
+        answers: "• ❶ 시장: 거래 / ❷ 시장경제: 경쟁\n• \"온라인 쇼핑몰도 시장이고, 마트도 시장이에요.\"",
+        confusing: "• 헷갈리는 지점: 장소의 개념을 물리적 건물에만 국한하지 않도록 주의.\n• 되받아 줄 말: \"맞아요! 보이지 않는 스마트폰 앱도 모두 시장에 포함된답니다!\"",
+        words: "시장, 거래, 가계, 기업, 시장경제"
+      },
+      {
+        stage: "2단계",
+        title: "1R 베이커리 배틀: 뚜레쥬르 vs 파리바게뜨",
+        time: "10분",
+        answers: "• 뚜레쥬르: 통신사 15% 할인, 순우유식빵, 커피 덤\n• 파리바게뜨: 매달 1일 3천원 쿠폰, 캐릭터 케이크, 단팥빵 덤\n• 가계의 합리적 선택: 가격과 덤, 품질을 비교하여 주체적으로 선택 및 이유 서술",
+        confusing: "• 헷갈리는 지점: 단순히 '내가 좋아하는 브랜드'만 고르는 것이 아님.\n• 되받아 줄 말: \"가격 할인과 품질, 덤 혜택을 꼼꼼히 비교해 가장 만족도가 높은 곳을 논리적으로 골라보세요!\"",
+        words: "판매 경쟁, 가격 할인, 1+1 덤, 합리적 선택"
+      },
+      {
+        stage: "3단계",
+        title: "2R 버거 배틀 (역할 교대): 맥도날드 vs 버거킹",
+        time: "10분",
+        answers: "• 맥도날드: 맥런치 세트 할인, 빅맥 순쇠고기 패티, 해피밀 장난감 덤\n• 버거킹: 직화 와퍼 1+1, 올엑스트라 무료 추가, 두툼 감자튀김\n• 가계의 합리적 선택: 가성비와 혜택을 비교하여 최선의 선택과 이유 기록",
+        confusing: "• 헷갈리는 지점: 역할이 바뀌었을 때 혼동하지 않도록 안내.\n• 되받아 줄 말: \"1·2팀은 이제 꼼꼼한 소비자가 되어 두 버거의 가성비를 돋보기로 심사해 주세요!\"",
+        words: "전격 역할 교대, 버거 배틀, 가성비, 가치 소비"
+      },
+      {
+        stage: "4단계",
+        title: "시장경제의 핵심 원리와 가치 정리",
+        time: "4분",
+        answers: "• 기업 경쟁: 우수한 품질, 착한 가격, 친절한 서비스 혜택\n• 가계 선택: 현명한 소비가 기업을 혁신시키고 시장경제를 발전시킴",
+        confusing: "• 헷갈리는 지점: 기업의 경쟁이 소비자에게 피해를 준다고 오해할 때.\n• 되받아 줄 말: \"기업들이 손님을 잡기 위해 경쟁할수록 우리는 더 싸고 맛있는 빵과 버거를 먹을 수 있답니다!\"",
+        words: "품질 혁신, 착한 가격, 소비자 주권, 시장경제 발전"
+      }
+    ];
+  </script>
+</body>
+</html>

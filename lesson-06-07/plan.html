@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사용 지도안] 6-2 사회 2단원 6~7차시 블록 수업과정안 (A4 가로 1장 꽉 찬 지도안)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --accent-light: #f0fdfa;
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      color: var(--gray-900);
+      background-color: #94a3b8;
+      line-height: 1.34;
+      font-size: 10.6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .top-toolbar {
+      width: 100%;
+      max-width: 1360px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .top-info {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .btn-print {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.15s ease;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .sheet-landscape {
+      width: 100%;
+      max-width: 1360px;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 16px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 5px;
+    }
+    .doc-title-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-tag {
+      background: #1e40af;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-block {
+      background: #0f766e;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-finish {
+      background: #d97706;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .doc-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .doc-meta-right {
+      font-size: 11px;
+      color: var(--gray-600);
+      text-align: right;
+      line-height: 1.35;
+    }
+    .doc-meta-right strong {
+      color: var(--gray-900);
+    }
+
+    table.meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      table-layout: fixed;
+    }
+    table.meta-table th, table.meta-table td {
+      border: 1px solid var(--gray-300);
+      padding: 3.5px 6.5px;
+      vertical-align: middle;
+    }
+    table.meta-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      text-align: center;
+      width: 82px;
+    }
+    .highlight-target {
+      color: #1e40af;
+      font-weight: 700;
+    }
+
+    table.lesson-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.3px;
+      line-height: 1.35;
+      table-layout: fixed;
+    }
+    table.lesson-table th, table.lesson-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4px 6.5px;
+      vertical-align: top;
+    }
+    table.lesson-table th {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 800;
+      text-align: center;
+      padding: 4px 6px;
+    }
+    .step-col {
+      text-align: center;
+      font-weight: 800;
+      vertical-align: middle !important;
+    }
+    .step-intro { background: #eff6ff; color: #1e40af; }
+    .step-dev { background: #f0fdfa; color: #0f766e; }
+    .step-conc { background: #fefce8; color: #a16207; }
+
+    .act-title {
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .t-speech {
+      color: #0369a1;
+      font-weight: 600;
+    }
+    .s-speech {
+      color: #15803d;
+    }
+    .note-text {
+      font-size: 9.6px;
+      color: #475569;
+      line-height: 1.3;
+    }
+    .note-tag {
+      font-weight: 700;
+      color: #dc2626;
+    }
+    .data-tag {
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr 0.8fr;
+      gap: 8px;
+    }
+    .box-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .box-header {
+      padding: 3px 8px;
+      background: #f1f5f9;
+      font-size: 10.6px;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 1px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .box-body {
+      padding: 4.5px 7.5px;
+      font-size: 10px;
+      line-height: 1.36;
+      flex-grow: 1;
+    }
+
+    .blackboard {
+      background: #1e293b;
+      color: #f8fafc;
+      border-radius: 3px;
+      padding: 5px 7px;
+      font-family: inherit;
+      font-size: 9.8px;
+      line-height: 1.38;
+    }
+    .board-title {
+      color: #fde047;
+      font-weight: 800;
+      border-bottom: 1px dashed #64748b;
+      padding-bottom: 2px;
+      margin-bottom: 3px;
+    }
+
+    table.eval-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.8px;
+    }
+    table.eval-table th, table.eval-table td {
+      border: 1px solid #cbd5e1;
+      padding: 2.5px 4px;
+    }
+    table.eval-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: center;
+    }
+    .eval-level {
+      font-weight: 800;
+      text-align: center;
+    }
+    .lvl-hi { color: #16a34a; }
+    .lvl-mid { color: #d97706; }
+    .lvl-low { color: #dc2626; }
+
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .sheet-landscape {
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 5.5mm 7.5mm 4.5mm 7.5mm !important;
+        gap: 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 컨트롤 툴바 -->
+  <div class="top-toolbar">
+    <div class="top-info">
+      📌 <strong>A4 가로형(Landscape) 단면 1장</strong> 최적화 레이아웃 (모덕초 6-2 사회 2단원 6~7차시 블록 및 1주제 마무리)
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ A4 가로 1장 인쇄 / PDF 저장
+    </button>
+  </div>
+
+  <main class="sheet-landscape">
+    
+    <!-- 1. 문서 헤더 -->
+    <header class="doc-header">
+      <div class="doc-title-left">
+        <span class="badge-tag">2022 개정 교육과정</span>
+        <span class="badge-block">80분 연속 블록 타임</span>
+        <span class="badge-finish">1주제 총괄 마무리</span>
+        <h1 class="doc-title">사회과 교수·학습 과정안 (6~7차시 블록)</h1>
+      </div>
+      <div class="doc-meta-right">
+        <div><strong>일시</strong>: 2026. 10. | <strong>대상</strong>: 6학년 (통합학급 포함) | <strong>장소</strong>: 6학년 교실</div>
+        <div><strong>단원</strong>: 2. 시장경제와 국가 간 거래 | <strong>차시</strong>: 6~7 / 18차시 (교과서 72~77쪽)</div>
+      </div>
+    </header>
+
+    <!-- 2. 수업 개요 메타 테이블 -->
+    <table class="meta-table">
+      <colgroup>
+        <col style="width: 78px;">
+        <col style="width: 190px;">
+        <col style="width: 78px;">
+        <col style="width: auto;">
+        <col style="width: 78px;">
+        <col style="width: 140px;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>대주제</th>
+          <td>1. 우리나라 시장경제의 특징</td>
+          <th>성취기준</th>
+          <td><strong>[6사11-01]</strong> 시장경제에서 가계와 기업의 역할을 이해하고, 근로자의 권리와 기업의 자유 및 사회적 책임을 탐색한다.</td>
+          <th>수업 모형</th>
+          <td>모의 창업 마켓 및 가치 탐구 모형</td>
+        </tr>
+        <tr>
+          <th>배움 주제</th>
+          <td colspan="3"><span class="highlight-target">기업의 자유로운 경쟁과 사회적 책임(CSR) 탐색 및 1주제 배움 종합 정리하기</span></td>
+          <th>핵심 역량</th>
+          <td>창의적 사고력, 문제 해결력 및 의사 결정력</td>
+        </tr>
+        <tr>
+          <th>배움 목표</th>
+          <td colspan="5">
+            <strong>[지식]</strong> 기업의 다양한 경쟁 방식(가격·품질·서비스)이 소비자에게 주는 이점과, 기업의 사회적 책임(CSR)의 필요성을 설명할 수 있다.<br>
+            <strong>[기능]</strong> 교실 팝업스토어 및 가치 투자 엑스포에 참여하여 비교·선택하고, 1주제 핵심 개념 마인드맵을 체계적으로 구조화할 수 있다.<br>
+            <strong>[태도]</strong> 단순한 이윤 추구를 넘어 사회와 환경을 생각하는 윤리적 기업 활동과 가치 소비(착한 소비)에 공감하고 실천한다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. 본시 교수·학습 과정안 메인 테이블 (80분 블록) -->
+    <table class="lesson-table">
+      <colgroup>
+        <col style="width: 48px;">
+        <col style="width: 76px;">
+        <col style="width: auto;">
+        <col style="width: 38px;">
+        <col style="width: 195px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>단계</th>
+          <th>배움 과정</th>
+          <th>교수·학습 활동 (교사 발문 및 학생 활동)</th>
+          <th>시간</th>
+          <th>자료(★) 및 지도상 유의점(※)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 도입 (6차시 시작) -->
+        <tr>
+          <td class="step-col step-intro">도입<br>(6차시)</td>
+          <td>
+            <strong>동기 유발<br>&<br>배움 문제 확인</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ 편의점 1+1 행사 & 친환경 착한 기업 사례 영상 열기</div>
+            <div class="t-speech">T. "골목 하나를 사이에 두고 편의점이나 빵집이 서로 마주 보고 있다면, 사장님들은 손님을 모으기 위해 어떤 노력을 할까요?"</div>
+            <div class="s-speech">S. 가격을 할인하거나(1+1, 2+1), 더 맛있는 신제품을 개발하고, 친절하게 배달 서비스를 해줍니다!</div>
+            <div class="t-speech">T. 기업들이 자유롭게 경쟁하면 소비자인 우리에게는 어떤 점이 좋을까요? 또 돈만 많이 벌면 훌륭한 기업일까요?</div>
+            <div style="margin-top:2px; font-weight:700; color:#1e40af;">[배움 문제] 기업의 자유로운 경쟁과 사회적 책임을 알아보고, 1주제 배움을 총정리해 봅시다.</div>
+          </td>
+          <td class="step-col">7′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 수업 PPT (기업 경쟁 광고 & CSR 사례)<br>
+            <span class="note-tag">※</span> 80분 블록 운영 안내: 1부(팝업스토어 경쟁 배틀), 2부(착한 기업 엑스포 & 1주제 마스터 정리).
+          </td>
+        </tr>
+
+        <!-- 전개 1 (6차시 본활동) -->
+        <tr>
+          <td rowspan="2" class="step-col step-dev">전개<br>(6~7차시)</td>
+          <td>
+            <strong>[활동 1: 6차시]<br>교실 창업<br>팝업스토어<br>경쟁 배틀</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [신체 활동 1] 6대 모둠 팝업스토어 오픈 & 스탠딩 비교 쇼핑 배틀 (28분)</div>
+            <div class="t-speech">T. 6개 모둠이 각자 [문구점], [베이커리], [과일가게] 대표가 되어 교실 책상에 팝업스토어를 엽니다. 각자 내세울 무기(가격 할인, 품질 혁신, 친절 서비스)를 팻말에 적어 손님을 유치하세요!</div>
+            <div class="s-speech">S. (모둠 절반은 사장님이 되어 홍보하고, 절반은 소비자가 되어 장바구니를 들고 교실을 돌며 비교 쇼핑함)</div>
+            <div class="t-speech">T. 손님들은 어떤 가게를 선택했나요? 기업들의 경쟁 덕분에 소비자는 어떤 혜택을 누리게 되었나요?</div>
+            <div class="s-speech">S. 더 싼 가격에 사거나, 신기하고 품질 좋은 물건을 샀습니다. 기업이 경쟁할수록 소비자의 선택권이 넓어지고 생활이 편리해집니다!</div>
+          </td>
+          <td class="step-col">28′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 모의 팝업스토어 간판, 홍보 피켓, 모의 화폐<br>
+            <span class="note-tag">※</span> <strong>활동적 쇼핑 투어</strong>: 전원이 역할을 교대하며 능동적으로 이동하여 3대 경쟁(가격·품질·서비스)을 체감한다.
+          </td>
+        </tr>
+
+        <!-- 전개 2 (7차시 전반) -->
+        <tr>
+          <td>
+            <strong>[활동 2: 7차시]<br>착한 기업(CSR)<br>가치 투자<br>엑스포</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [신체 활동 2] 사회적 책임(CSR) 실천 기업 부스 순회 & 가치 투자 투표 (30분)</div>
+            <div class="t-speech">T. 오직 이윤만 좇아 환경을 오염시키거나 근로자를 혹사시킨 기업 A와, 친환경 포장재를 쓰고 장애인을 고용하며 수익 일부를 기부하는 기업 B가 있습니다. 여러분은 어디에 투자하고 물건을 사겠습니까?</div>
+            <div class="s-speech">S. 당연히 사회와 환경을 생각하는 기업 B입니다! 조금 비싸더라도 B 기업 제품을 사는 '착한 소비'를 하겠습니다!</div>
+            <div class="t-speech">T. [엑스포 순회 투표] 교실 벽면에 설치된 6개 착한 기업(친환경, 공정무역, 취약계층 나눔 등) 사례 부스를 돌아보며, 가장 응원하고 싶은 기업에 '가치 투자 스티커'를 부착해 봅시다.</div>
+            <div class="s-speech">S. (모둠원들과 함께 교실을 돌며 기업의 사회적 책임 사례를 읽고 감탄하며 스티커를 부착함)</div>
+          </td>
+          <td class="step-col">30′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> CSR 실천 기업 부스 판넬 6종, 가치 투자 스티커<br>
+            <span class="note-tag">※</span> <strong>가치 지향 엑스포</strong>: 학생 스스로 바람직한 소비자와 투자자의 역할을 인식하도록 유도한다.
+          </td>
+        </tr>
+
+        <!-- 정리 (7차시 마무리) -->
+        <tr>
+          <td class="step-col step-conc">정리<br>(7차시)</td>
+          <td>
+            <strong>충실한 배움 정리<br>&<br>1주제 마인드맵<br>& 차시 예고</strong>
+          </td>
+          <td>
+            <div class="act-title">▶ [충실한 15분 대단원 정리] 1주제 '시장경제 마스터 마인드맵' 완성 및 골든벨</div>
+            <div class="t-speech">T. [1주제 종합 구조화] 1차시부터 7차시까지 배운 시장경제의 모든 것을 한 장의 마인드맵으로 정리합니다. (시장 탄생 → 보이는/보이지 않는 시장 → 가계와 기업 → 가격 결정 → 근로자 권리 → 기업 경쟁과 CSR)</div>
+            <div class="s-speech">S. (조용한 몰입 속에서 1주제 핵심정리 활동지의 빈칸과 연결망을 차분히 채우며 전체 배움을 체계화함)</div>
+            <div class="t-speech">T. [골든벨 확인] 1주제 핵심 퀴즈 3문항 해결 및 상호 피드백.</div>
+            <div class="t-speech">T. [2주제 예고] 다음 8차시부터는 우리나라가 눈부신 발전을 이룬 '경제성장과 우리 생활'의 변화를 탐구합니다.</div>
+          </td>
+          <td class="step-col">15′</td>
+          <td class="note-text">
+            <span class="data-tag">★</span> 1주제 핵심정리 활동지, 종합 마인드맵 슬라이드<br>
+            <span class="note-tag">※</span> <strong>충실한 15분 완전 정리 보장</strong>: 1주제 7차시 전체를 꿰뚫는 개념 정리가 이루어지도록 시간을 절대 침범하지 않는다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 4. 하단 3분할: 판서 계획 / 평가 계획 / 수업 팁 -->
+    <div class="bottom-layout">
+      <!-- 판서 계획 -->
+      <div class="box-card">
+        <div class="box-header">📋 판서 계획 (Blackboard Plan)</div>
+        <div class="box-body blackboard">
+          <div class="board-title">단원: 2. 시장경제와 국가 간 거래 (6~7차시 블록)</div>
+          <div>▣ <strong>1부(기업의 자유로운 경쟁)</strong></div>
+          <div>&nbsp;• <strong>경쟁의 방법</strong>: 가격 경쟁(할인), 품질 경쟁(신기술), 서비스 경쟁(AS)</div>
+          <div>&nbsp;• <strong>소비자의 이점</strong>: 더 좋은 품질, 더 저렴한 가격, 선택권 확대</div>
+          <div>▣ <strong>2부(기업의 사회적 책임 & 1주제 정리)</strong></div>
+          <div>&nbsp;• <strong>사회적 책임(CSR)</strong>: 친환경 경영, 사회 공헌, 윤리 경영, 공정무역</div>
+          <div>&nbsp;• <strong>1주제 맥락</strong>: 시장 ➔ 가계·기업 ➔ 가격 ➔ 근로자 권리 ➔ 공정 경쟁과 CSR</div>
+        </div>
+      </div>
+
+      <!-- 과정중심평가 계획 -->
+      <div class="box-card">
+        <div class="box-header">🎯 과정중심평가 계획 (Rubric)</div>
+        <div class="box-body">
+          <table class="eval-table">
+            <thead>
+              <tr>
+                <th style="width:45px;">수준</th>
+                <th>평가 기준 (모의 쇼핑 관찰 및 1주제 마인드맵 평가)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="eval-level lvl-hi">우수</td>
+                <td>기업 경쟁이 소비자에게 주는 이점과 기업의 사회적 책임을 유기적으로 이해하고, 1주제 전체 개념을 상호 연결된 마인드맵으로 완벽히 구조화함.</td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-mid">보통</td>
+                <td>기업이 경쟁하는 방법 2가지 이상과 사회적 책임 사례를 들 수 있으며, 1주제 정리 빈칸을 대부분 채움.</td>
+              </tr>
+              <tr>
+                <td class="eval-level lvl-low">노력</td>
+                <td>교사의 안내를 받아 좋은 제품을 만드는 기업의 노력과 1주제 핵심 낱말을 짝지을 수 있음.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 수업 팁 및 차시 예고 -->
+      <div class="box-card">
+        <div class="box-header">💡 수업 팁 & 다음 차시 예고</div>
+        <div class="box-body">
+          <div><strong>📌 1주제 총결산 정리 팁</strong>:</div>
+          <div>활동 1·2에서 축적된 신체 에너지를 마지막 15분 마인드맵 정리 활동으로 차분히 전환하여, 자기 주도적 학습 정리 습관을 정착시킨다.</div>
+          <div style="margin-top:4px;"><strong>⏭️ 다음 8차시 예고</strong>:</div>
+          <div>[2주제: 경제성장과 생활] 우리나라 경제성장의 모습(1인당 GNI)과 달라진 일상생활</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

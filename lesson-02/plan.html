@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[교사용 지도안] 6-2 사회 2단원 2차시 수업과정안 (A4 가로 1장 꽉 찬 지도안)</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #0f766e;
+      --accent-light: #f0fdfa;
+      --gray-900: #0f172a;
+      --gray-800: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-300: #cbd5e1;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      color: var(--gray-900);
+      background-color: #94a3b8;
+      line-height: 1.35;
+      font-size: 10.8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .top-toolbar {
+      width: 100%;
+      max-width: 1360px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+    .top-info {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    }
+    .btn-print {
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.15s ease;
+    }
+    .btn-print:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .sheet-landscape {
+      width: 100%;
+      max-width: 1360px;
+      background: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      padding: 18px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 5px;
+    }
+    .doc-title-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .badge-tag {
+      background: #1e40af;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .doc-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .doc-meta-right {
+      font-size: 11px;
+      color: var(--gray-600);
+      text-align: right;
+      line-height: 1.35;
+    }
+    .doc-meta-right strong {
+      color: var(--gray-900);
+    }
+
+    table.meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.6px;
+      table-layout: fixed;
+    }
+    table.meta-table th, table.meta-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4px 7px;
+      vertical-align: middle;
+    }
+    table.meta-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      text-align: center;
+      width: 82px;
+    }
+    .highlight-target {
+      color: #1e40af;
+      font-weight: 800;
+    }
+
+    table.lesson-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      line-height: 1.36;
+      table-layout: fixed;
+    }
+    table.lesson-table th, table.lesson-table td {
+      border: 1px solid var(--gray-300);
+      padding: 4.5px 6.5px;
+      vertical-align: top;
+    }
+    table.lesson-table th {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 800;
+      text-align: center;
+      padding: 4.5px 6px;
+    }
+    .step-col {
+      text-align: center;
+      font-weight: 800;
+      vertical-align: middle !important;
+    }
+    .step-intro { background: #eff6ff; color: #1e40af; }
+    .step-dev { background: #f0fdfa; color: #0f766e; }
+    .step-conc { background: #fefce8; color: #a16207; }
+
+    .act-title {
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .t-speech {
+      color: #0369a1;
+      font-weight: 600;
+    }
+    .s-speech {
+      color: #15803d;
+    }
+    .note-text {
+      font-size: 9.8px;
+      color: #475569;
+      line-height: 1.32;
+    }
+    .note-tag {
+      font-weight: 700;
+      color: #dc2626;
+    }
+    .data-tag {
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .bottom-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr 0.8fr;
+      gap: 8px;
+    }
+    .box-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+    .box-header {
+      background: #f1f5f9;
+      padding: 3.5px 7px;
+      font-size: 10.8px;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 1px solid var(--gray-300);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .box-content {
+      padding: 5px 7px;
+      font-size: 10.2px;
+      line-height: 1.38;
+      flex-grow: 1;
+    }
+
+    .eval-mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.8px;
+      margin-top: 2px;
+    }
+    .eval-mini-table th, .eval-mini-table td {
+      border: 1px solid var(--gray-200);
+      padding: 2.5px 4px;
+    }
+    .eval-mini-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: center;
+    }
+    .lvl-hi { color: #16a34a; font-weight: 700; }
+    .lvl-mid { color: #d97706; font-weight: 700; }
+    .lvl-low { color: #dc2626; font-weight: 700; }
+
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+      }
+      .top-toolbar {
+        display: none !important;
+      }
+      .sheet-landscape {
+        width: 297mm !important;
+        height: 210mm !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 6mm 8mm 5mm 8mm !important;
+        gap: 5.5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-toolbar">
+    <div class="top-info">
+      📌 <strong>A4 가로형(Landscape) 단면 1장</strong> 최적화 레이아웃 (모덕초 6학년 2학기 사회 2단원 2차시)
+    </div>
+    <button class="btn-print" onclick="window.print()">
+      🖨️ A4 가로 1장 인쇄 / PDF 저장
+    </button>
+  </div>
+
+  <main class="sheet-landscape">
+    
+    <!-- 1. 문서 헤더 -->
+    <header class="doc-header">
+      <div class="doc-title-left">
+        <span class="badge-tag">2022 개정 교육과정</span>
+        <h1 class="doc-title">사회과 교수·학습 과정안 (본시)</h1>
+      </div>
+      <div class="doc-meta-right">
+        <div><strong>일시</strong>: 2026. 10. | <strong>대상</strong>: 6학년 (통합학급 포함) | <strong>장소</strong>: 6학년 교실</div>
+        <div><strong>단원</strong>: 2. 시장경제와 국가 간 거래 | <strong>차시</strong>: 2 / 18차시 (교과서 61~62쪽)</div>
+      </div>
+    </header>
+
+    <!-- 2. 수업 개요 메타 테이블 -->
+    <table class="meta-table">
+      <colgroup>
+        <col style="width: 78px;">
+        <col style="width: 185px;">
+        <col style="width: 78px;">
+        <col style="width: auto;">
+        <col style="width: 78px;">
+        <col style="width: 140px;">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>대주제</th>
+          <td>1. 우리나라 시장경제의 특징</td>
+          <th>성취기준</th>
+          <td><strong>[6사11-01]</strong> 시장경제에서 가계와 기업의 역할을 이해하고, 근로자의 권리와 기업의 자유 및 사회적 책임을 탐색한다.</td>
+          <th>수업 모형</th>
+          <td>모의 마켓 역할 교대(Role Swap) 및 합리적 의사결정 모형</td>
+        </tr>
+        <tr>
+          <th>배움 주제</th>
+          <td colspan="3"><span class="highlight-target">시장경제의 의미와 기업의 판매 경쟁 및 가계의 합리적 선택 탐구하기 (교과서 61~62쪽)</span></td>
+          <th>핵심 역량</th>
+          <td>비판적 사고력, 합리적 의사결정력, 협업·소통 역량</td>
+        </tr>
+        <tr>
+          <th>배움 목표</th>
+          <td colspan="5">
+            <strong>[지식]</strong> 시장, 가계, 기업의 의미를 이해하고, 자유롭게 경쟁하며 경제활동을 하는 <strong>'시장경제'의 개념</strong>을 설명할 수 있다.<br>
+            <strong>[기능]</strong> 학급 <strong>22명이 4팀(2팀 기업 vs 2팀 가계)</strong>으로 나뉘어 1라운드(뚜레쥬르 vs 파리바게뜨)와 2라운드(맥도날드 vs 버거킹, 전격 역할 교대) 모의 마켓 체험을 통해 <strong>기업의 창의적 판매 아이디어 경쟁</strong>과 <strong>가계의 합리적 비교·선택 과정</strong>을 능동적으로 수행할 수 있다.<br>
+            <strong>[태도]</strong> 기업 간의 자유로운 경쟁이 소비자에게 주는 이점(품질 향상, 가격 할인, 서비스 개선)과 가계의 현명한 소비 선택이 시장경제를 발전시키는 상호작용의 가치를 체감하고 성실히 참여한다.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. 본시 교수·학습 과정안 메인 테이블 -->
+    <table class="lesson-table">
+      <colgroup>
+        <col style="width: 48px;">
+        <col style="width: 72px;">
+        <col style="width: auto;">
+        <col style="width: 38px;">
+        <col style="width: 195px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>단계</th>
+          <th>학습 요소</th>
+          <th>교수·학습 활동 (교사 발문 및 학생 활동)</th>
+          <th>시간</th>
+          <th>자료(▶) 및 유의점(※)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 도입 -->
+        <tr>
+          <td class="step-col step-intro">도입</td>
+          <td>
+            <strong>동기 유발<br>& 배움 문제</strong>
+          </td>
+          <td>
+            <div class="act-title">💡 생각 열기: "사과 가격은 왜 지난주와 달라졌을까?"</div>
+            • <span class="t-speech">T. 교과서 60쪽 그림을 보세요. 지난주에 3,000원이던 사과가 오늘은 왜 2,000원으로 내렸을까요?</span><br>
+            - <span class="s-speech">S1. 사과가 많이 생산되어서 파는 양이 늘어났기 때문입니다. / S2. 손님을 더 많이 끌기 위해 옆 가게와 경쟁하며 가격을 낮췄습니다.</span><br>
+            • <span class="t-speech">T. 시장에서는 물건의 가격과 판매 방식이 어떻게 정해질까요? 오늘 배울 문제를 확인해 봅시다.</span>
+            <div style="background:#eff6ff; padding:3px 6px; border-radius:3px; margin-top:2px; border-left:3px solid #1e40af; font-weight:700;">
+              [배움 문제] 시장경제의 의미를 알고, 기업의 판매 경쟁과 가계의 합리적 소비 선택을 체험해 봅시다.
+            </div>
+          </td>
+          <td class="text-center font-bold">5′</td>
+          <td class="note-text">
+            <span class="data-tag">▶</span> 교과서 60~61쪽 삽화 PPT, 실물 사과/가격표 소품<br>
+            <span class="note-tag">※</span> 일상적인 가격 변동 경험(할인 행사, 1+1 덤)을 편안하게 발표하도록 유도함.
+          </td>
+        </tr>
+
+        <!-- 전개 1 -->
+        <tr>
+          <td rowspan="2" class="step-col step-dev">전개</td>
+          <td>
+            <strong>활동 1<br>(개념 탐색)</strong>
+          </td>
+          <td>
+            <div class="act-title">🔍 시장 속 3대 주인공과 시장경제의 원리 (교과서 61~62쪽)</div>
+            • <strong>시장(Market)의 개념 확장</strong>: 전통시장, 대형마트뿐 아니라 <strong>인터넷 쇼핑몰, 배달 앱, 편의점</strong> 등 "장소와 상관없이 물건과 서비스의 거래가 이루어지는 모든 곳"<br>
+            • <strong>경제의 두 기둥</strong>: <span style="color:#0f766e; font-weight:700;">가계</span>(살림을 꾸려가는 생활 공동체, 합리적 소비 주체)와 <span style="color:#b45309; font-weight:700;">기업</span>(이윤을 목적으로 생산·판매하는 조직)<br>
+            • <strong>시장경제(Market Economy) 정의</strong>: 시장에서 가계와 기업이 <strong>자유롭게 경쟁하며 경제활동을 하는 방식</strong>
+          </td>
+          <td class="text-center font-bold">8′</td>
+          <td class="note-text">
+            <span class="data-tag">▶</span> 교과서 61쪽 개념 카드(가계, 기업, 시장, 시장경제)<br>
+            <span class="note-tag">※</span> '시장=특정 건물'이라는 편견을 깨고 디지털/온라인 공간까지 거래 공간으로 확장.
+          </td>
+        </tr>
+
+        <!-- 전개 2 -->
+        <tr>
+          <td>
+            <strong>활동 2<br>(2라운드 배틀)</strong><br><br>
+            <strong>활동 3<br>(가치 심화)</strong>
+          </td>
+          <td>
+            <div class="act-title">🎭 4팀 2기업 vs 2가계 모의 마켓 배틀 & 전격 역할 교대 (Role Swap) (교과서 62쪽)</div>
+            • <strong>학급 22명 4팀 구성</strong>: 1팀(5명), 2팀(5명), 3팀(6명), 4팀(6명) 총 22명<br>
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:4px; padding:4px 6px; margin:2px 0; font-size:10px; line-height:1.42;">
+              <div>🥖 <strong>[1라운드: 베이커리 마켓 배틀]</strong></div>
+              &nbsp;• <strong>기업(2팀)</strong>: <strong>1팀 뚜레쥬르(5명) vs 2팀 파리바게뜨(5명)</strong> ➔ 가격 할인, 순우유/캐릭터 신메뉴, 1+1 덤, 감성 카페/배달, 멤버십 등 기발한 판매 아이디어 외침!<br>
+              &nbsp;• <strong>가계(2팀)</strong>: <strong>3팀 & 4팀 소비자 평가단(12명)</strong> ➔ 가상 예산 안에서 두 빵집의 4대 기준(가격, 맛/품질, 덤/이벤트, 편의성)을 꼼꼼히 비교 후 최선의 빵집에 구매 투표!<br>
+              <div>🍔 <strong>[2라운드: 버거 마켓 배틀 - 전격 역할 교대(Role Swap)!]</strong></div>
+              &nbsp;• <strong>기업(2팀)</strong>: <strong>3팀 맥도날드(6명) vs 4팀 버거킹(6명)</strong> ➔ 맥런치 할인·빅맥 패티 vs 직화 와퍼 1+1·올엑스트라 추가 등 파격 판매 전략으로 손님 유치 경쟁!<br>
+              &nbsp;• <strong>가계(2팀)</strong>: <strong>1팀 & 2팀 소비자 평가단(10명)</strong> ➔ 이번엔 소비자가 되어 두 버거 브랜드의 혜택을 합리적으로 비교·분석하고 현명한 소비 선택 발표!
+            </div>
+            • <strong>[활동 3] 기업의 자유경쟁과 가계의 합리적 선택이 주는 3대 선물 토의</strong><br>
+            - <strong>기업의 경쟁 혜택</strong>: 더 좋은 품질, 착한 가격, 친절한 서비스, 풍성한 덤 제공<br>
+            - <strong>가계의 선택 힘</strong>: 꼼꼼한 비교와 현명한 구매가 우수한 기업을 키우고 시장경제를 발전시킴!
+          </td>
+          <td class="text-center font-bold">19′</td>
+          <td class="note-text">
+            <span class="data-tag">▶</span> 수업 전자칠판 PPT(뚜레쥬르·파바, 맥도날드·버거킹 비교 화면), 학생용 활동지, 가상 지폐 소품<br>
+            <span class="note-tag">※ 역할 교대 몰입</span>: 1R에서 기업이었던 팀이 2R에서는 꼼꼼한 소비자로 변신하여 양쪽 입장을 모두 생생히 체감하도록 안내.
+          </td>
+        </tr>
+
+        <!-- 정리 -->
+        <tr>
+          <td class="step-col step-conc">정리</td>
+          <td>
+            <strong>정리 및 배움 다지기</strong>
+          </td>
+          <td>
+            <div class="act-title">🎯 충실한 배움 정리: 활동지 작성 & 골든벨 퀴즈 (교과서 62쪽 꼭 기억해요)</div>
+            • <strong>활동지 정리</strong>: 1R 베이커리 배틀 & 2R 버거 배틀 비교표 작성, 기업의 판매 아이디어와 합리적 소비 선택 이유 정리<br>
+            • <strong>교과서 62쪽 '꼭 기억해요' 즉석 확인</strong>: ① (시장), ② (시장경제)<br>
+            • <strong>배움 골든벨 O/X 퀴즈</strong>: "기업 간 경쟁이 치열해지면 소비자에게 유리하다?(O)", "시장은 오직 물건을 사고파는 건물만 뜻한다?(X)"<br>
+            • <strong>차시 예고</strong>: 3~4차시 '시장경제에서 가계와 기업의 관계 탐구하기' (생산, 소비, 소득의 순환)
+          </td>
+          <td class="text-center font-bold">8′</td>
+          <td class="note-text">
+            <span class="data-tag">▶</span> 학생용 활동지(일반/쉬운배움터), 미니 화이트보드<br>
+            <span class="note-tag">※ 핵심 정착</span>: "기업의 자유로운 경쟁"과 "가계의 합리적 선택"이 시장경제의 두 바퀴임을 강조.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 4. 하단 3분할: 판서 계획 / 과정중심 평가 계획 / 통합학급 지원 -->
+    <section class="bottom-layout">
+      <!-- 판서 계획 -->
+      <div class="box-card">
+        <div class="box-header">📋 판서 계획 (Blackboard Plan)</div>
+        <div class="box-content" style="font-family:'Pretendard', sans-serif;">
+          <strong>[단원] 2. 시장경제와 국가 간 거래 (2/18)</strong><br>
+          <strong>[배움주제] 시장경제의 의미와 기업 경쟁 및 합리적 소비</strong><br>
+          1. <strong>핵심 개념</strong>: 시장(거래 공간) / 가계(소비) ↔ 기업(생산·이윤)<br>
+          &nbsp;• <strong>시장경제</strong>: 시장에서 자유롭게 경쟁하며 경제활동을 하는 방식<br>
+          2. <strong>모의 마켓 2라운드 배틀 (역할 교대)</strong><br>
+          &nbsp;• <strong>1R 베이커리</strong>: [기업] 뚜레쥬르 vs 파리바게뜨 ↔ [가계] 3·4팀 비교 선택<br>
+          &nbsp;• <strong>2R 버거</strong>: [기업] 맥도날드 vs 버거킹 ↔ [가계] 1·2팀 비교 선택<br>
+          3. <strong>시장경제의 힘</strong>: 기업의 아이디어 경쟁 ➔ 품질 향상·가격 할인 ➔ 가계의 합리적 선택 ➔ 시장경제 발전!
+        </div>
+      </div>
+
+      <!-- 과정중심 평가 계획 -->
+      <div class="box-card">
+        <div class="box-header">📊 과정중심 평가 계획 (관찰·활동지 평가)</div>
+        <div class="box-content">
+          <div><strong>평가 목표</strong>: 시장경제의 의미를 알고 기업의 판매 경쟁과 가계의 합리적 선택 과정을 설명할 수 있는가?</div>
+          <table class="eval-mini-table">
+            <colgroup>
+              <col style="width: 32px;">
+              <col style="width: auto;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>수준</th>
+                <th>평가 기준 (루브릭)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="lvl-hi">우수</td>
+                <td>기업의 판매 전략과 가계의 합리적 비교 기준을 이해하고, 역할 교대 체험에 적극 참여하여 시장경제의 장점을 논리적으로 설명함.</td>
+              </tr>
+              <tr>
+                <td class="lvl-mid">보통</td>
+                <td>모의 마켓에서 자신의 역할(판매 아이디어 제안 또는 합리적 비교 선택)을 수행하고 시장경제의 개념을 바르게 기록함.</td>
+              </tr>
+              <tr>
+                <td class="lvl-low">노력</td>
+                <td>교사의 도움을 받아 기업과 가계의 역할을 구분하고 선호하는 기업을 선택하여 단순 이유를 말함.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 통합학급 지원 및 유의점 -->
+      <div class="box-card">
+        <div class="box-header">🌱 통합학급 맞춤 지원 & 다음 차시 예고</div>
+        <div class="box-content">
+          <strong>[특수·느린학습자 맞춤 지원 (UDL)]</strong><br>
+          • <strong>시각적 비계</strong>: 뚜레쥬르·파바 빵, 맥도날드·버거킹 메뉴 사진과 가격표를 전자칠판 PPT로 직관적 제시.<br>
+          • <strong>의사결정 보조</strong>: 가격/맛/사은품 3가지 체크리스트를 활동지로 제공하여 또래 짝과 쉽게 선택.<br>
+          • <strong>쉬운 배움터 활동지</strong>: 빵집과 버거 브랜드의 장점 선 잇기 및 O/X 퀴즈 제공.<br>
+          <strong>[다음 3~4차시 예고]</strong><br>
+          • 시장경제에서 가계와 기업의 관계 탐구하기 (교과서 63~68쪽)
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

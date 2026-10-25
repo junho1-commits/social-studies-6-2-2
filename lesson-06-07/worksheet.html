@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[활동지] 6-2 사회 2단원 6~7차시: 기업의 자유로운 경쟁과 사회적 책임, 1주제 총정리</title>
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-light: #fffbeb;
+      --accent: #1e3a8a;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-500: #64748b;
+      --gray-200: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #cbd5e1;
+      color: var(--gray-900);
+      line-height: 1.42;
+      font-size: 11.8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .no-print-bar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    .btn-print {
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #d97706;
+      color: white;
+      border: 1px solid #b45309;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      transition: all 0.15s;
+    }
+    .btn-print:hover { background: #b45309; }
+
+    .sheet-a4 {
+      width: 100%;
+      max-width: 820px;
+      min-height: 1140px;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border-radius: 8px;
+      padding: 22px 26px 18px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+
+    .ws-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2.5px solid #d97706;
+      padding-bottom: 7px;
+    }
+    .badge-finish {
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-bottom: 2px;
+      display: inline-block;
+    }
+    .ws-title-group h1 {
+      font-size: 18.5px;
+      font-weight: 900;
+      color: #d97706;
+      letter-spacing: -0.5px;
+    }
+    .ws-subtitle {
+      font-size: 11.5px;
+      color: var(--gray-500);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .student-info-box {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 4px 10px;
+      background: #f8fafc;
+    }
+
+    .target-bar {
+      background: #fffbeb;
+      border-left: 4.5px solid #d97706;
+      padding: 7px 12px;
+      border-radius: 0 4px 4px 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #b45309;
+    }
+
+    .section-block {
+      border: 1px solid var(--gray-200);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .sec-head {
+      background: #f1f5f9;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #d97706;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .sec-body {
+      padding: 9px 13px;
+      font-size: 11.6px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    table.ws-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.4px;
+      margin-top: 3px;
+    }
+    table.ws-table th, table.ws-table td {
+      border: 1px solid #cbd5e1;
+      padding: 5.5px 7.5px;
+      vertical-align: middle;
+    }
+    table.ws-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .mindmap-box {
+      background: #fafaf9;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .mm-node {
+      background: white;
+      border: 1px solid #e7e5e4;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .write-line {
+      border-bottom: 1px solid #cbd5e1;
+      min-height: 20px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .self-eval-box {
+      background: #f8fafc;
+      border-top: 1px solid var(--gray-200);
+      padding: 7px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--gray-700);
+    }
+
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .no-print-bar { display: none !important; }
+      .sheet-a4 {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        min-height: 275mm !important;
+        height: 275mm !important;
+        padding: 10mm 14mm !important;
+      }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ 활동지 인쇄하기 (A4 1장)</button>
+  </div>
+
+  <main class="sheet-a4">
+    <header class="ws-header">
+      <div class="ws-title-group">
+        <span class="badge-finish">1주제 총결산 종합 활동지</span>
+        <h1>[사회 탐구 활동지] 기업의 경쟁과 사회적 책임, 1주제 총정리</h1>
+        <div class="ws-subtitle">6학년 2학기 사회 2단원 6~7차시 블록 | 교과서 72~77쪽 [6사11-01]</div>
+      </div>
+      <div class="student-info-box">
+        <span>6학년 &nbsp; 반</span>
+        <span>&nbsp; 번</span>
+        <span>이름: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+      </div>
+    </header>
+
+    <div class="target-bar">
+      📌 <strong>배움 문제</strong>: 기업의 자유로운 경쟁과 사회적 책임을 알고, 1주제 시장경제의 특징을 종합 정리해 봅시다.
+    </div>
+
+    <!-- 활동 1: 기업의 3대 경쟁 무기와 소비자 혜택 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[활동 1: 6차시] 기업의 3대 경쟁 방식과 소비자에게 주는 이점</span>
+        <span style="font-size:11px; color:#64748b;">(팝업스토어 배틀 15분)</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #0284c7; padding:4px 8px; font-size:10.5px; color:#334155; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 교과서 72~75쪽을 바탕으로 기업의 3대 경쟁 방식(가격 할인, 품질 혁신, 친절 서비스)을 확인하고, 소비자가 누리는 혜택을 표로 정리합니다.
+        </div>
+        <table class="ws-table">
+          <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 45%;">
+            <col style="width: 30%;">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>경쟁의 방법</th>
+              <th>기업의 구체적인 경쟁 노력</th>
+              <th>소비자가 얻는 이점</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th style="background:#eff6ff; color:#1d4ed8;">가격 경쟁</th>
+              <td>생산 원가를 낮추어 할인 행사(1+1, 특가 세일)를 펼침</td>
+              <td><strong>가격 인하</strong> (더 저렴하게 구입)</td>
+            </tr>
+            <tr>
+              <th style="background:#f0fdfa; color:#0f766e;">품질 경쟁</th>
+              <td>신기술을 연구하여 더 맛있고 튼튼하며 예쁜 신제품 개발</td>
+              <td><strong>품질 향상</strong> (더 좋은 제품 향유)</td>
+            </tr>
+            <tr>
+              <th style="background:#fffbeb; color:#b45309;">서비스 경쟁</th>
+              <td>친절한 상담, 빠른 무료 배송, 신속한 사후 무상 수리(AS)</td>
+              <td><strong>만족도 증대</strong> (편리하고 안심 이용)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 활동 2: 기업의 사회적 책임(CSR)과 착한 소비 -->
+    <section class="section-block">
+      <div class="sec-head">
+        <span>[활동 2: 7차시] 기업의 사회적 책임(CSR)과 가치 소비</span>
+        <span style="font-size:11px; color:#64748b;">(착한 기업 엑스포 15분)</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #16a34a; padding:4px 8px; font-size:10.5px; color:#334155; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 교과서 75~76쪽의 사회적 책임을 다하는 기업 사례(친환경 경영, 나눔, 공정 무역)를 읽고, 착한 기업을 응원하는 소비자의 역할을 알아봅니다.
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:10px; margin-top:2px;">
+          <div style="flex:1; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:6px 8px; font-size:11.2px;">
+            <strong style="color:#16a34a;">① 친환경 경영</strong><br>
+            플라스틱 대신 재생 종이 빨대, 재활용 원단 의류 제작
+          </div>
+          <div style="flex:1; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:6px 8px; font-size:11.2px;">
+            <strong style="color:#0284c7;">② 취약계층 나눔</strong><br>
+            장애인 일자리 창출, 결식아동 및 소외계층 기부
+          </div>
+          <div style="flex:1; background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:6px 8px; font-size:11.2px;">
+            <strong style="color:#d97706;">③ 공정 무역</strong><br>
+            가난한 제3세계 농부들에게 정당한 노동 대가 지불
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 활동 3: [충실한 15분 대단원 정리] 1주제 마스터 마인드맵 -->
+    <section class="section-block" style="border:1.5px solid #d97706;">
+      <div class="sec-head" style="background:#fffbeb;">
+        <span style="color:#b45309;">[활동 3] 1주제 '시장경제 마스터 마인드맵' 완전 정리</span>
+        <span style="font-size:11px; color:#b45309; font-weight:700;">[대단원 성찰 15분]</span>
+      </div>
+      <div class="sec-body">
+        <div style="background:#f1f5f9; border-left:3px solid #ea580c; padding:4px 8px; font-size:10.5px; color:#334155; border-radius:0 4px 4px 0;">
+          <strong>[활동 방법]</strong> 1~7차시 전체 배움을 되돌아보며 마인드맵 4대 기둥의 핵심 빈칸을 채우고, 내가 지향하는 바람직한 경제 주체 다짐을 1줄로 적습니다.
+        </div>
+        <div class="mindmap-box">
+          <div class="mm-node" style="border-left:4px solid #38bdf8;">
+            <strong style="color:#0369a1;">[1] 시장의 의미와 다양한 형태</strong><br>
+            • 거래가 일어나는 모든 곳<br>
+            • <strong>오프라인 시장</strong>: 전통시장, 대형마트, 문구점<br>
+            • <strong>온라인 시장</strong>: ( &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ), 앱마켓, 거래소
+          </div>
+          <div class="mm-node" style="border-left:4px solid #16a34a;">
+            <strong style="color:#15803d;">[2] 경제 주체의 순환</strong><br>
+            • <strong>가계</strong>: 노동 제공 ➔ ( &nbsp; &nbsp; &nbsp; &nbsp; ) 획득 ➔ 소비<br>
+            • <strong>기업</strong>: 일자리 마련 ➔ 상품 생산 ➔ ( &nbsp; &nbsp; &nbsp; &nbsp; ) 추구<br>
+            • 서로 의존하는 경제 톱니바퀴
+          </div>
+          <div class="mm-node" style="border-left:4px solid #f59e0b;">
+            <strong style="color:#b45309;">[3] 가격 결정 원리</strong><br>
+            • 사려는 사람(수요) ↔ 팔려는 사람(공급)<br>
+            • 타협하여 만나는 지점: <strong>( &nbsp; &nbsp; &nbsp; &nbsp; ) 가격</strong><br>
+            • 물건 부족 ➔ 가격( &nbsp; &nbsp; ) / 물건 과잉 ➔ 가격( &nbsp; &nbsp; )
+          </div>
+          <div class="mm-node" style="border-left:4px solid #ef4444;">
+            <strong style="color:#dc2626;">[4] 근로자 권리와 착한 기업</strong><br>
+            • 근로자 4대 권리: 안전, 임금, 휴식, 차별금지<br>
+            • 기업의 3대 경쟁: 가격, 품질, 서비스<br>
+            • 사회와 환경을 지키는 <strong>기업의 ( &nbsp; &nbsp; &nbsp; &nbsp; ) 책임(CSR)</strong>
+          </div>
+        </div>
+
+        <div style="margin-top:2px;">
+          <strong>나의 1주제 배움 성찰</strong>: "시장경제 속에서 나는 어떤 소비자와 경제 주체가 될 것인가?"<br>
+          <span class="write-line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 자기평가 바 -->
+    <footer class="self-eval-box">
+      <div><strong>1주제 마스터 배움 확인</strong>: 시장경제의 4대 핵심 개념을 유기적으로 구조화할 수 있나요?</div>
+      <div style="font-size:12px; font-weight:900; color:#d97706;">
+        [ 1주제 마스터 완료! ★★★ ]
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>

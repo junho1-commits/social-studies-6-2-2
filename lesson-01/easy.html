@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[쉬운 배움 활동지] 6-2 사회 2단원 1차시: 알기 쉬운 시장 이야기</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-light: #e0f2fe;
+      --accent: #16a34a;
+      --accent-light: #dcfce7;
+      --yellow: #f59e0b;
+      --yellow-light: #fef3c7;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-200: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #cbd5e1;
+      color: var(--gray-900);
+      line-height: 1.5;
+      font-size: 13.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .no-print-bar, .floating-tools-widget, #editToolbar, #teacherDrawer {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    .btn-print {
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #0284c7;
+      color: white;
+      border: 1px solid #0369a1;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    /* A4 단면 1장 시트 */
+    .sheet-a4 {
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* 헤더 */
+    .ws-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 8px;
+    }
+    .badge-easy {
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .ws-title-group h1 {
+      font-size: 21px;
+      font-weight: 900;
+      color: #0369a1;
+      letter-spacing: -0.5px;
+    }
+    .student-box {
+      border: 2px solid #94a3b8;
+      border-radius: 6px;
+      padding: 5px 12px;
+      background: #f8fafc;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* 배움 안내 바 */
+    .target-bar {
+      background: var(--primary-light);
+      border-left: 5px solid var(--primary);
+      padding: 8px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 쉬운 활동 카드 */
+    .activity-card {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+    }
+    .act-head {
+      background: #f0f9ff;
+      padding: 6px 12px;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0369a1;
+      border-bottom: 1.5px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .act-body {
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+
+    /* 1단계 그림 카드 선택 */
+    .icon-choice-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .choice-item {
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 4px;
+      text-align: center;
+      background: #fafafa;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .choice-item:hover {
+      border-color: #0284c7;
+      background: #f0f9ff;
+    }
+    .choice-icon {
+      font-size: 30px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .choice-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    /* 2단계 물물교환 매칭 */
+    .trade-match-box {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 6px 0;
+    }
+    .trade-item {
+      text-align: center;
+      padding: 6px 14px;
+      background: white;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    /* 쉬운 선택지 체크 */
+    .easy-radio-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .easy-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background: #f8fafc;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .easy-radio-label:hover {
+      background: #e0f2fe;
+      border-color: #38bdf8;
+    }
+
+    /* 하단 칭찬 도장 */
+    .praise-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 8px;
+      padding: 8px 16px;
+    }
+
+    /* A4 인쇄 */
+    @media print {
+      body {
+        background: white !important;
+        padding: 0 !important;
+      }
+      .no-print-bar, .floating-tools-widget, #editToolbar, #teacherDrawer {
+        display: none !important;
+      }
+      .sheet-a4 {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 8mm 10mm 6mm 10mm !important;
+        gap: 8px !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+      .ws-title-group h1 {
+        font-size: 19px !important;
+      }
+      .act-head {
+        padding: 4px 10px !important;
+      }
+      .act-body {
+        padding: 7px 12px !important;
+      }
+    }
+  
+    /* [1] 고치기 모드 스타일 */
+    .is-editing [contenteditable="true"] {
+      outline: 2px dashed rgba(2, 132, 199, 0.7) !important;
+      outline-offset: 3px;
+      cursor: text;
+    }
+    .is-editing [contenteditable="true"]:hover {
+      outline-color: #0284c7 !important;
+      background: rgba(2, 132, 199, 0.05);
+    }
+    .hidden-by-edit {
+      display: none !important;
+    }
+
+    /* 상단 중앙 플로팅 얇은 도구 막대 */
+    #editToolbar {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+      padding: 6px 16px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      z-index: 10001;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    #editToolbar.show {
+      display: flex;
+    }
+    .tb-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f1f5f9;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s;
+    }
+    .tb-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+    .tb-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 4px;
+    }
+    .color-swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .color-swatch:hover {
+      transform: scale(1.25);
+    }
+
+    /* [2] 전체 화면 시 여백 0 및 대형화 */
+    :fullscreen body, body.is-fullscreen {
+      padding: 0 !important;
+      margin: 0 !important;
+      background: #e2e8f0 !important;
+      height: 100vh !important;
+      width: 100vw !important;
+      overflow-y: auto !important;
+    }
+    :fullscreen .sheet-a4, body.is-fullscreen .sheet-a4 {
+      max-width: 95vw !important;
+      box-shadow: none !important;
+      margin: 10px auto !important;
+    }
+
+    /* [3] 교사용 슬라이드업 드로어 */
+    #teacherDrawer {
+      position: fixed;
+      bottom: -450px;
+      left: 0;
+      width: 100%;
+      height: 380px;
+      background: rgba(10, 15, 30, 0.96);
+      backdrop-filter: blur(16px);
+      border-top: 3px solid #0284c7;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      transition: bottom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 18px 32px;
+      box-sizing: border-box;
+      color: white;
+    }
+    #teacherDrawer.open {
+      bottom: 0;
+    }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+    .drawer-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fde047;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .drawer-stage-nav {
+      display: flex;
+      gap: 6px;
+    }
+    .btn-stage-tab {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-stage-tab:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+    .btn-stage-tab.active {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+    }
+    .btn-drawer-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-drawer-close:hover {
+      background: rgba(239, 68, 68, 0.4);
+      border-color: #ef4444;
+    }
+    .drawer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1.8fr 1.2fr;
+      gap: 16px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .drawer-col {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .col-label {
+      font-size: 14px;
+      font-weight: 800;
+      color: #38bdf8;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+    .col-body {
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: #e2e8f0;
+      flex: 1;
+      white-space: pre-line;
+    }
+
+    /* 우측 하단 플로팅 롤오버 툴바 */
+    .floating-tools-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 4px 6px;
+      gap: 6px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+      opacity: 0.75;
+      transition: all 0.25s ease;
+    }
+    .floating-tools-widget:hover {
+      opacity: 1;
+      background: rgba(15, 23, 42, 0.95);
+      border-color: #38bdf8;
+      box-shadow: 0 6px 24px rgba(56, 189, 248, 0.35);
+      transform: translateY(-2px);
+    }
+    .f-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .f-btn:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+    }
+    .f-btn.active {
+      background: #059669;
+      border-color: #34d399;
+      color: #ffffff;
+    }
+    .f-key-hint {
+      font-size: 10.5px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1px 5px;
+      border-radius: 4px;
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="no-print-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ 쉬운 배움 활동지 인쇄</button>
+  </div>
+
+  
+  <!-- [1] 상단 중앙 고치기 도구 막대 -->
+  <div id="editToolbar">
+    <button class="tb-btn" onclick="execUndo()" title="한 걸음 되돌리기">↶ 되돌리기</button>
+    <button class="tb-btn" onclick="execRedo()" title="다시 실행">↷ 다시</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="changeFontSize(1)" title="글자 크게">🗚 크게</button>
+    <button class="tb-btn" onclick="changeFontSize(-1)" title="글자 작게">🗛 작게</button>
+    <button class="tb-btn" onclick="document.execCommand('bold')" title="굵게"><strong>B 굵게</strong></button>
+    <button class="tb-btn" onclick="applyHighlight()" title="형광펜"><span style="background:#fef08a; color:#854d0e; padding:0 3px; border-radius:2px;">🖍️ 형광펜</span></button>
+    <div class="tb-sep"></div>
+    <span style="font-size:11px; color:#cbd5e1; margin-right:2px;">글자색:</span>
+    <span class="color-swatch" style="background:#000000;" onclick="changeTextColor('#000000')" title="검정색"></span>
+    <span class="color-swatch" style="background:#ef4444;" onclick="changeTextColor('#ef4444')" title="빨강색"></span>
+    <span class="color-swatch" style="background:#2563eb;" onclick="changeTextColor('#2563eb')" title="파랑색"></span>
+    <span class="color-swatch" style="background:#16a34a;" onclick="changeTextColor('#16a34a')" title="초록색"></span>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="document.execCommand('justifyCenter')" title="가운데 정렬">≡ 정렬</button>
+    <button class="tb-btn" onclick="insertUserImage()" title="사진 넣기">🖼️ 사진</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="hideCurrentElement()" title="선택한 요소 감추기" style="color:#fca5a5;">👁️ 이 부분 지우기</button>
+    <button class="tb-btn" onclick="hideCurrentSection()" title="선택한 카드 구역 감추기" style="color:#f87171;">🗑️ 이 구역 지우기</button>
+    <button class="tb-btn" onclick="resetAllEdits()" title="모든 수정사항 초기화" style="color:#cbd5e1; margin-left:4px;">🔄 전체 되돌리기</button>
+  </div>
+
+  <main class="sheet-a4">
+    <!-- 헤더 -->
+    <header class="ws-header">
+      <div class="ws-title-group">
+        <span class="badge-easy">🌱 도움 쑥쑥 • 쉬운 배움 활동지</span>
+        <h1>2단원 1차시: 알기 쉬운 시장 이야기</h1>
+        <div style="font-size:12px; color:#64748b; font-weight:600;">우리 생활 속 시장의 모습과 시장이 생겨난 까닭 알아보기</div>
+      </div>
+      <div class="student-box">
+        6학년 &nbsp;&nbsp;&nbsp;반 &nbsp;&nbsp;&nbsp;번 &nbsp; 이름: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </header>
+
+    <!-- 배움 목표 -->
+    <div class="target-bar">
+      <span>💡</span>
+      <span><strong>오늘의 배움</strong>: 오늘 아침 내가 쓴 물건을 찾고, <strong>'시장'</strong>이 왜 생겼는지 알아봅시다.</span>
+    </div>
+
+    <!-- 친절한 활동 방법 안내 -->
+    <div style="background:#ecfdf5; border-left:3.5px solid #059669; padding:5px 10px; font-size:11.5px; color:#065f46; margin-bottom:8px; border-radius:0 4px 4px 0;">
+      <strong>[🌱 이렇게 활동해요! (활동 방법)]</strong><br>
+      ① <strong>함께 읽기</strong>: 짝꿍(도우미 친구)과 나란히 앉아 문제를 한 줄씩 차례대로 읽습니다.<br>
+      ② <strong>동그라미 하기</strong>: 1단계는 오늘 아침 먹고 쓴 물건 그림을 찾아 [◯]에 동그라미를 칩니다.<br>
+      ③ <strong>체크하기</strong>: 2단계는 모둠 물물교환 놀이를 해본 뒤, 어려웠던 점에 V표를 합니다.
+    </div>
+
+    <!-- 1단계: 오늘 아침 내가 만난 것들 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>【 1단계 】 오늘 아침 내가 썼거나 먹은 것에 동그라미(◯) 해보세요!</span>
+      </div>
+      <div class="act-body">
+        <div class="icon-choice-grid">
+          <div class="choice-item">
+            <span class="choice-icon">🥣</span>
+            <span class="choice-label">맛있는 밥/시리얼</span>
+            <div style="font-size:11px; color:#0284c7; margin-top:2px;">[ ◯ / ✕ ]</div>
+          </div>
+          <div class="choice-item">
+            <span class="choice-icon">👕</span>
+            <span class="choice-label">내가 입은 옷</span>
+            <div style="font-size:11px; color:#0284c7; margin-top:2px;">[ ◯ / ✕ ]</div>
+          </div>
+          <div class="choice-item">
+            <span class="choice-icon">🚌</span>
+            <span class="choice-label">버스 / 걷기</span>
+            <div style="font-size:11px; color:#0284c7; margin-top:2px;">[ ◯ / ✕ ]</div>
+          </div>
+          <div class="choice-item">
+            <span class="choice-icon">✏️</span>
+            <span class="choice-label">연필과 지우개</span>
+            <div style="font-size:11px; color:#0284c7; margin-top:2px;">[ ◯ / ✕ ]</div>
+          </div>
+        </div>
+        <p style="margin-top:8px; font-size:12.5px; color:#334155; background:#f8fafc; padding:5px 8px; border-radius:4px;">
+          👉 내가 직접 사지 않았어도, 부모님과 공장, 가게의 도움으로 우리는 매일 <strong>물건을 쓰고 나누며</strong> 살고 있어요!
+        </p>
+      </div>
+    </section>
+
+    <!-- 2단계: 물물교환 게임 체험 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>【 2단계 】 시장이 없던 옛날! 물건끼리 직접 바꾸기(물물교환)</span>
+      </div>
+      <div class="act-body">
+        <p>친구와 1:1로 물건을 직접 바꿀 때 어떤 점이 힘들었나요? 맞는 말에 <strong>체크(✔)</strong>해 보세요.</p>
+        <div class="trade-match-box">
+          <div class="trade-item">💧 내가 가진 <strong style="color:#0284c7;">물</strong></div>
+          <div style="font-size:22px; color:#ef4444; font-weight:800;">≠ ?</div>
+          <div class="trade-item">🌾 친구가 가진 <strong style="color:#d97706;">쌀</strong></div>
+        </div>
+        <div class="easy-radio-list">
+          <label class="easy-radio-label">
+            <input type="checkbox" checked> 1) 내가 원하는 것을 가진 친구가 내 물건을 원하지 않아서 바꾸기 힘들었다.
+          </label>
+          <label class="easy-radio-label">
+            <input type="checkbox"> 2) 물건을 들고 바꿀 사람을 찾아다니느라 다리가 아팠다.
+          </label>
+          <label class="easy-radio-label">
+            <input type="checkbox"> 3) 물 한 통과 쌀 한 자루가 같은 값인지 정하기 어려웠다.
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3단계: 시장의 탄생 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>【 3단계 】 그래서 ❝시장❞과 ❝돈❞이 생겨났어요!</span>
+      </div>
+      <div class="act-body">
+        <p style="font-size:13px; margin-bottom:6px;">
+          사람들은 편리하게 물건을 사고팔기 위해 <strong>약속된 장소(시장)</strong>에 모이기로 했어요.
+        </p>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:6px; padding:8px 10px;">
+            <strong>🏪 시장이란?</strong><br>
+            물건을 파는 사람과 사는 사람이 만나서 거래하는 곳이에요.
+          </div>
+          <div style="background:#fefce8; border:1px solid #fef08a; border-radius:6px; padding:8px 10px;">
+            <strong>🪙 돈(화폐)이란?</strong><br>
+            물건을 쉽게 바꾸기 위해 모두가 믿고 쓰는 교환 수단이에요.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4단계: 2단원 퀘스트 고르기 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>【 4단계 】 이번 2단원에서 내가 가장 알아보고 싶은 그림 1개에 별표(★)를 쳐보세요!</span>
+      </div>
+      <div class="act-body">
+        <div class="icon-choice-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="choice-item" style="padding:10px;">
+            <span class="choice-icon">🏪</span>
+            <span class="choice-label" style="font-size:13px;">1. 시장과 가격</span>
+            <div style="font-size:11px; color:#64748b; margin-top:3px;">맛있는 과자 가격은 어떻게 정해질까?</div>
+            <div style="font-size:18px; color:#f59e0b; margin-top:4px;">[ &nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+          </div>
+          <div class="choice-item" style="padding:10px;">
+            <span class="choice-icon">📈</span>
+            <span class="choice-label" style="font-size:13px;">2. 발전한 우리나라</span>
+            <div style="font-size:11px; color:#64748b; margin-top:3px;">옛날보다 왜 생활이 풍족해졌을까?</div>
+            <div style="font-size:18px; color:#f59e0b; margin-top:4px;">[ &nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+          </div>
+          <div class="choice-item" style="padding:10px;">
+            <span class="choice-icon">🚢</span>
+            <span class="choice-label" style="font-size:13px;">3. 세계 속의 무역</span>
+            <div style="font-size:11px; color:#64748b; margin-top:3px;">바나나와 스마트폰은 어디서 왔을까?</div>
+            <div style="font-size:18px; color:#f59e0b; margin-top:4px;">[ &nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 칭찬 도장 -->
+    <footer class="praise-footer">
+      <div style="font-weight:700; color:#15803d; font-size:13px;">
+        👏 참 잘했어요! 오늘 첫 사회 수업에 아주 열심히 참여했습니다!
+      </div>
+      <div style="border:2px dashed #16a34a; border-radius:50%; width:50px; height:50px; display:flex; align-items:center; justify-content:center; color:#16a34a; font-size:12px; font-weight:800; transform:rotate(-10deg);">
+        참잘함!
+      </div>
+    </footer>
+  </main>
+
+
+  <!-- [우측 하단 플로팅 롤오버 툴바: 고치기 / 전체화면 / 교사용] -->
+  <aside class="floating-tools-widget" id="floatingToolsWidget">
+    <button class="f-btn" id="btnEditToggle" onclick="toggleEditMode()" title="글자 수정 모드 켜기/끄기">
+      <span id="editBtnIcon">✎</span> <span id="editBtnLabel">고치기</span>
+    </button>
+    <button class="f-btn" id="btnFsToggle" onclick="toggleFullScreenMode()" title="전체화면 전환 (단축키: F)">
+      <span>⛶</span> <span id="fsBtnLabel">전체</span>
+      <span class="f-key-hint">F</span>
+    </button>
+    <button class="f-btn" id="btnDrawerToggle" onclick="toggleTeacherDrawer()" title="교사용 메모 서랍 열기 (단축키: T)">
+      <span>📖</span> <span>교사용</span>
+      <span class="f-key-hint">T</span>
+    </button>
+  </aside>
+
+  <!-- [3] 교사용 슬라이드업 드로어 (단계별 맞춤 지도 메모) -->
+  <aside id="teacherDrawer" role="region" aria-label="교사용 수업 메모 서랍">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>📖 [쉬운 배움터] 교사용 수업 지도 가이드</span>
+        <div class="drawer-stage-nav" id="drawerStageNav"></div>
+      </div>
+      <button class="btn-drawer-close" onclick="closeTeacherDrawer()" title="닫기 (단축키: Esc)">✕ 닫기 (Esc)</button>
+    </div>
+    <div class="drawer-grid">
+      <div class="drawer-col">
+        <div class="col-label">⏱️ 시간 배분</div>
+        <div class="col-body" id="noteTime">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">💬 예상 학생 답변 / 반응</div>
+        <div class="col-body" id="noteAnswers">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">💡 헷갈릴 지점 & 되받아 줄 말</div>
+        <div class="col-body" id="noteConfusing">-</div>
+      </div>
+      <div class="drawer-col">
+        <div class="col-label">🎯 핵심 짚어 줄 낱말</div>
+        <div class="col-body" id="noteWords">-</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 기능 스크립트 -->
+  <script>
+    // ==========================================
+    // [공통] 키보드 단축키 (F/ㄹ: 전체화면, T/ㅅ: 교사용, Esc: 서랍 닫기)
+    // ==========================================
+    document.addEventListener('keydown', (e) => {
+      // 텍스트 편집 중에는 단축키 무시
+      if (e.target && (e.target.isContentEditable || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        return;
+      }
+      const k = e.key.toLowerCase();
+      if (k === 'f' || e.key === 'ㄹ') {
+        e.preventDefault();
+        toggleFullScreenMode();
+      } else if (k === 't' || e.key === 'ㅅ') {
+        e.preventDefault();
+        toggleTeacherDrawer();
+      } else if (e.key === 'Escape') {
+        closeTeacherDrawer();
+      }
+    });
+
+    // ==========================================
+    // [1] 고치기 기능 (contenteditable & localStorage)
+    // ==========================================
+    let isEditing = false;
+    let saveTimer = null;
+
+    function getStorageKey() {
+      let filename = 'sheet_inclusive.html';
+      try {
+        const parts = window.location.pathname.split(/[\\/]/);
+        const raw = parts[parts.length - 1];
+        if (raw) filename = decodeURIComponent(raw);
+      } catch (err) {}
+      return 'worksheet_easy_store_v1_' + filename;
+    }
+
+    const editToolbar = document.getElementById('editToolbar');
+    const btnEditToggle = document.getElementById('btnEditToggle');
+    const editBtnIcon = document.getElementById('editBtnIcon');
+    const editBtnLabel = document.getElementById('editBtnLabel');
+
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.body.classList.toggle('is-editing', isEditing);
+      editToolbar.classList.toggle('show', isEditing);
+      btnEditToggle.classList.toggle('active', isEditing);
+
+      if (isEditing) {
+        editBtnIcon.textContent = '✓';
+        editBtnLabel.textContent = '완료';
+        makeElementsEditable(true);
+      } else {
+        editBtnIcon.textContent = '✎';
+        editBtnLabel.textContent = '고치기';
+        makeElementsEditable(false);
+        saveAllEdits();
+      }
+    }
+
+    function makeElementsEditable(enable) {
+      const targetSheet = document.querySelector('.sheet-a4');
+      if (!targetSheet) return;
+      const editableSelectors = 'h1, h2, h3, p, span, div, strong, label, tr, td, th';
+      const elements = targetSheet.querySelectorAll(editableSelectors);
+
+      elements.forEach(el => {
+        // 도구 막대나 교사용 서랍 내부 요소는 편집 제외
+        if (el.closest('#editToolbar') || el.closest('#teacherDrawer') || el.closest('.floating-tools-widget') || el.closest('.no-print-bar')) {
+          return;
+        }
+        if (enable) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('input', debounceAutoSave);
+        } else {
+          el.removeAttribute('contenteditable');
+        }
+      });
+    }
+
+    function execUndo() { document.execCommand('undo'); }
+    function execRedo() { document.execCommand('redo'); }
+
+    function changeFontSize(direction) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      let targetNode = sel.anchorNode;
+      if (targetNode.nodeType === 3) targetNode = targetNode.parentNode;
+      const currentSize = parseFloat(window.getComputedStyle(targetNode).fontSize) || 14;
+      const newSize = Math.max(10, currentSize + (direction * 2));
+      targetNode.style.fontSize = newSize + 'px';
+      debounceAutoSave();
+    }
+
+    function applyHighlight() {
+      if (!document.execCommand('hiliteColor', false, '#fef08a')) {
+        document.execCommand('backColor', false, '#fef08a');
+      }
+      debounceAutoSave();
+    }
+
+    function changeTextColor(color) {
+      document.execCommand('foreColor', false, color);
+      debounceAutoSave();
+    }
+
+    function insertUserImage() {
+      const url = prompt('삽입할 이미지 URL을 입력하세요:');
+      if (url) {
+        document.execCommand('insertImage', false, url);
+        debounceAutoSave();
+      }
+    }
+
+    function hideCurrentElement() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        if (node && !node.classList.contains('sheet-a4')) {
+          node.classList.add('hidden-by-edit');
+          debounceAutoSave();
+        }
+      }
+    }
+
+    function hideCurrentSection() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        const section = node.closest('.activity-card') || node.closest('.target-bar') || node.closest('.praise-footer');
+        if (section) {
+          if (confirm('선택한 활동 구역을 화면에서 감추시겠습니까?')) {
+            section.classList.add('hidden-by-edit');
+            debounceAutoSave();
+          }
+        }
+      }
+    }
+
+    function debounceAutoSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveAllEdits, 300);
+    }
+
+    function saveAllEdits() {
+      const key = getStorageKey();
+      const sheet = document.querySelector('.sheet-a4');
+      if (sheet) {
+        localStorage.setItem(key, sheet.innerHTML);
+      }
+    }
+
+    function restoreSavedEdits() {
+      const key = getStorageKey();
+      const savedHTML = localStorage.getItem(key);
+      if (savedHTML) {
+        const sheet = document.querySelector('.sheet-a4');
+        if (sheet) {
+          sheet.innerHTML = savedHTML;
+        }
+      }
+    }
+
+    function resetAllEdits() {
+      if (confirm('모든 고친 내용을 초기화하고 원본 학습지로 되돌리시겠습니까?')) {
+        const key = getStorageKey();
+        localStorage.removeItem(key);
+        location.reload();
+      }
+    }
+
+    // ==========================================
+    // [2] 전체 화면 기능
+    // ==========================================
+    const fsBtnLabel = document.getElementById('fsBtnLabel');
+
+    function toggleFullScreenMode() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert('전체화면 모드를 실행할 수 없습니다: ' + err.message);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!document.fullscreenElement;
+      document.body.classList.toggle('is-fullscreen', isFs);
+      if (fsBtnLabel) fsBtnLabel.textContent = isFs ? '해제' : '전체';
+    });
+
+    // ==========================================
+    // [3] 교사용 슬라이드업 드로어 기능
+    // ==========================================
+    const teacherDrawer = document.getElementById('teacherDrawer');
+    const drawerStageNav = document.getElementById('drawerStageNav');
+    const noteTime = document.getElementById('noteTime');
+    const noteAnswers = document.getElementById('noteAnswers');
+    const noteConfusing = document.getElementById('noteConfusing');
+    const noteWords = document.getElementById('noteWords');
+
+    let currentStageIndex = 0;
+
+    function renderStageTabs() {
+      drawerStageNav.innerHTML = '';
+      TEACHER_NOTES.forEach((note, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-stage-tab' + (idx === currentStageIndex ? ' active' : '');
+        btn.textContent = note.stage;
+        btn.onclick = () => selectStage(idx);
+        drawerStageNav.appendChild(btn);
+      });
+    }
+
+    function selectStage(index) {
+      currentStageIndex = index;
+      const note = TEACHER_NOTES[index] || {};
+      noteTime.textContent = note.time || '-';
+      noteAnswers.textContent = note.answers || '-';
+      noteConfusing.textContent = note.confusing || '-';
+      noteWords.textContent = note.words || '-';
+
+      const tabs = drawerStageNav.querySelectorAll('.btn-stage-tab');
+      tabs.forEach((tab, idx) => {
+        tab.classList.toggle('active', idx === index);
+      });
+    }
+
+    function toggleTeacherDrawer() {
+      const isOpen = teacherDrawer.classList.contains('open');
+      if (isOpen) closeTeacherDrawer();
+      else openTeacherDrawer();
+    }
+
+    function openTeacherDrawer() {
+      renderStageTabs();
+      selectStage(currentStageIndex);
+      teacherDrawer.classList.add('open');
+    }
+
+    function closeTeacherDrawer() {
+      teacherDrawer.classList.remove('open');
+    }
+
+    // ==========================================
+    // 초기 로드 시 복원 실행
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', () => {
+      restoreSavedEdits();
+    });
+
+    // ==========================================
+    // [3] 교사용 수업 지도 메모 배열 (단계별 가이드)
+    // 내가 나중에 글만 고칠 수 있게 모아둔 배열
+    // ==========================================
+    const TEACHER_NOTES = [
+      {
+        stage: "1단계",
+        title: "오늘 아침 내가 만난 것들",
+        time: "8분",
+        answers: "• \"아침에 밥 먹었어요.\", \"옷 입고 왔어요.\", \"걸어서 학교 왔어요.\"\n• 그림 속 모든 항목에 대부분 ◯(동그라미) 표시함.",
+        confusing: "• 헷갈리는 지점: \"내가 직접 돈을 내고 산 적이 없는데 이것도 경제인가요?\"\n• 되받아 줄 말: \"내가 돈을 내지 않아도, 부모님이 마트에서 사 오셨거나 버스 기사님이 운전해 주신 도움 덕분에 누릴 수 있었어요!\"",
+        words: "물건(상품), 도움(서비스), 쓰기(소비)"
+      },
+      {
+        stage: "2단계",
+        title: "물물교환 게임 체험 (물과 쌀)",
+        time: "12분",
+        answers: "• \"친구가 내 물을 안 원해요!\"\n• \"물 한 병이랑 쌀 한 자루가 같은 건지 모르겠어요.\"\n• 체크박스 1번, 2번, 3번에 대부분 공감하여 체크함.",
+        confusing: "• 헷갈리는 지점: 1:1로 직접 바꾸는 게 왜 나쁜 건지 궁금해함.\n• 되받아 줄 말: \"물물교환이 나쁜 게 아니라, 서로 원하는 게 딱 맞지 않으면 하루 종일 헤매야 해서 너무 불편했기 때문이에요!\"",
+        words: "물물교환, 직접 바꾸기, 불편함"
+      },
+      {
+        stage: "3단계",
+        title: "시장의 탄생과 돈(화폐)",
+        time: "10분",
+        answers: "• \"시장에 가면 찾는 물건이 다 있어요!\"\n• \"돈을 내면 아무 물건이나 쉽게 살 수 있어요.\"",
+        confusing: "• 헷갈리는 지점: '시장'을 오직 전통시장이나 마트 같은 큰 건물로만 생각함.\n• 되받아 줄 말: \"엄마가 스마트폰 쿠팡으로 물건 시키는 것도 시장일까요? 맞아요! 물건을 사고파는 모든 곳이 다 시장이에요!\"",
+        words: "시장(약속된 장소), 돈(화폐), 편리함"
+      },
+      {
+        stage: "4단계",
+        title: "2단원 호기심 퀘스트 고르기",
+        time: "8분",
+        answers: "• 1번(시장과 과자 가격) 또는 2번(발전한 우리나라)에 많은 학생들이 별표(★) 표시함.",
+        confusing: "• 헷갈리는 지점: 3가지 그림 중 하나를 고르기 어려워함.\n• 되받아 줄 말: \"틀린 답은 없어요! 내가 2학기 사회 시간에 가장 궁금하고 알고 싶은 그림에 자신 있게 별표를 쳐보세요!\"",
+        words: "호기심 질문, 탐구 목표, 경제"
+      }
+    ];
+  </script>
+
+</body>
+</html>

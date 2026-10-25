@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[전자칠판용 PPT] 6-2 사회 2단원 5차시: 근로자의 권리와 노동의 가치</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-glow: rgba(59, 130, 246, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-yellow: #fde047;
+      --accent-green: #4ade80;
+      --accent-red: #f87171;
+      --bg-dark: #090d16;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(148, 163, 184, 0.25);
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      height: 56px;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.95);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+    .topbar-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fca5a5;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-badge {
+      background: #dc2626;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .slide-page-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      max-width: 1720px;
+      max-height: 960px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 24px;
+    }
+    .slide.active { display: flex; opacity: 1; }
+
+    .slide-heading {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      color: var(--text-white);
+    }
+    .slide-heading span.yellow { color: var(--accent-yellow); }
+    .slide-heading span.cyan { color: var(--accent-cyan); }
+    .slide-heading span.green { color: var(--accent-green); }
+    .slide-heading span.red { color: var(--accent-red); }
+
+    .sub-lead-text {
+      font-size: 28px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+
+    .card-single {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 18px;
+      padding: 30px 40px;
+      width: 100%;
+      max-width: 1260px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    .card-box {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+    }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 24px;
+      color: #e2e8f0;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 1040px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border: 2px solid #f87171;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-frame { width: 100%; height: 480px; border: none; }
+    .video-caption {
+      padding: 14px 20px;
+      background: #0f172a;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      color: #fca5a5;
+      font-weight: 700;
+    }
+
+    .bottom-bar {
+      height: 64px;
+      padding: 0 32px;
+      background: rgba(10, 15, 30, 0.95);
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .nav-btn {
+      background: #1e293b;
+      border: 1.5px solid #475569;
+      color: white;
+      padding: 9px 24px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn:hover { background: #dc2626; border-color: #ef4444; }
+
+    .floating-tools-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 76px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    .tool-float-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 2px solid #ef4444;
+      color: white;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    .tool-float-btn span.label { font-size: 10px; font-weight: 800; margin-top: -2px; }
+    .tool-float-btn:hover { background: #dc2626; transform: translateY(-2px); }
+    .tool-float-btn.active { background: #b91c1c; border-color: #fca5a5; }
+
+    .edit-toolbar {
+      position: fixed;
+      top: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1.5px solid #ef4444;
+      border-radius: 10px;
+      padding: 6px 14px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+    }
+    .edit-toolbar.show { display: flex; }
+    .edit-tool-btn {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .teacher-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background: #0f172a;
+      border-left: 2.5px solid #ef4444;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1200;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .teacher-drawer.open { right: 0; }
+    .drawer-header {
+      border-bottom: 2px solid #b91c1c;
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-title { font-size: 18px; font-weight: 900; color: #fca5a5; }
+    .drawer-close { background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; }
+    .drawer-content { flex: 1; overflow-y: auto; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+    .note-sec {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-left: 3px solid #ef4444;
+    }
+    .note-sec-title { font-weight: 800; color: #fde047; margin-bottom: 6px; font-size: 13px; }
+
+    [contenteditable="true"] { outline: 1.5px dashed #ef4444 !important; cursor: text; }
+    .hidden-by-edit { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="topbar-badge">1주제 과정중심평가</span>
+      <span>2. 시장경제와 국가 간 거래 (5차시)</span>
+    </div>
+    <div class="topbar-right">
+      <div class="slide-page-num"><span id="curNum">1</span> / <span id="totNum">20</span></div>
+    </div>
+  </header>
+
+  <div class="edit-toolbar" id="editToolbar">
+    <button class="edit-tool-btn" onclick="execUndo()">↶ 되돌리기</button>
+    <button class="edit-tool-btn" onclick="execRedo()">↷ 다시</button>
+    <button class="edit-tool-btn" onclick="changeFontSize(1)">가 크게</button>
+    <button class="edit-tool-btn" onclick="changeFontSize(-1)">가 작게</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('bold')">굵게</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('foreColor', false, '#fde047')">노랑</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('foreColor', false, '#f87171')">빨강</button>
+    <button class="edit-tool-btn" onclick="hideCurrentElement()">요소 감추기</button>
+    <button class="edit-tool-btn" onclick="resetAllEdits()" style="color:#f87171;">전체 복구</button>
+  </div>
+
+  <main class="viewport">
+
+    <!-- 슬라이드 1: 표지 -->
+    <section class="slide active">
+      <div class="card-single" style="border-color:#ef4444;">
+        <div style="font-size:24px; color:#fca5a5; font-weight:800; margin-bottom:12px;">초등 6-2 사회 2단원 5차시 | 과정중심평가 차시</div>
+        <h1 class="slide-heading" style="font-size:60px; margin-bottom:16px;">
+          우리를 위해 일하는 <span class="red">근로자의 권리</span>,<br>
+          그리고 <span class="yellow">노동의 아름다운 가치</span>
+        </h1>
+        <div class="sub-lead-text">
+          교과서 69~71쪽 | 단원지도계획 기준 [과정중심평가 1]
+        </div>
+        <div style="display:flex; gap:16px; margin-top:10px;">
+          <div style="background:#1e293b; padding:10px 24px; border-radius:8px; font-size:20px; font-weight:700; color:#f87171;">
+            탐구 1: 근로자의 4대 기본 권리와 법률
+          </div>
+          <div style="background:#1e293b; padding:10px 24px; border-radius:8px; font-size:20px; font-weight:700; color:#fde047;">
+            실천 2: 스탠딩 갤러리 권리 존중 캠페인 피켓전
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 2: 생각 열기 (이분들이 안 계신다면?) -->
+    <section class="slide">
+      <h2 class="slide-heading">만약 우리 곁에 <span class="yellow">이분들이 안 계신다면?</span></h2>
+      <div class="grid-2col">
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="images/korean_school_lunch_cook.jpg" alt="학교 급식 조리사 선생님">
+          </div>
+          <div class="card-title" style="color:#fca5a5; font-size:36px;">학교 급식 조리사님</div>
+          <div class="card-desc" style="font-size:30px; font-weight:700; color:#ffffff; line-height:1.45; word-break:keep-all;">
+            "오늘 점심시간에 따뜻하고 맛있는 급식이 나오지 않는다면?"
+          </div>
+        </div>
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="images/korean_delivery_courier.jpg" alt="택배 배송 기사님">
+          </div>
+          <div class="card-title" style="color:#7dd3fc; font-size:36px;">택배 배송 기사님</div>
+          <div class="card-desc" style="font-size:30px; font-weight:700; color:#ffffff; line-height:1.45; word-break:keep-all;">
+            "손꼽아 기다리던 택배와 생활용품이 집에 도착하지 않는다면?"
+          </div>
+        </div>
+      </div>
+      <div class="sub-lead-text" style="margin-top:24px; font-size:32px; color:#fde047; font-weight:800; margin-bottom:0;">
+        이분들이 하루 동안 일하지 않으신다면 우리의 생활은 어떻게 될까요?
+      </div>
+    </section>
+
+    <!-- 슬라이드 3: 배움 문제 확인 -->
+    <section class="slide">
+      <div class="card-single" style="border-left:8px solid #ef4444;">
+        <div style="font-size:28px; color:#fca5a5; font-weight:900; margin-bottom:16px;">오늘의 배움 문제</div>
+        <div class="slide-heading" style="font-size:52px; line-height:1.35; margin-bottom:24px;">
+          근로자의 권리를 <span class="red">보호해야 하는 까닭</span>을 알고,<br>
+          <span class="yellow">권리 보호 방법과 캠페인 문구</span>를 제시해 봅시다.
+        </div>
+        <div style="display:flex; gap:20px;">
+          <div style="background:#0f172a; border:1.5px solid #f87171; border-radius:10px; padding:12px 24px; font-size:22px; font-weight:700;">
+            활동 1. 근로자의 4대 기본 권리 탐구 (12분)
+          </div>
+          <div style="background:#0f172a; border:1.5px solid #fde047; border-radius:10px; padding:12px 24px; font-size:22px; font-weight:700;">
+            활동 2. 스탠딩 갤러리 피켓전 & 스티커 투표 (15분)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 4: 교육 영상 코너 -->
+    <section class="slide">
+      <h2 class="slide-heading">영상 탐구: <span class="yellow">노동의 가치와 근로자의 권리</span></h2>
+      <div class="video-container">
+        <iframe class="video-frame" src="https://www.youtube.com/embed/LC53J7HrPl0?rel=0" title="서울시교육청 초등 노동인권 애니메이션: 소중한 노동자를 위한 약속" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="video-caption" style="display:flex; justify-content:space-between; align-items:center; width:100%; padding:14px 24px;">
+          <span>서울시교육청: 소중한 노동자를 위한 약속 (노동자의 권리와 노동3권)</span>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="color:#fde047; font-size:16px;">재생 시간 3분</span>
+            <a href="https://youtu.be/LC53J7HrPl0" target="_blank" rel="noopener noreferrer" style="background:#dc2626; color:#ffffff; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:15px; font-weight:800; display:inline-flex; align-items:center; gap:4px;">
+              새 창으로 열기 ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 5: 문제 상황 4가지 제시 -->
+    <section class="slide">
+      <h2 class="slide-heading">만약 일터에서 <span class="red">이런 일이 일어난다면?</span></h2>
+      <div class="grid-2col" style="gap:20px;">
+        <div style="background:#1e293b; padding:18px; border-radius:10px; border-left:5px solid #f87171; text-align:left; font-size:22px;">
+          ① <strong>위험 방치</strong>: 안전모나 난간도 없이 위험천만한 높은 곳에서 일하라고 한다면?
+        </div>
+        <div style="background:#1e293b; padding:18px; border-radius:10px; border-left:5px solid #f87171; text-align:left; font-size:22px;">
+          ② <strong>휴식 박탈</strong>: 하루 15시간 넘게 일하고 주말에도 쉬지 못하게 한다면?
+        </div>
+        <div style="background:#1e293b; padding:18px; border-radius:10px; border-left:5px solid #f87171; text-align:left; font-size:22px;">
+          ③ <strong>임금 체불</strong>: 한 달 동안 열심히 일했는데 월급을 한 푼도 안 준다면?
+        </div>
+        <div style="background:#1e293b; padding:18px; border-radius:10px; border-left:5px solid #f87171; text-align:left; font-size:22px;">
+          ④ <strong>부당 차별</strong>: 나이가 어리거나 성별이 다르다고 월급을 깎고 해고한다면?
+        </div>
+      </div>
+      <div class="sub-lead-text" style="margin-top:24px; color:#fde047; font-size:28px;">
+        이것은 모두 법으로 엄격하게 금지된 <strong>'근로자의 권리 침해'</strong>입니다!
+      </div>
+    </section>
+
+    <!-- 슬라이드 6: 근로자의 4대 기본 권리 정리 -->
+    <section class="slide">
+      <h2 class="slide-heading">헌법과 법률이 보장하는 <span class="cyan">근로자의 4대 권리</span></h2>
+      <div class="grid-2col">
+        <div class="card-box" style="border-top:6px solid #38bdf8;">
+          <div class="card-title" style="color:#38bdf8;">1. 안전하고 쾌적할 권리</div>
+          <div class="card-desc">안전장비 지급, 위험 작업장 개선으로 다치지 않고 일할 권리</div>
+        </div>
+        <div class="card-box" style="border-top:6px solid #4ade80;">
+          <div class="card-title" style="color:#4ade80;">2. 정당한 임금을 받을 권리</div>
+          <div class="card-desc">최저임금 이상의 급여를 정해진 날짜에 통장으로 전액 받을 권리</div>
+        </div>
+        <div class="card-box" style="border-top:6px solid #fde047;">
+          <div class="card-title" style="color:#fde047;">3. 충분한 휴식과 휴가의 권리</div>
+          <div class="card-desc">건강을 지키기 위해 하루 근로시간을 지키고 주말과 휴가를 누릴 권리</div>
+        </div>
+        <div class="card-box" style="border-top:6px solid #f87171;">
+          <div class="card-title" style="color:#f87171;">4. 부당한 대우를 받지 않을 권리</div>
+          <div class="card-desc">이유 없이 해고당하지 않고 인격적으로 존중받으며 일할 권리</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 7: 권리를 지켜야 하는 까닭 (가계와 기업의 관점) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #38bdf8; padding:30px 50px;">
+        <div style="font-size:26px; color:#38bdf8; font-weight:800; margin-bottom:16px;">왜 근로자의 권리를 지켜야 할까요?</div>
+        <div class="grid-2col" style="gap:30px; margin-bottom:20px;">
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border-left:6px solid #38bdf8; text-align:left;">
+            <div style="font-size:26px; font-weight:800; color:#38bdf8; margin-bottom:8px;">가계의 관점</div>
+            <div style="font-size:22px; color:#e2e8f0; line-height:1.55;">
+              근로자는 한 가정의 소중한 부모이자 자녀입니다. 다치지 않고 월급을 받아야 가족이 행복하게 생활할 수 있습니다.
+            </div>
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border-left:6px solid #4ade80; text-align:left;">
+            <div style="font-size:26px; font-weight:800; color:#4ade80; margin-bottom:8px;">기업과 사회의 관점</div>
+            <div style="font-size:22px; color:#e2e8f0; line-height:1.55;">
+              근로자가 안전하고 존중받을 때 더 좋은 품질의 물건을 생산하고, 가계 소득이 늘어나 시장 경제가 활발해집니다.
+            </div>
+          </div>
+        </div>
+        <div style="font-size:26px; color:#fde047; font-weight:800;">
+          근로자의 권리 보호는 모두가 상생하는 가장 튼튼한 주춧돌입니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 8: 활동 2 캠페인 피켓전 안내 -->
+    <section class="slide">
+      <h2 class="slide-heading">[활동 2] 스탠딩 갤러리 <span class="yellow">권리 존중 피켓전</span></h2>
+      <div class="card-single">
+        <div style="font-size:26px; color:#fde047; font-weight:800; margin-bottom:14px;">모둠별로 미니 캠페인 피켓을 만들고 교실 벽면에 전시하세요!</div>
+        <div class="grid-2col" style="gap:20px; margin-bottom:20px;">
+          <div style="background:#0f172a; padding:20px; border-radius:10px; text-align:left; font-size:22px; line-height:1.6;">
+            <strong>[1단계] 피켓 제작 (7분)</strong><br>
+            • 핵심 구호 1줄 ("당신의 땀방울을 존중합니다!")<br>
+            • 지켜야 할 권리 1가지와 실천 방법 작성
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:10px; text-align:left; font-size:22px; line-height:1.6;">
+            <strong>[2단계] 갤러리 투표 (8분)</strong><br>
+            • 전원 자리에서 일어나 교실 벽면 순회<br>
+            • 가장 울림을 주는 피켓에 '지지 스티커' 부착!
+          </div>
+        </div>
+        <div style="font-size:24px; color:#38bdf8; font-weight:700;">
+          모두가 참여하는 [과정중심평가 1] 실천 수행 과제입니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 9: 멋진 캠페인 구호 예시들 -->
+    <section class="slide">
+      <h2 class="slide-heading">마음을 울리는 <span class="cyan">캠페인 슬로건 예시</span></h2>
+      <div class="grid-2col">
+        <div class="card-box" style="border:2px solid #f87171;">
+          <div class="card-title" style="color:#f87171; font-size:30px;">"안전모는 생명모!"</div>
+          <div class="card-desc">작업 전 안전 점검, 어떤 이윤보다 사람의 목숨이 먼저입니다.</div>
+        </div>
+        <div class="card-box" style="border:2px solid #4ade80;">
+          <div class="card-title" style="color:#4ade80; font-size:30px;">"정당한 땀, 정직한 대가"</div>
+          <div class="card-desc">일한 만큼의 임금을 약속된 날에 지급하는 것은 기업의 기본 의무입니다.</div>
+        </div>
+        <div class="card-box" style="border:2px solid #38bdf8;">
+          <div class="card-title" style="color:#38bdf8; font-size:30px;">"충분한 쉼이 행복한 일터를 만듭니다"</div>
+          <div class="card-desc">지친 몸에 휴식을 줄 때 작업 능률도 오르고 안전사고도 줄어듭니다.</div>
+        </div>
+        <div class="card-box" style="border:2px solid #fde047;">
+          <div class="card-title" style="color:#fde047; font-size:30px;">"차별 없는 따뜻한 일터"</div>
+          <div class="card-desc">나이와 성별을 넘어 모두가 인간으로서 존중받는 세상을 만듭니다.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 10: 갤러리 워크 순회 및 활동지 작성법 -->
+    <section class="slide">
+      <h2 class="slide-heading">갤러리 워크 & <span class="green">활동지 작성 방법</span></h2>
+      <div class="grid-2col">
+        <div class="card-img-wrap" style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800" alt="갤러리 워크">
+        </div>
+        <div class="card-box" style="justify-content:center; text-align:left;">
+          <div class="card-title" style="color:#4ade80; font-size:24px;">📋 [활동 방법 3단계] 활동지 [과제 2]</div>
+          <div class="card-desc" style="font-size:22px; line-height:1.6;">
+            • <strong>1단계 (피켓 부착)</strong>: 모둠 슬로건 피켓을 교실 벽면에 부착합니다.<br>
+            • <strong>2단계 (갤러리 순회)</strong>: 친구들의 피켓을 읽고 지지 스티커를 붙입니다.<br>
+            • <strong>3단계 (결과 기록)</strong>: 우리 모둠이 받은 스티커 수를 세어 활동지 [과제 2 표]에 적고, 과제 3 서술 평가를 준비합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 11: 충실한 8분 정리 안내 (과정중심평가지 작성) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #dc2626;">
+        <div style="font-size:26px; color:#fca5a5; font-weight:800; margin-bottom:12px;">[충실한 8분 정리] 과정중심평가지 완성 시간</div>
+        <h2 class="slide-heading" style="font-size:52px; margin-bottom:20px;">
+          자리로 돌아와 <span class="red">평가지 3·4번 서술</span>을 작성합시다
+        </h2>
+        <div class="card-desc" style="font-size:26px; line-height:1.6; text-align:left; max-width:980px;">
+          1. <strong>근로자의 권리를 보호해야 하는 까닭 2가지</strong> 정성껏 서술하기<br>
+          2. <strong>권리 보호 방법의 장단점</strong> 비교하여 쓰기<br>
+          3. <strong>내가 꿈꾸는 건강한 일터의 모습</strong> 1줄 다짐 적기<br>
+          <span style="color:#fde047; font-weight:700;">※ 8분 동안 교실이 정숙한 가운데 침묵 속에서 자기 생각을 완결합니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 12: 5차시 배움 총정리 (완전 분리) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #4ade80;">
+        <div style="font-size:28px; color:#4ade80; font-weight:800; margin-bottom:12px;">5차시 배움 총정리</div>
+        <h2 class="slide-heading" style="font-size:54px; margin-bottom:24px;">
+          오늘 우리가 마음에 새긴 <span class="green">세 가지 가치</span>
+        </h2>
+        <div class="grid-3col" style="gap:20px; width:100%;">
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border:1px solid #f87171;">
+            <div style="font-size:26px; font-weight:800; color:#f87171; margin-bottom:8px;">1. 노동의 숭고함</div>
+            <div style="font-size:20px; color:#cbd5e1; line-height:1.5;">사회를 돌아가게 하는 모든 일하는 사람의 땀은 소중하다.</div>
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border:1px solid #38bdf8;">
+            <div style="font-size:26px; font-weight:800; color:#38bdf8; margin-bottom:8px;">2. 4대 기본 권리</div>
+            <div style="font-size:20px; color:#cbd5e1; line-height:1.5;">안전, 적정 임금, 휴식, 차별 금지는 법이 보장하는 필수 권리이다.</div>
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border:1px solid #fde047;">
+            <div style="font-size:26px; font-weight:800; color:#fde047; margin-bottom:8px;">3. 상생하는 사회</div>
+            <div style="font-size:20px; color:#cbd5e1; line-height:1.5;">근로자가 안전할 때 기업도 발전하고 시장 경제가 풍요로워진다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 13: 다음 6~7차시 예고 (완전 분리) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #fde047; background:linear-gradient(135deg, rgba(30,58,138,0.9), rgba(15,23,42,0.95));">
+        <div style="font-size:26px; color:#fde047; font-weight:800; margin-bottom:12px;">다음 시간 예고 (6~7차시 연속 블록 & 1주제 마무리)</div>
+        <h2 class="slide-heading" style="font-size:54px; margin-bottom:20px;">
+          기업들의 치열한 <span class="yellow">자유 경쟁 배틀</span>과<br>
+          세상을 바꾸는 <span class="cyan">기업의 사회적 책임(CSR)!</span>
+        </h2>
+        <div class="sub-lead-text" style="font-size:28px; color:#e2e8f0; line-height:1.6; max-width:1100px;">
+          교실에 열리는 <strong>모의 창업 팝업스토어</strong>에서 손님을 끌기 위한 대결을 펼치고,<br>
+          환경과 사회를 살리는 <strong>착한 기업 엑스포 & 1주제 마인드맵 총정리</strong>를 진행합니다!
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bottom-bar">
+    <button class="nav-btn" onclick="moveSlide(-1)">◀ 이전 (Left)</button>
+    <div style="color:#94a3b8; font-size:16px; font-weight:600;">
+      키보드 방향키(←, →), Space, Enter로 슬라이드를 넘길 수 있습니다.
+    </div>
+    <button class="nav-btn" onclick="moveSlide(1)">다음 (Right) ▶</button>
+  </footer>
+
+  <aside class="floating-tools-widget">
+    <button class="tool-float-btn" id="editBtn" onclick="toggleEditMode()" title="슬라이드 글자 고치기">
+      ✎<span class="label">고치기</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleFullScreenMode()" title="전체화면 전환">
+      ⛶<span class="label" id="fsBtnLabel">전체</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleTeacherDrawer()" title="교사용 지도 서랍 열기">
+      📖<span class="label">교사용</span>
+    </button>
+  </aside>
+
+  <aside class="teacher-drawer" id="teacherDrawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="drawerSlideTitle">슬라이드 1</div>
+        <div style="font-size:12px; color:#f87171;" id="drawerSlideNumBadge">1 / 13 슬라이드</div>
+      </div>
+      <button class="drawer-close" onclick="closeTeacherDrawer()">✕</button>
+    </div>
+    <div class="drawer-content">
+      <div class="note-sec">
+        <div class="note-sec-title">⏱️ 권장 소요 시간</div>
+        <div id="noteTime" style="color:#f8fafc; font-weight:700;">1분</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">💬 핵심 발문 및 학생 예상 답변</div>
+        <div id="noteAnswers" style="color:#cbd5e1; white-space:pre-line;">-</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">⚠️ 혼동하기 쉬운 점 및 지도 팁</div>
+        <div id="noteConfusing" style="color:#cbd5e1; white-space:pre-line;">-</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">🔑 본 슬라이드 핵심 어휘</div>
+        <div id="noteWords" style="color:#fde047; font-weight:800;">-</div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    let curIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totNum = slides.length;
+    document.getElementById('totNum').textContent = totNum;
+
+    function update() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === curIndex);
+      });
+      document.getElementById('curNum').textContent = curIndex + 1;
+      updateTeacherNoteView();
+    }
+
+    function moveSlide(dir) {
+      curIndex = (curIndex + dir + totNum) % totNum;
+      update();
+    }
+
+    let isEditing = false;
+    function getStorageKey() { return 'AGY_SLIDE_SAVE_' + window.location.pathname; }
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.getElementById('editBtn').classList.toggle('active', isEditing);
+      document.getElementById('editToolbar').classList.toggle('show', isEditing);
+      setEditable(isEditing);
+      if (!isEditing) saveAllEdits();
+    }
+    function setEditable(enable) {
+      const targets = document.querySelectorAll('.slide-heading, .sub-lead-text, .card-title, .card-desc, .card-single, .card-box');
+      targets.forEach(el => {
+        if (enable) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('input', debounceAutoSave);
+        } else el.removeAttribute('contenteditable');
+      });
+    }
+    function execUndo() { document.execCommand('undo'); }
+    function execRedo() { document.execCommand('redo'); }
+    function changeFontSize(dir) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      let targetNode = sel.anchorNode;
+      if (targetNode.nodeType === 3) targetNode = targetNode.parentNode;
+      const curSize = parseFloat(window.getComputedStyle(targetNode).fontSize) || 28;
+      targetNode.style.fontSize = Math.max(14, curSize + (dir * 4)) + 'px';
+      debounceAutoSave();
+    }
+    function hideCurrentElement() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        if (node && !node.classList.contains('slide')) {
+          node.classList.add('hidden-by-edit');
+          debounceAutoSave();
+        }
+      }
+    }
+    let saveTimer = null;
+    function debounceAutoSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveAllEdits, 300);
+    }
+    function saveAllEdits() {
+      const key = getStorageKey();
+      const viewport = document.querySelector('.viewport');
+      if (viewport) localStorage.setItem(key, viewport.innerHTML);
+    }
+    function restoreSavedEdits() {
+      const key = getStorageKey();
+      const savedHTML = localStorage.getItem(key);
+      if (savedHTML) document.querySelector('.viewport').innerHTML = savedHTML;
+    }
+    function resetAllEdits() {
+      if (confirm('모든 고친 내용을 초기화하시겠습니까?')) {
+        localStorage.removeItem(getStorageKey());
+        location.reload();
+      }
+    }
+
+    function toggleFullScreenMode() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => alert('전체화면 오류: ' + err.message));
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!document.fullscreenElement;
+      document.getElementById('fsBtnLabel').textContent = isFs ? '해제' : '전체';
+    });
+
+    const teacherDrawer = document.getElementById('teacherDrawer');
+    function toggleTeacherDrawer() {
+      if (teacherDrawer.classList.contains('open')) closeTeacherDrawer();
+      else openTeacherDrawer();
+    }
+    function openTeacherDrawer() {
+      teacherDrawer.classList.add('open');
+      updateTeacherNoteView();
+    }
+    function closeTeacherDrawer() { teacherDrawer.classList.remove('open'); }
+    function updateTeacherNoteView() {
+      const note = TEACHER_NOTES[curIndex];
+      if (note) {
+        document.getElementById('drawerSlideNumBadge').textContent = `${curIndex + 1} / ${totNum} 슬라이드`;
+        document.getElementById('drawerSlideTitle').textContent = note.title || `슬라이드 ${curIndex + 1}`;
+        document.getElementById('noteTime').textContent = note.time || '1분';
+        document.getElementById('noteAnswers').textContent = note.answers || '-';
+        document.getElementById('noteConfusing').textContent = note.confusing || '-';
+        document.getElementById('noteWords').textContent = note.words || '-';
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement && document.activeElement.isContentEditable) {
+        if (e.key === 'Escape') document.activeElement.blur();
+        return;
+      }
+      if (e.key === 'Escape') { closeTeacherDrawer(); return; }
+      if (e.key === 'f' || e.key === 'F' || e.key === 'ㄹ') {
+        e.preventDefault(); toggleFullScreenMode(); return;
+      }
+      if (e.key === 't' || e.key === 'T' || e.key === 'ㅅ') {
+        e.preventDefault(); toggleTeacherDrawer(); return;
+      }
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+        moveSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        moveSlide(-1);
+      }
+    });
+
+    restoreSavedEdits();
+    update();
+
+    const TEACHER_NOTES = [
+      { slide: 1, title: "5차시 표지", time: "1분", answers: "• 1주제 핵심 과정중심평가 차시 안내", confusing: "단순 암기 시험이 아닌 실천 캠페인과 서술형 평가임을 안내", words: "근로자, 권리, 노동 존중" },
+      { slide: 2, title: "이분들이 없다면? 생각 열기", time: "2분", answers: "• \"급식을 못 먹어서 배고파요\", \"택배가 안 와서 필요한 물건을 못 받아요\"", confusing: "노동이 멈췄을 때 일상의 마비를 상상하며 근로자의 소중함 체감", words: "근로자, 일상의 소중함, 노동의 가치" },
+      { slide: 3, title: "배움 문제 확인", time: "1분", answers: "• 함께 읽으며 오늘 평가 목표 인식", confusing: "권리 보호의 까닭과 캠페인 문구 작성이 핵심 평가 요소", words: "배움문제, 과정중심평가" },
+      { slide: 4, title: "고용노동부 교육 영상", time: "3분", answers: "• 노동 존중 영상 시청 소감", confusing: "인간의 존엄성과 근로자의 권리 연계", words: "노동 인권" },
+      { slide: 5, title: "문제 상황 4가지", time: "2분", answers: "• \"다치거나 월급을 못 받으면 안 돼요!\"", confusing: "권리 침해 사례를 통해 법적 보호의 필요성 도출", words: "권리 침해" },
+      { slide: 6, title: "근로자의 4대 기본 권리", time: "3분", answers: "• 안전, 임금, 휴식, 차별 금지 확인", confusing: "초등 눈높이에 맞춘 4대 핵심 권리 이해", words: "근로기준법, 헌법" },
+      { slide: 7, title: "권리를 지켜야 하는 까닭", time: "2분", answers: "• 가계 안정 ➔ 기업 발전 선순환", confusing: "근로자 권리가 기업 발전과 대립되지 않고 상생함을 강조", words: "상생, 경제 선순환" },
+      { slide: 8, title: "[활동 2] 피켓전 & 투표 안내", time: "2분", answers: "• 모둠별 미니 피켓 제작 룰 확인", confusing: "창의적 슬로건과 설득력 있는 문구 작성 유도", words: "신체 활동, 피켓전" },
+      { slide: 9, title: "캠페인 슬로건 예시", time: "2분", answers: "• 마음에 드는 구호 읽어보기", confusing: "자신의 언어로 참신하게 바꾸어 쓰도록 지도", words: "슬로건, 캠페인" },
+      { slide: 10, title: "스탠딩 갤러리 투표", time: "15분", answers: "• 전원 교실 순회하며 스티커 부착", confusing: "상호 존중과 격려 속에 질서 있는 관람 지도", words: "갤러리 워크" },
+      { slide: 11, title: "[충실한 8분 정리] 평가지 작성", time: "8분", answers: "• 자리에서 침묵 속에 개별 서술 작성", confusing: "평가 시간 엄수 (교사 순회 관찰 평가 진행)", words: "서술형 평가, 완전 정리" },
+      { slide: 12, title: "5차시 배움 총정리", time: "2분", answers: "• 3대 가치 합창", confusing: "정리 슬라이드 단독 제시", words: "배움 정리" },
+      { slide: 13, title: "다음 6~7차시 예고", time: "2분", answers: "• 기업의 경쟁과 CSR 엑스포 기대감 형성", confusing: "1주제 총결산 연속 블록 예고", words: "자유 경쟁, 사회적 책임" }
+    ];
+  </script>
+</body>
+</html>

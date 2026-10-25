@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[쉬운 배움터 활동지] 6-2 사회 2단원 5차시: 일하는 사람들의 소중한 권리</title>
+  <style>
+    :root {
+      --primary: #dc2626;
+      --primary-light: #fef2f2;
+      --accent: #1e3a8a;
+      --gray-900: #0f172a;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-200: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background: #cbd5e1;
+      color: var(--gray-900);
+      line-height: 1.5;
+      font-size: 13.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
+    }
+
+    .no-print-bar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+    .btn-print {
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #dc2626;
+      color: white;
+      border: 1px solid #b91c1c;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .sheet-a4 {
+      width: 100%;
+      max-width: 820px;
+      min-height: 1140px;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 22px 26px 18px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+
+    .ws-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 7px;
+    }
+    .badge-easy {
+      background: #fee2e2;
+      color: #dc2626;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+    .ws-title-group h1 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #dc2626;
+      letter-spacing: -0.5px;
+    }
+    .student-box {
+      border: 1.5px solid #94a3b8;
+      border-radius: 6px;
+      padding: 5px 12px;
+      background: #f8fafc;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .target-bar {
+      background: var(--primary-light);
+      border-left: 5px solid var(--primary);
+      padding: 7px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: #b91c1c;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-card {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+    }
+    .act-head {
+      background: #fef2f2;
+      padding: 5px 12px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #dc2626;
+      border-bottom: 1.5px solid #fee2e2;
+      display: flex;
+      justify-content: space-between;
+    }
+    .act-body {
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .match-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+    }
+    .match-box {
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+    }
+    .box-red { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .box-blue { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+
+    .floating-tools-widget {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 999;
+    }
+    .tool-float-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #dc2626;
+      color: #dc2626;
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.2s;
+    }
+    .tool-float-btn span.label { font-size: 9px; font-weight: 800; margin-top: -2px; }
+    .tool-float-btn.active { background: #b91c1c; border-color: #b91c1c; color: white; }
+
+    .teacher-drawer {
+      position: fixed;
+      top: 0;
+      right: -380px;
+      width: 360px;
+      height: 100vh;
+      background: white;
+      border-left: 3px solid #dc2626;
+      box-shadow: -6px 0 20px rgba(0,0,0,0.15);
+      transition: right 0.3s ease;
+      z-index: 1200;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .teacher-drawer.open { right: 0; }
+    .drawer-content { overflow-y: auto; font-size: 13px; line-height: 1.55; }
+    .drawer-block {
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 3px solid #dc2626;
+    }
+
+    [contenteditable="true"] { outline: 2px dashed #dc2626 !important; cursor: text; }
+
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .no-print-bar, .floating-tools-widget, .teacher-drawer { display: none !important; }
+      .sheet-a4 {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        min-height: 275mm !important;
+        height: 275mm !important;
+        padding: 10mm 14mm !important;
+      }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ 쉬운 배움 활동지 인쇄하기</button>
+  </div>
+
+  <main class="sheet-a4">
+    <header class="ws-header">
+      <div class="ws-title-group">
+        <span class="badge-easy">통합학급 맞춤 쉬운 배움터</span>
+        <h1>[사회 활동지] 일하는 사람들의 소중한 권리</h1>
+      </div>
+      <div class="student-box">
+        6학년 &nbsp; 반 &nbsp; 번 &nbsp; 이름: &nbsp; &nbsp; &nbsp; &nbsp;
+      </div>
+    </header>
+
+    <div class="target-bar">
+      💡 <strong>배움 목표</strong>: 일하는 근로자의 기본 권리를 알고, 서로 존중하는 마음을 길러 봅시다.
+    </div>
+
+    <!-- 친절한 활동 방법 안내 -->
+    <div style="background:#fef2f2; border-left:3.5px solid #dc2626; padding:5px 10px; font-size:11.5px; color:#991b1b; margin-bottom:8px; border-radius:0 4px 4px 0;">
+      <strong>[🌱 이렇게 활동해요! (활동 방법)]</strong><br>
+      ① <strong>함께 읽기</strong>: 도우미 친구와 문제를 한 줄씩 차례대로 소리 내어 읽습니다.<br>
+      ② <strong>선 잇기</strong>: [배움 1]은 근로자의 권리에 알맞은 설명 상자로 반듯하게 줄을 잇습니다.<br>
+      ③ <strong>O/X 체크</strong>: [배움 2]는 일터의 안전한 모습에 O, 위험한 모습에 X 표를 합니다.<br>
+      ④ <strong>응원 구호</strong>: [배움 3]은 가장 멋진 캠페인 구호를 골라 별표를 칩니다.
+    </div>
+
+    <!-- 배움 1: 근로자의 권리 알기 쉬운 선 긋기 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>[배움 1] 근로자의 권리 알맞게 선 잇기</span>
+      </div>
+      <div class="act-body">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:4px 20px;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div class="match-box box-red">① 안전하게 일할 권리</div>
+            <div class="match-box box-red">② 정당한 월급을 받을 권리</div>
+            <div class="match-box box-red">③ 충분히 쉴 권리</div>
+          </div>
+          <div style="font-size:20px; color:#94a3b8; font-weight:800; letter-spacing:4px;">··· ···</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px;">
+              [A] 일한 만큼의 돈을 약속된 날에 꼭 받아요.
+            </div>
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px;">
+              [B] 피로를 풀고 건강을 위해 주말과 휴가를 누려요.
+            </div>
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px;">
+              [C] 다치지 않게 안전모와 보호구를 착용해요.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 배움 2: 알쏭달쏭 OX 퀴즈 -->
+    <section class="activity-card">
+      <div class="act-head">
+        <span>[배움 2] 일터의 바른 모습 OX 퀴즈</span>
+      </div>
+      <div class="act-body">
+        <div class="match-row">
+          <div>1. 높은 곳에서 일할 때 안전장비를 꼭 지급해야 한다.</div>
+          <div style="font-weight:900; color:#dc2626;">( &nbsp; O &nbsp; / &nbsp; X &nbsp; )</div>
+        </div>
+        <div class="match-row">
+          <div>2. 일이 바쁘다는 이유로 며칠 동안 한숨도 못 자게 해도 된다.</div>
+          <div style="font-weight:900; color:#dc2626;">( &nbsp; O &nbsp; / &nbsp; X &nbsp; )</div>
+        </div>
+        <div class="match-row">
+          <div>3. 땀 흘려 일하는 모든 근로자는 존중받아야 한다.</div>
+          <div style="font-weight:900; color:#dc2626;">( &nbsp; O &nbsp; / &nbsp; X &nbsp; )</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 배움 3: 내가 고르는 멋진 캠페인 구호 -->
+    <section class="activity-card" style="border:1.5px solid #dc2626;">
+      <div class="act-head" style="background:#fee2e2;">
+        <span style="color:#b91c1c;">[배움 3] 내가 가장 마음에 드는 캠페인 구호 고르기</span>
+      </div>
+      <div class="act-body">
+        <div>우리 모둠 피켓에 넣고 싶은 가장 멋진 구호 하나를 골라 동그라미 해보세요!</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:4px;">
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px;">
+            ① <strong>"안전모는 생명모! 안전하게 일해요!"</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px;">
+            ② <strong>"정당한 땀방울, 정직한 월급을 지켜주세요!"</strong>
+          </div>
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px;">
+            ③ <strong>"충분한 휴식이 행복하고 건강한 일터를 만듭니다!"</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 격려 바 -->
+    <footer style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:6px; padding:6px 12px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+      <div>👏 <strong>선생님의 따뜻한 칭찬</strong>: 일하는 분들의 권리를 생각하는 따뜻한 마음이 참 예쁩니다!</div>
+      <div style="color:#dc2626; font-weight:800;">참 잘했어요! ★★★</div>
+    </footer>
+  </main>
+
+  <aside class="floating-tools-widget">
+    <button class="tool-float-btn" id="editBtn" onclick="toggleEditMode()" title="글자 고치기">
+      ✎<span class="label">고치기</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleFullScreen()" title="전체화면">
+      ⛶<span class="label">전체</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleTeacherDrawer()" title="교사용 지도 서랍">
+      📖<span class="label">교사용</span>
+    </button>
+  </aside>
+
+  <aside class="teacher-drawer" id="teacherDrawer">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #dc2626; padding-bottom:8px;">
+      <h3 style="font-size:16px; color:#dc2626;">쉬운 배움터 지도 길잡이</h3>
+      <button onclick="toggleTeacherDrawer()" style="background:none; border:none; font-size:20px; cursor:pointer;">✕</button>
+    </div>
+    <div class="drawer-content" style="margin-top:10px;">
+      <div class="drawer-block">
+        <strong>1. 평가 참여 배려:</strong>
+        <div>복잡한 법률 조항 대신 안전모, 월급, 휴식 등 실생활 직관적 개념으로 이해하도록 유도합니다.</div>
+      </div>
+      <div class="drawer-block">
+        <strong>2. 정답 안내:</strong>
+        <div>배움 1: ①-C, ②-A, ③-B / 배움 2: 1번(O), 2번(X), 3번(O)</div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    let isEditing = false;
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.getElementById('editBtn').classList.toggle('active', isEditing);
+      const targets = document.querySelectorAll('.match-row, .act-head, .match-box, .activity-card');
+      targets.forEach(el => {
+        if (isEditing) el.setAttribute('contenteditable', 'true');
+        else el.removeAttribute('contenteditable');
+      });
+    }
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else if (document.exitFullscreen) document.exitFullscreen();
+    }
+    function toggleTeacherDrawer() {
+      document.getElementById('teacherDrawer').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[전자칠판용 PPT] 6-2 사회 2단원 3~4차시: 가계와 기업의 만남, 가격 결정의 비밀</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --primary-glow: rgba(59, 130, 246, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-yellow: #fde047;
+      --accent-green: #4ade80;
+      --accent-red: #f87171;
+      --bg-dark: #090d16;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-border: rgba(148, 163, 184, 0.25);
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      height: 56px;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 30, 0.95);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+    .topbar-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #93c5fd;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-badge {
+      background: #0f766e;
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .slide-page-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .viewport {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      max-width: 1720px;
+      max-height: 960px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      padding: 24px;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .slide-heading {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      color: var(--text-white);
+    }
+    .slide-heading span.yellow { color: var(--accent-yellow); }
+    .slide-heading span.cyan { color: var(--accent-cyan); }
+    .slide-heading span.green { color: var(--accent-green); }
+    .slide-heading span.red { color: var(--accent-red); }
+
+    .sub-lead-text {
+      font-size: 28px;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.45;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+
+    .card-single {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 18px;
+      padding: 30px 40px;
+      width: 100%;
+      max-width: 1260px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      max-width: 1440px;
+    }
+
+    .card-box {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-title {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 24px;
+      color: #e2e8f0;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 1040px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      border: 2px solid #38bdf8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-frame {
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+    .video-caption {
+      padding: 14px 20px;
+      background: #0f172a;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+      color: #93c5fd;
+      font-weight: 700;
+    }
+
+    .bottom-bar {
+      height: 64px;
+      padding: 0 32px;
+      background: rgba(10, 15, 30, 0.95);
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .nav-btn {
+      background: #1e293b;
+      border: 1.5px solid #475569;
+      color: white;
+      padding: 9px 24px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+    .nav-btn:hover { background: #2563eb; border-color: #3b82f6; }
+
+    .floating-tools-widget {
+      position: fixed;
+      right: 24px;
+      bottom: 76px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 999;
+    }
+    .tool-float-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 2px solid #3b82f6;
+      color: white;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+    }
+    .tool-float-btn span.label { font-size: 10px; font-weight: 800; margin-top: -2px; }
+    .tool-float-btn:hover { background: #2563eb; transform: translateY(-2px); }
+    .tool-float-btn.active { background: #e11d48; border-color: #fda4af; }
+
+    .edit-toolbar {
+      position: fixed;
+      top: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1.5px solid #38bdf8;
+      border-radius: 10px;
+      padding: 6px 14px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      z-index: 1000;
+    }
+    .edit-toolbar.show { display: flex; }
+    .edit-tool-btn {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .teacher-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      height: 100vh;
+      background: #0f172a;
+      border-left: 2.5px solid #38bdf8;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1200;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .teacher-drawer.open { right: 0; }
+    .drawer-header {
+      border-bottom: 2px solid #1e3a8a;
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-title { font-size: 18px; font-weight: 900; color: #93c5fd; }
+    .drawer-close { background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; }
+    .drawer-content { flex: 1; overflow-y: auto; margin: 16px 0; font-size: 14px; line-height: 1.55; }
+    .note-sec {
+      background: #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-left: 3px solid #38bdf8;
+    }
+    .note-sec-title { font-weight: 800; color: #fde047; margin-bottom: 6px; font-size: 13px; }
+
+    [contenteditable="true"] { outline: 1.5px dashed #38bdf8 !important; cursor: text; }
+    .hidden-by-edit { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="topbar-badge">80분 연속 블록</span>
+      <span>2. 시장경제와 국가 간 거래 (3~4차시)</span>
+    </div>
+    <div class="topbar-right">
+      <div class="slide-page-num"><span id="curNum">1</span> / <span id="totNum">22</span></div>
+    </div>
+  </header>
+
+  <div class="edit-toolbar" id="editToolbar">
+    <button class="edit-tool-btn" onclick="execUndo()">↶ 되돌리기</button>
+    <button class="edit-tool-btn" onclick="execRedo()">↷ 다시</button>
+    <button class="edit-tool-btn" onclick="changeFontSize(1)">가 크게</button>
+    <button class="edit-tool-btn" onclick="changeFontSize(-1)">가 작게</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('bold')">굵게</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('foreColor', false, '#fde047')">노랑</button>
+    <button class="edit-tool-btn" onclick="document.execCommand('foreColor', false, '#f87171')">빨강</button>
+    <button class="edit-tool-btn" onclick="hideCurrentElement()">요소 감추기</button>
+    <button class="edit-tool-btn" onclick="resetAllEdits()" style="color:#f87171;">전체 복구</button>
+  </div>
+
+  <main class="viewport">
+
+    <!-- 슬라이드 1: 표지 -->
+    <section class="slide active">
+      <div class="card-single" style="border-color:#0f766e;">
+        <div style="font-size:24px; color:#5eead4; font-weight:800; margin-bottom:12px;">초등 6학년 2학기 사회 2단원 3~4차시 블록</div>
+        <h1 class="slide-heading" style="font-size:60px; margin-bottom:16px;">
+          시장에서 만나는 <span class="cyan">가계와 기업</span>,<br>
+          그리고 <span class="yellow">가격 결정의 비밀</span>
+        </h1>
+        <div class="sub-lead-text">
+          교과서 63~68쪽 | 80분 연속 블록 타임 프로젝트
+        </div>
+        <div style="display:flex; gap:16px; margin-top:10px;">
+          <div style="background:#1e293b; padding:10px 24px; border-radius:8px; font-size:20px; font-weight:700; color:#38bdf8;">
+            1부 (3차시): 가계 ↔ 기업 경제 순환 런
+          </div>
+          <div style="background:#1e293b; padding:10px 24px; border-radius:8px; font-size:20px; font-weight:700; color:#fde047;">
+            2부 (4차시): 교실 사과 장터 모의 협상 배틀
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 2: 생각 열기 (부모님의 월급과 식탁의 사과) -->
+    <section class="slide">
+      <h2 class="slide-heading">우리 집 식탁의 사과는 <span class="yellow">어디서 왔을까요?</span></h2>
+      <div class="grid-2col">
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800" alt="일하는 부모님">
+          </div>
+          <div class="card-title" style="color:#38bdf8;">부모님의 일터와 소득</div>
+          <div class="card-desc">부모님이 기업(회사)에 가셔서 땀 흘려 일하시고 월급(소득)을 받으셨어요!</div>
+        </div>
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800" alt="사과와 마트">
+          </div>
+          <div class="card-title" style="color:#4ade80;">기업의 생산과 마트 판매</div>
+          <div class="card-desc">기업이 농가와 계약해 사과를 포장·유통하고, 우리는 마트에서 돈을 주고 샀어요!</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 3: 배움 문제 확인 -->
+    <section class="slide">
+      <div class="card-single" style="border-left:8px solid #0f766e;">
+        <div style="font-size:28px; color:#5eead4; font-weight:900; margin-bottom:16px;">오늘의 배움 문제 (80분)</div>
+        <div class="slide-heading" style="font-size:50px; line-height:1.35; margin-bottom:24px;">
+          가계와 기업의 <span class="cyan">상호작용</span>을 알고,<br>
+          시장에서 <span class="yellow">가격이 결정·변동되는 원리</span>를 체험해 봅시다.
+        </div>
+        <div style="display:flex; gap:20px;">
+          <div style="background:#0f172a; border:1.5px solid #38bdf8; border-radius:10px; padding:12px 24px; font-size:22px; font-weight:700;">
+            활동 1. 가계 ↔ 기업 경제 순환 롤플레잉 (30분)
+          </div>
+          <div style="background:#0f172a; border:1.5px solid #fde047; border-radius:10px; padding:12px 24px; font-size:22px; font-weight:700;">
+            활동 2. 교실 사과 장터 모의 가격 협상 (30분)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 4: 교육 영상 코너 -->
+    <section class="slide">
+      <h2 class="slide-heading">영상 탐구: <span class="cyan">가계와 기업의 핑퐁 게임</span></h2>
+      <div class="video-container">
+        <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/Z5nE4eQj1tE?rel=0" title="가계와 기업의 경제 순환 및 가격 결정" allowfullscreen></iframe>
+        <div class="video-caption">
+          <span>한국은행 어린이 경제교실: 가계와 기업은 어떻게 서로를 도울까?</span>
+          <span style="color:#fde047;">재생 시간 3분</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 5: 가계의 역할 탐구 -->
+    <section class="slide">
+      <h2 class="slide-heading">경제 주체 ①: <span class="cyan">가계(Family)</span>의 역할</h2>
+      <div class="grid-2col">
+        <div class="card-img-wrap" style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800" alt="가정의 소비">
+        </div>
+        <div class="card-box" style="justify-content:center; text-align:left;">
+          <div class="card-title" style="color:#38bdf8;">가계는 어떤 일을 하나요?</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • <strong>노동 제공</strong>: 기업이나 일터에 가서 일을 합니다.<br>
+            • <strong>소득 획득</strong>: 일한 대가로 월급이나 급여를 받습니다.<br>
+            • <strong>소비 활동</strong>: 번 돈으로 생활에 필요한 물건과 서비스를 구매합니다.<br>
+            • 시장에서 가장 중요한 <strong>소비의 주체</strong>입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 6: 기업의 역할 탐구 -->
+    <section class="slide">
+      <h2 class="slide-heading">경제 주체 ②: <span class="green">기업(Company)</span>의 역할</h2>
+      <div class="grid-2col">
+        <div class="card-img-wrap" style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800" alt="기업 건물">
+        </div>
+        <div class="card-box" style="justify-content:center; text-align:left;">
+          <div class="card-title" style="color:#4ade80;">기업은 어떤 일을 하나요?</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • <strong>일자리 제공</strong>: 사람들에게 일할 수 있는 자리를 마련해 줍니다.<br>
+            • <strong>상품 생산</strong>: 사람들에게 필요한 재화와 서비스를 만듭니다.<br>
+            • <strong>이윤 추구</strong>: 물건을 팔아 얻은 이윤으로 다시 투자하고 성장합니다.<br>
+            • 시장에서 가장 중요한 <strong>생산의 주체</strong>입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 7: 가계와 기업의 순환 구조도 -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #38bdf8; padding:30px 50px;">
+        <div style="font-size:26px; color:#38bdf8; font-weight:800; margin-bottom:16px;">가계와 기업의 상호 순환 구조</div>
+        <div class="grid-2col" style="gap:40px; margin-bottom:20px;">
+          <div style="background:#0f172a; padding:24px; border-radius:12px; border:2px solid #38bdf8;">
+            <div style="font-size:32px; font-weight:900; color:#38bdf8; margin-bottom:10px;">가계 ➔ 기업</div>
+            <div style="font-size:24px; line-height:1.6; color:#e2e8f0;">
+              • 일할 사람(노동력)을 제공해요.<br>
+              • 물건을 사면서 대금(소비 금액)을 지불해요.
+            </div>
+          </div>
+          <div style="background:#0f172a; padding:24px; border-radius:12px; border:2px solid #4ade80;">
+            <div style="font-size:32px; font-weight:900; color:#4ade80; margin-bottom:10px;">기업 ➔ 가계</div>
+            <div style="font-size:24px; line-height:1.6; color:#e2e8f0;">
+              • 일자리와 월급(소득)을 지급해요.<br>
+              • 필요한 물건과 서비스를 만들어 판매해요.
+            </div>
+          </div>
+        </div>
+        <div style="font-size:28px; color:#fde047; font-weight:800;">
+          어느 한쪽이라도 멈추면 시장 경제는 돌아갈 수 없습니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 8: 활동 1 롤플레잉 안내 -->
+    <section class="slide">
+      <h2 class="slide-heading">[활동 1: 3차시] 몸으로 움직이는 <span class="cyan">경제 순환 런</span></h2>
+      <div class="card-single">
+        <div style="font-size:26px; color:#38bdf8; font-weight:800; margin-bottom:14px;">교실 앞쪽은 [가계 마을], 뒤쪽은 [기업 공장 & 마트]</div>
+        <div class="grid-2col" style="gap:20px; margin-bottom:20px;">
+          <div style="background:#0f172a; padding:20px; border-radius:10px; text-align:left; font-size:22px; line-height:1.6;">
+            <strong>[1단계] 취업과 급여</strong><br>
+            가계 팀은 '노동 쿠폰'을 들고 기업으로 이동해 일하고 '모의 급여 10,000원'을 받습니다.
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:10px; text-align:left; font-size:22px; line-height:1.6;">
+            <strong>[2단계] 생산과 소비</strong><br>
+            기업 팀은 상품 카드를 마트에 진열하고, 가계 팀은 번 돈으로 마트에서 장을 봅니다!
+          </div>
+        </div>
+        <div style="font-size:24px; color:#fde047; font-weight:700;">
+          30분 동안 전원이 번갈아 가계와 기업이 되어 교실을 이동하며 순환을 체험합니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 9: 4차시 전환 - 가격의 수수께끼 -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #fde047;">
+        <div style="font-size:26px; color:#fde047; font-weight:800; margin-bottom:12px;">[4차시 배움 열기]</div>
+        <h2 class="slide-heading" style="font-size:54px; margin-bottom:20px;">
+          마트의 물건 가격은 <span class="yellow">누가 정할까요?</span>
+        </h2>
+        <div class="card-desc" style="font-size:28px; line-height:1.6; text-align:center; max-width:960px;">
+          사장님이 자기 마음대로 "사과 1개에 10만 원!" 하고 붙이면 팔릴까요?<br>
+          손님이 "100원에 다 주세요!" 하면 사장님이 팔 수 있을까요?<br>
+          <span style="color:#38bdf8; font-weight:700;">사려는 사람과 팔려는 사람의 치열한 밀고 당기기!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 10: 수요와 공급의 심리 차이 -->
+    <section class="slide">
+      <h2 class="slide-heading">두 사람의 <span class="red">생각 차이</span> (줄다리기)</h2>
+      <div class="grid-2col">
+        <div class="card-box" style="border-top:6px solid #38bdf8;">
+          <div class="card-title" style="color:#38bdf8;">소비자 (사려는 사람)</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • "품질 좋은 물건을 조금이라도 <span style="color:#fde047; font-weight:800;">더 싸게</span> 사고 싶어요!"<br>
+            • 가격이 너무 비싸면 안 사고 참거나 다른 가게로 갑니다.<br>
+            • 이것을 경제에서 <strong>'수요(Demand)'</strong>라고 합니다.
+          </div>
+        </div>
+        <div class="card-box" style="border-top:6px solid #f87171;">
+          <div class="card-title" style="color:#f87171;">판매자 (팔려는 사람)</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • "땀 흘려 만든 물건을 조금이라도 <span style="color:#fde047; font-weight:800;">더 비싸게</span> 팔아 이윤을 남기고 싶어요!"<br>
+            • 가격이 너무 싸면 손해를 보므로 팔지 않습니다.<br>
+            • 이것을 경제에서 <strong>'공급(Supply)'</strong>이라고 합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 11: 활동 2 사과장터 협상 배틀 안내 및 활동지 작성법 -->
+    <section class="slide">
+      <h2 class="slide-heading">[활동 2: 4차시] 사과 장터 스탠딩 협상 & 활동지 작성법</h2>
+      <div class="card-single">
+        <div style="font-size:24px; color:#fde047; font-weight:800; margin-bottom:12px;">📋 [활동 방법 3단계] 활동지 [활동 2]를 펴고 함께해요!</div>
+        <div class="grid-2col" style="gap:16px; margin-bottom:16px;">
+          <div style="background:#0f172a; padding:16px; border-radius:10px; text-align:left; font-size:20px; line-height:1.5;">
+            <strong>🍎 [사과 농부 팀] (팔려는 사람)</strong><br>
+            • 최소 3,000원은 받아야 본전입니다.<br>
+            • 목표: 가능한 한 5,000원~7,000원에 팔기!
+          </div>
+          <div style="background:#0f172a; padding:16px; border-radius:10px; text-align:left; font-size:20px; line-height:1.5;">
+            <strong>🛒 [손님 소비자 팀] (사려는 사람)</strong><br>
+            • 지갑에 최대 7,000원이 있습니다.<br>
+            • 목표: 가능한 한 3,000원~5,000원에 깎아서 사기!
+          </div>
+        </div>
+        <div style="font-size:20px; color:#38bdf8; font-weight:700; line-height:1.5; background:#0f172a; padding:12px 18px; border-radius:8px; border-left:4px solid #38bdf8; text-align:left;">
+          <strong>[활동지 기록 요령]</strong> 1:1 대화로 가격을 흥정한 뒤, 활동지 <strong>[활동 2 계약서 표]</strong>에 내가 원했던 가격, 상대방 가격, 최종 합의 가격을 적고 사인을 교환하세요! (제한시간 15분)
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 12: 협상 결과 발표 (균형 가격의 탄생) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #4ade80;">
+        <div style="font-size:26px; color:#4ade80; font-weight:800; margin-bottom:12px;">교실 사과 장터 협상 결과 공개</div>
+        <h2 class="slide-heading" style="font-size:54px; margin-bottom:20px;">
+          가장 많이 거래된 가격은 <span class="green">'5,000원'!</span>
+        </h2>
+        <div class="card-desc" style="font-size:28px; line-height:1.6; text-align:center; max-width:1000px;">
+          사려는 사람(최대 7,000원)과 팔려는 사람(최소 3,000원)이<br>
+          서로 조금씩 양보하여 <strong>생각이 딱 마주친 그 가격!</strong><br>
+          <span style="color:#fde047; font-weight:800; font-size:32px;">➔ 이것이 바로 시장에서 정해지는 '균형 가격'입니다!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 13: 가격 변동 원리 1 (가격이 오르는 경우) -->
+    <section class="slide">
+      <h2 class="slide-heading">가격 변동 비밀 ①: <span class="red">가격이 오를 때</span></h2>
+      <div class="grid-2col">
+        <div class="card-img-wrap" style="height:380px;">
+          <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800" alt="긴 줄서기">
+        </div>
+        <div class="card-box" style="justify-content:center; text-align:left;">
+          <div class="card-title" style="color:#f87171;">사려는 사람이 훨씬 많을 때!</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • 물건은 10개뿐인데 사려는 손님이 100명이라면?<br>
+            • "제가 1,000원 더 줄게요! 저한테 파세요!"<br>
+            • 사려는 사람끼리 경쟁이 붙어 <strong>가격이 쑥쑥 오릅니다.</strong><br>
+            <span style="color:#fde047; font-weight:700;">(예: 유행하는 한정판 포켓몬 빵, 비 오는 날 우산)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 14: 가격 변동 원리 2 (가격이 내리는 경우) -->
+    <section class="slide">
+      <h2 class="slide-heading">가격 변동 비밀 ②: <span class="cyan">가격이 내릴 때</span></h2>
+      <div class="grid-2col">
+        <div class="card-img-wrap" style="height:380px;">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800" alt="할인 세일">
+        </div>
+        <div class="card-box" style="justify-content:center; text-align:left;">
+          <div class="card-title" style="color:#38bdf8;">팔려는 물건이 넘쳐날 때!</div>
+          <div class="card-desc" style="font-size:26px; line-height:1.6;">
+            • 배추 풍년으로 배추가 산더미인데 손님이 없다면?<br>
+            • "제발 사가세요! 50% 반값 세일합니다!"<br>
+            • 물건이 남아돌면 상인끼리 경쟁하여 <strong>가격이 떨어집니다.</strong><br>
+            <span style="color:#86efac; font-weight:700;">(예: 마트 마감 세일, 풍년이 든 농산물, 계절 지난 옷)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 15: 가격 변동 시소 법칙 요약 -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #fde047; padding:30px 60px;">
+        <div style="font-size:26px; color:#fde047; font-weight:800; margin-bottom:12px;">핵심 공식: 가격 변동 시소 법칙</div>
+        <h2 class="slide-heading" style="font-size:52px; margin-bottom:24px;">
+          사려는 사람(수요) ↔ 팔려는 물건(공급)
+        </h2>
+        <div class="grid-2col" style="gap:24px; width:100%;">
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border-left:6px solid #f87171; text-align:left;">
+            <div style="font-size:26px; font-weight:800; color:#f87171; margin-bottom:6px;">사려는 사람 > 물건의 양</div>
+            <div style="font-size:22px; color:#e2e8f0;">물건이 부족해서 ➔ <strong>가격 상승 (UP ⬆)</strong></div>
+          </div>
+          <div style="background:#0f172a; padding:20px; border-radius:12px; border-left:6px solid #38bdf8; text-align:left;">
+            <div style="font-size:26px; font-weight:800; color:#38bdf8; margin-bottom:6px;">사려는 사람 < 물건의 양</div>
+            <div style="font-size:22px; color:#e2e8f0;">물건이 남아돌아서 ➔ <strong>가격 하락 (DOWN ⬇)</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 16: 생활 속 사례 퀴즈 1 (우산) -->
+    <section class="slide">
+      <div class="card-single">
+        <div style="font-size:26px; color:#38bdf8; font-weight:800; margin-bottom:12px;">실생활 추론 퀴즈 ①</div>
+        <h2 class="slide-heading" style="font-size:46px;">
+          갑자기 폭우가 쏟아질 때 지하철역 앞 우산 가격은?
+        </h2>
+        <div class="grid-2col" style="margin-top:20px; gap:20px;">
+          <div style="background:#1e3a8a; border:2px solid #fde047; padding:20px; border-radius:10px; font-size:28px; font-weight:800; color:#fde047;">
+            ① 우산을 사려는 사람이 급증하여 가격이 오르거나 품절된다. (정답!)
+          </div>
+          <div style="background:#1e293b; padding:20px; border-radius:10px; font-size:28px; font-weight:700;">
+            ② 우산이 남아돌아서 가격이 반값으로 떨어진다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 17: 생활 속 사례 퀴즈 2 (수박) -->
+    <section class="slide">
+      <div class="card-single">
+        <div style="font-size:26px; color:#38bdf8; font-weight:800; margin-bottom:12px;">실생활 추론 퀴즈 ②</div>
+        <h2 class="slide-heading" style="font-size:46px;">
+          한겨울에 먹는 수박은 한여름 수박보다 왜 비쌀까요?
+        </h2>
+        <div class="card-desc" style="font-size:30px; line-height:1.6; text-align:center; color:#93c5fd; margin-top:20px;">
+          겨울에는 비닐하우스 난방비가 많이 들고 수박 수확량이 매우 적어<br>
+          <strong>시장 공급이 부족하기 때문에</strong> 가격이 훨씬 비쌉니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 18: 활동지 작성 안내 (충실한 12분 정리 시작) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #0f766e;">
+        <div style="font-size:26px; color:#5eead4; font-weight:800; margin-bottom:12px;">[충실한 12분 정리] 80분 블록 배움 완결</div>
+        <h2 class="slide-heading" style="font-size:52px; margin-bottom:20px;">
+          자리로 돌아와 <span class="cyan">3~4차시 활동지</span>를 작성합시다
+        </h2>
+        <div class="card-desc" style="font-size:26px; line-height:1.6; text-align:left; max-width:980px;">
+          1. <strong>가계와 기업의 순환 다이어그램</strong> 화살표 완성하기<br>
+          2. <strong>가격 결정 그래프 & 시소 공식</strong> 채우기<br>
+          3. <strong>사과 장터 협상 계약서</strong> 결과 적기 및 배운 점 3줄 성찰<br>
+          <span style="color:#fde047; font-weight:700;">※ 12분 동안 조용히 집중하여 활동지를 완벽하게 마무리합니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 19: 가격의 공정성과 소비자/기업의 태도 -->
+    <section class="slide">
+      <h2 class="slide-heading">바람직한 <span class="yellow">경제 주체의 태도</span></h2>
+      <div class="grid-2col">
+        <div class="card-box">
+          <div class="card-title" style="color:#38bdf8;">가계의 합리적 선택</div>
+          <div class="card-desc" style="font-size:24px; line-height:1.55;">
+            • 가격이 비싸다고 무조건 사지 않는 것이 아니라, 꼭 필요한 물건인지 가치를 따져보고 구매합니다.<br>
+            • 과소비를 줄이고 저축하여 미래를 준비합니다.
+          </div>
+        </div>
+        <div class="card-box">
+          <div class="card-title" style="color:#4ade80;">기업의 공정한 가격 책정</div>
+          <div class="card-desc" style="font-size:24px; line-height:1.55;">
+            • 손님이 급하다고 터무니없이 바가지를 씌우지 않습니다.<br>
+            • 품질 좋은 제품을 정직한 가격에 제공하여 소비자의 신뢰를 얻습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 20: 3~4차시 배움 총정리 (완전 분리) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #4ade80;">
+        <div style="font-size:28px; color:#4ade80; font-weight:800; margin-bottom:12px;">3~4차시 배움 총정리</div>
+        <h2 class="slide-heading" style="font-size:52px; margin-bottom:24px;">
+          오늘 우리가 밝혀낸 <span class="green">핵심 진리</span>
+        </h2>
+        <div class="grid-2col" style="gap:24px; width:100%;">
+          <div style="background:#0f172a; padding:22px; border-radius:12px; border:1px solid #38bdf8; text-align:left;">
+            <div style="font-size:28px; font-weight:800; color:#38bdf8; margin-bottom:8px;">[3차시] 가계와 기업</div>
+            <div style="font-size:22px; color:#cbd5e1; line-height:1.5;">
+              가계는 노동을 주고 소득으로 소비하며, 기업은 일자리와 상품을 공급하여 이윤을 얻는다. (상호 의존 순환)
+            </div>
+          </div>
+          <div style="background:#0f172a; padding:22px; border-radius:12px; border:1px solid #fde047; text-align:left;">
+            <div style="font-size:28px; font-weight:800; color:#fde047; margin-bottom:8px;">[4차시] 시장 가격 결정</div>
+            <div style="font-size:22px; color:#cbd5e1; line-height:1.5;">
+              가격은 사려는 사람(수요)과 팔려는 사람(공급)이 만나는 균형 지점에서 정해지며, 수급에 따라 오르내린다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 21: 다음 5차시 예고 (완전 분리) -->
+    <section class="slide">
+      <div class="card-single" style="border:3px solid #f87171; background:linear-gradient(135deg, rgba(153,27,27,0.9), rgba(15,23,42,0.95));">
+        <div style="font-size:26px; color:#fca5a5; font-weight:800; margin-bottom:12px;">다음 시간 예고 (5차시 과정중심평가 1)</div>
+        <h2 class="slide-heading" style="font-size:54px; margin-bottom:20px;">
+          우리를 위해 땀 흘리는 <span class="yellow">근로자의 권리</span>,<br>
+          그리고 <span class="cyan">노동의 숭고한 가치!</span>
+        </h2>
+        <div class="sub-lead-text" style="font-size:28px; color:#e2e8f0; line-height:1.6; max-width:1100px;">
+          "기업과 시장을 움직이는 진짜 힘은 누구에게서 나올까요?"<br>
+          근로자의 4대 기본 권리를 지키기 위한 <strong>스탠딩 캠페인 피켓전</strong>과<br>
+          1주제 <strong>과정중심평가</strong>가 실시됩니다!
+        </div>
+      </div>
+    </section>
+
+    <!-- 슬라이드 22: 보너스 퀴즈 및 배움 마무리 -->
+    <section class="slide">
+      <div class="card-single">
+        <h2 class="slide-heading" style="font-size:48px; margin-bottom:16px;">
+          오늘의 한마디: <span class="cyan">"경제는 함께 굴리는 바퀴!"</span>
+        </h2>
+        <div class="sub-lead-text" style="font-size:26px; color:#cbd5e1;">
+          열심히 참여해 준 6학년 학생 여러분 모두 훌륭한 경제학자였습니다!<br>
+          자리 주변을 깨끗이 정리하고 다음 시간을 준비합시다.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bottom-bar">
+    <button class="nav-btn" onclick="moveSlide(-1)">◀ 이전 (Left)</button>
+    <div style="color:#94a3b8; font-size:16px; font-weight:600;">
+      키보드 방향키(←, →), Space, Enter로 슬라이드를 넘길 수 있습니다.
+    </div>
+    <button class="nav-btn" onclick="moveSlide(1)">다음 (Right) ▶</button>
+  </footer>
+
+  <aside class="floating-tools-widget">
+    <button class="tool-float-btn" id="editBtn" onclick="toggleEditMode()" title="슬라이드 글자 고치기">
+      ✎<span class="label">고치기</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleFullScreenMode()" title="전체화면 전환">
+      ⛶<span class="label" id="fsBtnLabel">전체</span>
+    </button>
+    <button class="tool-float-btn" onclick="toggleTeacherDrawer()" title="교사용 지도 서랍 열기">
+      📖<span class="label">교사용</span>
+    </button>
+  </aside>
+
+  <aside class="teacher-drawer" id="teacherDrawer">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title" id="drawerSlideTitle">슬라이드 1</div>
+        <div style="font-size:12px; color:#38bdf8;" id="drawerSlideNumBadge">1 / 22 슬라이드</div>
+      </div>
+      <button class="drawer-close" onclick="closeTeacherDrawer()">✕</button>
+    </div>
+    <div class="drawer-content">
+      <div class="note-sec">
+        <div class="note-sec-title">⏱️ 권장 소요 시간</div>
+        <div id="noteTime" style="color:#f8fafc; font-weight:700;">1분</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">💬 핵심 발문 및 학생 예상 답변</div>
+        <div id="noteAnswers" style="color:#cbd5e1; white-space:pre-line;">-</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">⚠️ 혼동하기 쉬운 점 및 지도 팁</div>
+        <div id="noteConfusing" style="color:#cbd5e1; white-space:pre-line;">-</div>
+      </div>
+      <div class="note-sec">
+        <div class="note-sec-title">🔑 본 슬라이드 핵심 어휘</div>
+        <div id="noteWords" style="color:#fde047; font-weight:800;">-</div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    let curIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totNum = slides.length;
+    document.getElementById('totNum').textContent = totNum;
+
+    function update() {
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === curIndex);
+      });
+      document.getElementById('curNum').textContent = curIndex + 1;
+      updateTeacherNoteView();
+    }
+
+    function moveSlide(dir) {
+      curIndex = (curIndex + dir + totNum) % totNum;
+      update();
+    }
+
+    let isEditing = false;
+    function getStorageKey() { return 'AGY_SLIDE_SAVE_' + window.location.pathname; }
+    function toggleEditMode() {
+      isEditing = !isEditing;
+      document.getElementById('editBtn').classList.toggle('active', isEditing);
+      document.getElementById('editToolbar').classList.toggle('show', isEditing);
+      setEditable(isEditing);
+      if (!isEditing) saveAllEdits();
+    }
+    function setEditable(enable) {
+      const targets = document.querySelectorAll('.slide-heading, .sub-lead-text, .card-title, .card-desc, .card-single, .card-box');
+      targets.forEach(el => {
+        if (enable) {
+          el.setAttribute('contenteditable', 'true');
+          el.addEventListener('input', debounceAutoSave);
+        } else el.removeAttribute('contenteditable');
+      });
+    }
+    function execUndo() { document.execCommand('undo'); }
+    function execRedo() { document.execCommand('redo'); }
+    function changeFontSize(dir) {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      let targetNode = sel.anchorNode;
+      if (targetNode.nodeType === 3) targetNode = targetNode.parentNode;
+      const curSize = parseFloat(window.getComputedStyle(targetNode).fontSize) || 28;
+      targetNode.style.fontSize = Math.max(14, curSize + (dir * 4)) + 'px';
+      debounceAutoSave();
+    }
+    function hideCurrentElement() {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0) {
+        let node = sel.anchorNode;
+        if (node.nodeType === 3) node = node.parentNode;
+        if (node && !node.classList.contains('slide')) {
+          node.classList.add('hidden-by-edit');
+          debounceAutoSave();
+        }
+      }
+    }
+    let saveTimer = null;
+    function debounceAutoSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveAllEdits, 300);
+    }
+    function saveAllEdits() {
+      const key = getStorageKey();
+      const viewport = document.querySelector('.viewport');
+      if (viewport) localStorage.setItem(key, viewport.innerHTML);
+    }
+    function restoreSavedEdits() {
+      const key = getStorageKey();
+      const savedHTML = localStorage.getItem(key);
+      if (savedHTML) document.querySelector('.viewport').innerHTML = savedHTML;
+    }
+    function resetAllEdits() {
+      if (confirm('모든 고친 내용을 초기화하시겠습니까?')) {
+        localStorage.removeItem(getStorageKey());
+        location.reload();
+      }
+    }
+
+    function toggleFullScreenMode() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => alert('전체화면 오류: ' + err.message));
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+    document.addEventListener('fullscreenchange', () => {
+      const isFs = !!document.fullscreenElement;
+      document.getElementById('fsBtnLabel').textContent = isFs ? '해제' : '전체';
+    });
+
+    const teacherDrawer = document.getElementById('teacherDrawer');
+    function toggleTeacherDrawer() {
+      if (teacherDrawer.classList.contains('open')) closeTeacherDrawer();
+      else openTeacherDrawer();
+    }
+    function openTeacherDrawer() {
+      teacherDrawer.classList.add('open');
+      updateTeacherNoteView();
+    }
+    function closeTeacherDrawer() { teacherDrawer.classList.remove('open'); }
+    function updateTeacherNoteView() {
+      const note = TEACHER_NOTES[curIndex];
+      if (note) {
+        document.getElementById('drawerSlideNumBadge').textContent = `${curIndex + 1} / ${totNum} 슬라이드`;
+        document.getElementById('drawerSlideTitle').textContent = note.title || `슬라이드 ${curIndex + 1}`;
+        document.getElementById('noteTime').textContent = note.time || '1분';
+        document.getElementById('noteAnswers').textContent = note.answers || '-';
+        document.getElementById('noteConfusing').textContent = note.confusing || '-';
+        document.getElementById('noteWords').textContent = note.words || '-';
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement && document.activeElement.isContentEditable) {
+        if (e.key === 'Escape') document.activeElement.blur();
+        return;
+      }
+      if (e.key === 'Escape') { closeTeacherDrawer(); return; }
+      if (e.key === 'f' || e.key === 'F' || e.key === 'ㄹ') {
+        e.preventDefault(); toggleFullScreenMode(); return;
+      }
+      if (e.key === 't' || e.key === 'T' || e.key === 'ㅅ') {
+        e.preventDefault(); toggleTeacherDrawer(); return;
+      }
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+        moveSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        moveSlide(-1);
+      }
+    });
+
+    restoreSavedEdits();
+    update();
+
+    const TEACHER_NOTES = [
+      { slide: 1, title: "3~4차시 블록 표지", time: "1분", answers: "• 80분 블록 타임 안내", confusing: "1부(가계·기업)와 2부(가격 결정) 흐름 제시", words: "가계, 기업, 가격" },
+      { slide: 2, title: "식탁의 사과 생각 열기", time: "2분", answers: "• 부모님의 월급과 마트 사과 연결", confusing: "가계와 기업의 연결 고리 발견", words: "소득, 생산" },
+      { slide: 3, title: "배움 문제 확인", time: "1분", answers: "• 큰 소리로 함께 읽기", confusing: "두 차시 묶음 목표 명확화", words: "상호작용, 균형가격" },
+      { slide: 4, title: "한국은행 경제교실 영상", time: "3분", answers: "• 영상 속 핑퐁 게임 소감 나누기", confusing: "경제 순환의 기본 원리 직관적 이해", words: "경제 순환" },
+      { slide: 5, title: "가계의 역할", time: "2분", answers: "• \"우리 집처럼 돈을 벌고 써요.\"", confusing: "가계가 소비뿐 아니라 '노동 제공자'임을 지도", words: "가계, 소비, 노동" },
+      { slide: 6, title: "기업의 역할", time: "2분", answers: "• \"공장에서 물건을 만들어요.\"", confusing: "기업이 이윤을 얻어 재투자함을 안내", words: "기업, 생산, 일자리" },
+      { slide: 7, title: "가계 ↔ 기업 순환 구조", time: "3분", answers: "• 화살표 방향 함께 짚어보기", confusing: "한쪽이 무너지면 둘 다 멈춤 강조", words: "상호 의존" },
+      { slide: 8, title: "[활동 1] 경제 순환 런", time: "30분", answers: "• 가계-기업 교실 왕복 체험", confusing: "질서 있게 이동하며 노동과 급여, 소비 경험", words: "신체 활동, 롤플레잉" },
+      { slide: 9, title: "4차시 전환: 가격의 비밀", time: "2분", answers: "• \"사장님이 마음대로 정하나요?\"", confusing: "가격이 협상의 결과물임을 예고", words: "가격" },
+      { slide: 10, title: "수요와 공급의 줄다리기", time: "2분", answers: "• 싸게 사려는 마음 vs 비싸게 팔려는 마음", confusing: "소비자와 판매자의 정당한 동기 이해", words: "수요, 공급" },
+      { slide: 11, title: "[활동 2] 사과 장터 협상 배틀", time: "30분", answers: "• 1:1 스탠딩 가격 흥정", confusing: "적극적으로 여러 상인/손님과 가격 흥정하도록 독려", words: "모의 협상, 흥정" },
+      { slide: 12, title: "균형 가격의 탄생", time: "2분", answers: "• 5,000원에 가장 많이 타협함 발견", confusing: "타협과 합의를 통한 시장 가격 도출", words: "균형 가격" },
+      { slide: 13, title: "가격 상승의 원리", time: "2분", answers: "• 사려는 사람이 많을 때 가격 상승", confusing: "희소성과 경쟁 원리 이해", words: "품절, 가격 상승" },
+      { slide: 14, title: "가격 하락의 원리", time: "2분", answers: "• 팔려는 물건이 넘쳐날 때 세일", confusing: "재고 처리와 판매자 경쟁 이해", words: "할인, 가격 하락" },
+      { slide: 15, title: "가격 변동 시소 공식", time: "2분", answers: "• 시소 공식 다 함께 복창", confusing: "수요>공급(상승), 수요<공급(하락) 공식화", words: "수요와 공급의 법칙" },
+      { slide: 16, title: "폭우 우산 퀴즈", time: "1분", answers: "• 정답: 1번 우산 가격 상승/품절", confusing: "일상 속 가격 변동 원리 적용", words: "실생활 추론" },
+      { slide: 17, title: "겨울 수박 퀴즈", time: "1분", answers: "• 공급 부족과 생산비용 증가 때문", confusing: "계절과 기후에 따른 가격 변동 이해", words: "공급 부족" },
+      { slide: 18, title: "[충실한 12분 정리] 활동지 작성", time: "12분", answers: "• 조용한 집중 속 활동지 완전 작성", confusing: "12분 침묵 정리 시간 엄수", words: "완전 정리" },
+      { slide: 19, title: "가계와 기업의 바람직한 태도", time: "2분", answers: "• 합리적 소비와 정직한 생산", confusing: "윤리적 경제 활동의 기초 형성", words: "합리적 선택" },
+      { slide: 20, title: "3~4차시 배움 총정리", time: "2분", answers: "• 경제 순환 및 가격 원리 요약", confusing: "정리 슬라이드 단독 제시", words: "배움 정리" },
+      { slide: 21, title: "다음 5차시 예고", time: "2분", answers: "• 근로자의 권리 캠페인 기대감 형성", confusing: "과정중심평가 1 차시 예고", words: "근로자의 권리, 평가" },
+      { slide: 22, title: "수업 마무리 인사", time: "1분", answers: "• 바른 자세로 인사 및 교실 정돈", confusing: "블록 타임 후 교실 책상 원위치 정돈", words: "정리 정돈" }
+    ];
+  </script>
+</body>
+</html>
